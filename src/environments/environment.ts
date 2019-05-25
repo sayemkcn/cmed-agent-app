@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  base_url: 'http://localhost:8080'
+  base_url: 'http://localhost:8080',
+  client_id: 'android-client',
+  client_secret: 'android-secret'
 };
 
 /*

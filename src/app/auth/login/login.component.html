@@ -1,5 +1,16 @@
-<p>
+<div class="row">
 
-
-
-</p>
+  <form class="form col-sm-4 offset-4" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+    <div class="form-group">
+      <label class="label label-primary" for="username">CMED ID</label>
+      <input formControlName="username" type="text" name="username" placeholder="CMED ID" class="form-control"
+             id="username"/>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input formControlName="password" type="password" name="password" placeholder="Password" class="form-control"
+             id="password"/>
+    </div>
+    <button class="btn btn-success btn-block" type="submit">Login</button>
+  </form>
+</div>
