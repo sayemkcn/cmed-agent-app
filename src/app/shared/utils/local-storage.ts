@@ -1,4 +1,4 @@
-import {IUserAuth} from '../auth/models/user_auth.model';
+import {IUserAuth} from '../../auth/models/user_auth.model';
 
 export class LocalStorage {
 

@@ -11,8 +11,9 @@ import {FooterComponent} from './layouts/footer/footer.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
-import {Toastr} from './shared/toastr.service';
+import {Toastr} from './shared/services/toastr.service';
 import { LogoutComponent } from './auth/logout/logout.component';
+import {ApiEndpoints} from './shared/commons/api-endpoints.resource';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { LogoutComponent } from './auth/logout/logout.component';
   ],
   providers: [
     AuthService,
-    Toastr
+    Toastr,
+    ApiEndpoints
   ],
   bootstrap: [AppComponent]
 })

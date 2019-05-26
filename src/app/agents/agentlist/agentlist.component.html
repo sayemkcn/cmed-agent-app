@@ -1,3 +1,35 @@
-<p>
-  Agents works!
-</p>
+<div class="row col-sm-12">
+
+  <div class="card">
+    <div class="card-header card-title">Agents</div>
+    <div class="card-body">
+      <table class="table table-hover table-striped table-hover table-active table-condensed">
+        <thead>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>DESIGNATION</th>
+        <th>DESCRIPTION</th>
+        <th>SILENT PROMO</th>
+        <th>PATH</th>
+        <th>PURCHASE COMMISSION RATE</th>
+        <th>CREATED AT</th>
+        <th>UPDATED AT</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let agent of agentPage?.content ">
+          <td>{{ agent.id }}</td>
+          <td>{{ agent.name }}</td>
+          <td>{{ agent.designation }}</td>
+          <td>{{ agent.description }}</td>
+          <td>{{ agent.promo_code }}</td>
+          <td>{{ agent.path }}</td>
+          <td>{{ agent.purchase_commission_rate | percent }}</td>
+          <td>{{ agent.created_at | date: 'short' }}</td>
+          <td>{{ agent.updated_at | date: 'short' }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

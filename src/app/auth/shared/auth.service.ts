@@ -3,9 +3,9 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IUserAuth} from '../models/user_auth.model';
 import {environment} from '../../../environments/environment';
-import {Toastr} from '../../shared/toastr.service';
+import {Toastr} from '../../shared/services/toastr.service';
 import {Router} from '@angular/router';
-import {LocalStorage} from '../../utils/local-storage';
+import {LocalStorage} from '../../shared/utils/local-storage';
 import {IAuthority} from '../models/authority.model';
 
 @Injectable({
