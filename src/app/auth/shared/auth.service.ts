@@ -56,7 +56,7 @@ export class AuthService {
       LocalStorage.putAuth(auth);
       this.toastr.success('Success', 'Successfully logged in!');
       this.router.navigate(['/']);
-      window.location.href = '/';
+      // window.location.href = '/';
     });
   }
 

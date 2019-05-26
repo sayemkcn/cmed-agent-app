@@ -12,8 +12,9 @@
         <a href="#" class="nav-item nav-link">Contact</a>
       </div>
       <div class="navbar-nav ml-auto">
-        <a href="#" class="nav-item nav-link">Register</a>
-        <a href="/login" class="nav-item nav-link">Login</a>
+<!--        <a *ngIf="!isLoggedIn()" class="nav-item nav-link">Register</a>-->
+        <a *ngIf="!isLoggedIn()" [routerLink]="['login']" class="nav-item nav-link">Login</a>
+        <a *ngIf="isLoggedIn()" [routerLink]="['logout']" class="nav-item nav-link">Logout</a>
       </div>
     </div>
   </div>

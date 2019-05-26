@@ -12,13 +12,15 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
 import {Toastr} from './shared/toastr.service';
+import { LogoutComponent } from './auth/logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavComponent,
-    FooterComponent
+    FooterComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -27,8 +29,9 @@ import {Toastr} from './shared/toastr.service';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      positionClass: 'top-right',
-      closeButton: true
+      closeButton: true,
+      progressBar: true,
+      progressAnimation: 'increasing',
     })
   ],
   providers: [
