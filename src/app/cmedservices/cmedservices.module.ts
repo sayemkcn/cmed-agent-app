@@ -1,13 +1,17 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ServicelistComponent} from './servicelist/servicelist.component';
+import {ServiceListComponent} from './servicelist/servicelist.component';
 import {CmedServicesRoutingModule} from './cmedservices-routing.module';
+import {CmedServicesService} from './services/cmedservices.service';
 
 @NgModule({
-  declarations: [ServicelistComponent],
+  declarations: [ServiceListComponent],
   imports: [
     CommonModule,
     CmedServicesRoutingModule
+  ],
+  providers: [
+    CmedServicesService
   ]
 })
 export class CmedServicesModule {

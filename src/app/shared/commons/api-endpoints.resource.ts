@@ -11,4 +11,9 @@ export class ApiEndpoints {
     CREATE: environment + this.API_VERSION + '/admin/agents'
   };
 
+  SERVICES = {
+    FETCH: environment.base_url + this.API_VERSION + '/admin/services',
+    CREATE: environment.base_url + this.API_VERSION + '/admin/services'
+  };
+
 }

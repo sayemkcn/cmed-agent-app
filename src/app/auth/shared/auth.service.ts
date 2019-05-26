@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IUserAuth} from '../models/user_auth.model';
 import {environment} from '../../../environments/environment';
@@ -46,7 +46,6 @@ export class AuthService {
     this.toastr.warning('You\'ve been logged out!', 'Please login to continue.');
     this.router.navigate(['/login']);
   }
-
 
   login(username: string, password: string) {
 
