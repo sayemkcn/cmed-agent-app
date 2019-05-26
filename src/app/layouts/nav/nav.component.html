@@ -6,13 +6,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav">
-        <a href="/" class="nav-item nav-link active">Home</a>
-        <a href="/login" class="nav-item nav-link">Services</a>
-        <a href="#" class="nav-item nav-link">About</a>
-        <a href="#" class="nav-item nav-link">Contact</a>
+        <a [routerLink]="isLoggedIn()" class="nav-item nav-link active">Home</a>
+        <a [routerLink]="['agents']" class="nav-item nav-link">Agents</a>
+        <a [routerLink]="['agent-types']" class="nav-item nav-link">Agent Types</a>
+        <a [routerLink]="['services']" class="nav-item nav-link">Services</a>
       </div>
       <div class="navbar-nav ml-auto">
-<!--        <a *ngIf="!isLoggedIn()" class="nav-item nav-link">Register</a>-->
+        <!--        <a *ngIf="!isLoggedIn()" class="nav-item nav-link">Register</a>-->
         <a *ngIf="!isLoggedIn()" [routerLink]="['login']" class="nav-item nav-link">Login</a>
         <a *ngIf="isLoggedIn()" [routerLink]="['logout']" class="nav-item nav-link">Logout</a>
       </div>
