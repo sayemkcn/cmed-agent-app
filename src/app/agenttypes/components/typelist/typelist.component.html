@@ -1,9 +1,9 @@
-<div class="row col-sm-12">
+<div class="row">
 
-  <div class="card">
+  <div class="col-sm-12 card">
     <div class="card-header card-title">
       Agent Types
-      <a class="btn btn-primary pull-right" [routerLink]="['create']">Create</a>
+      <a class="btn btn-primary pull-right" [routerLink]="['/agent-types/create']">Create</a>
     </div>
     <div class="card-body">
       <table class="table table-hover table-striped table-hover table-active table-condensed">
@@ -14,6 +14,7 @@
         <th>SILENT PROMO</th>
         <th>CREATED AT</th>
         <th>UPDATED AT</th>
+        <th>EDIT</th>
         </thead>
         <tbody>
         <tr *ngFor="let type of agentTypePage?.content ">
@@ -23,6 +24,7 @@
           <td>{{ type.promo_code }}</td>
           <td>{{ type.created_at | date: 'short' }}</td>
           <td>{{ type.updated_at | date: 'short' }}</td>
+          <td><a [routerLink]="['/agent-types/edit',type.id]" class="btn btn-primary" href="#">Edit</a></td>
         </tr>
         </tbody>
       </table>

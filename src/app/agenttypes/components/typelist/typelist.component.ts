@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {IAgentTypePage} from '../models/agenttype-page.model';
-import {AgentTypeService} from '../services/agent-type.service';
-import {BaseComponent} from '../../shared/base/base.component';
-import {AuthService} from '../../auth/shared/auth.service';
+import {IAgentTypePage} from '../../models/agenttype-page.model';
+import {AgentTypeService} from '../../services/agent-type.service';
+import {BaseComponent} from '../../../shared/base/base.component';
+import {AuthService} from '../../../auth/shared/auth.service';
 
 @Component({
   selector: 'app-typelist',
