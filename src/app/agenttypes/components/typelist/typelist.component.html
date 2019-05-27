@@ -3,7 +3,7 @@
   <div class="col-sm-12 card">
     <div class="card-header card-title">
       Agent Types
-      <a class="btn btn-primary pull-right" [routerLink]="['/agent-types/create']">Create</a>
+      <a class="btn btn-dark pull-right" [routerLink]="['/agent-types/create']">Create</a>
     </div>
     <div class="card-body">
       <table class="table table-hover table-striped table-hover table-active table-condensed">
@@ -24,7 +24,7 @@
           <td>{{ type.promo_code }}</td>
           <td>{{ type.created_at | date: 'short' }}</td>
           <td>{{ type.updated_at | date: 'short' }}</td>
-          <td><a [routerLink]="['/agent-types/edit',type.id]" class="btn btn-primary" href="#">Edit</a></td>
+          <td><a [routerLink]="['/agent-types/edit',type.id]" class="btn btn-warning" href="#">Edit</a></td>
         </tr>
         </tbody>
       </table>

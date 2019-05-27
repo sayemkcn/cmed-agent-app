@@ -26,4 +26,7 @@ export class AgentTypeService {
     return this.http.post<IAgentType>(this.apiEndpoints.AGENT_TYPES.CREATE, agentType, {headers: this.headers});
   }
 
+  getAgentType(id: number) {
+    return this.http.get<IAgentType>(this.apiEndpoints.AGENT_TYPES.FETCH_DETAILS(id), {headers: this.headers});
+  }
 }

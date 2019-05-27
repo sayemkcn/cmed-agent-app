@@ -18,6 +18,7 @@ export class CreateAgentTypeComponent extends BaseComponent implements OnInit {
 
   constructor(private agentTypeService: AgentTypeService,
               private router: Router,
+              private route: ActivatedRoute,
               private auth: AuthService,
               private toastr: Toastr) {
     super(auth);
@@ -34,10 +35,21 @@ export class CreateAgentTypeComponent extends BaseComponent implements OnInit {
       description,
       promo_code: promoCode
     });
+
+    // pre-populate fields for edit
+    const paramId = this.route.snapshot.paramMap.get('id');
+    this.agentTypeService.getAgentType(parseInt(paramId, 0))
+      .subscribe(agentType => {
+        id.setValue(agentType.id);
+        name.setValue(agentType.name);
+        description.setValue(agentType.description);
+        promoCode.setValue(agentType.promo_code);
+      }, err => this.handleError(err));
   }
 
   createAgentType(value: any) {
     const agentType = value as IAgentType;
+    console.log(agentType);
     this.agentTypeService.createAgentType(agentType)
       .subscribe(at => {
         this.toastr.success('Success!', 'Successfully created agent type: ' + at.name);

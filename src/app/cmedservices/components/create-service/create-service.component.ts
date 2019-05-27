@@ -38,7 +38,7 @@ export class CreateServiceComponent extends BaseComponent implements OnInit {
       service_type_id: serviceTypeId
     });
 
-    // Edit service
+    // pre-populate fields for edit
     const paramId = this.route.snapshot.paramMap.get('id');
     if (paramId) {
       const exService: Observable<ICmedService> = this.cmedServicesService.getService(parseInt(paramId, 0));
