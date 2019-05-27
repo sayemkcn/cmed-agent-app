@@ -3,11 +3,11 @@
   <div class="col-sm-12 card">
     <div class="card-header card-title">
       <span class="text text-primary">Create Service</span>
-      <a class="btn btn-primary pull-right" [routerLink]="['../']" href="#">All Services</a>
+      <a class="btn btn-primary pull-right" [routerLink]="['/services']" href="#">All Services</a>
     </div>
     <div class="card-body">
       <form [formGroup]="createServiceForm" class="form" (ngSubmit)="createService(createServiceForm.value)">
-        <div class="form-group">
+        <div class="form-group" hidden>
           <label for="id">ID</label>
           <input formControlName="id" class="form-control" type="number" id="id"/>
         </div>
@@ -28,7 +28,7 @@
           <input formControlName="service_type_id" class="form-control" type="number" id="service_type_id"/>
         </div>
 
-        <a [routerLink]="['../']" class="btn btn-primary" href="#">Cancel</a>
+        <a [routerLink]="['/services']" class="btn btn-primary" href="#">Cancel</a>
         <button type="submit" class="btn btn-primary ml-2">Create</button>
       </form>
     </div>

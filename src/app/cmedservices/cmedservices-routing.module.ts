@@ -5,7 +5,8 @@ import {CreateServiceComponent} from './components/create-service/create-service
 
 const routes: Route[] = [
   {path: '', component: ServiceListComponent},
-  {path: 'create', component: CreateServiceComponent}
+  {path: 'create', component: CreateServiceComponent},
+  {path: 'edit/:id', component: CreateServiceComponent}
 ];
 
 @NgModule({

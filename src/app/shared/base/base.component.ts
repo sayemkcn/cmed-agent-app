@@ -15,6 +15,7 @@ export class BaseComponent implements OnInit {
   }
 
   protected handleError(err) {
+    console.log(err);
     if (err.status === 401) {
       this.authService.refreshToken();
     }

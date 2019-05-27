@@ -15,6 +15,7 @@
         <th>SERVICE TYPE ID</th>
         <th>CREATED AT</th>
         <th>UPDATED AT</th>
+        <th>EDIT</th>
         </thead>
         <tbody>
         <tr *ngFor="let service of services">
@@ -25,6 +26,7 @@
           <td>{{ service.service_type_id }}</td>
           <td>{{ service.created_at | date: 'short' }}</td>
           <td>{{ service.updated_at | date: 'short' }}</td>
+          <td><a [routerLink]="['/services/edit',service.id]" class="btn btn-warning" href="#">Edit</a></td>
         </tr>
         </tbody>
       </table>

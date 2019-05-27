@@ -25,4 +25,8 @@ export class CmedServicesService {
   createService(cmedService: ICmedService): Observable<ICmedService> {
     return this.http.post<ICmedService>(this.apiEndpoint.SERVICES.CREATE, cmedService, {headers: this.headers});
   }
+
+  getService(paramId: number): Observable<ICmedService> {
+    return this.http.get<ICmedService>(this.apiEndpoint.SERVICES.FETCH_DETAILS(paramId), {headers: this.headers});
+  }
 }

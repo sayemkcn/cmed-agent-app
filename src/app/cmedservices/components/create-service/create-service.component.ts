@@ -4,8 +4,9 @@ import {ICmedService} from '../../models/cmedservice.model';
 import {CmedServicesService} from '../../services/cmedservices.service';
 import {BaseComponent} from '../../../shared/base/base.component';
 import {AuthService} from '../../../auth/shared/auth.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Toastr} from '../../../shared/services/toastr.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-create-service',
@@ -18,7 +19,8 @@ export class CreateServiceComponent extends BaseComponent implements OnInit {
   constructor(private cmedServicesService: CmedServicesService,
               private auth: AuthService,
               private router: Router,
-              private toastr: Toastr) {
+              private toastr: Toastr,
+              private route: ActivatedRoute) {
     super(auth);
   }
 
@@ -35,6 +37,19 @@ export class CreateServiceComponent extends BaseComponent implements OnInit {
       cost,
       service_type_id: serviceTypeId
     });
+
+    // Edit service
+    const paramId = this.route.snapshot.paramMap.get('id');
+    if (paramId) {
+      const exService: Observable<ICmedService> = this.cmedServicesService.getService(parseInt(paramId, 0));
+      exService.subscribe(es => {
+        id.setValue(es.id);
+        name.setValue(es.name);
+        description.setValue(es.description);
+        cost.setValue(es.cost);
+        serviceTypeId.setValue(es.service_type_id);
+      }, err => this.handleError(err));
+    }
   }
 
   createService(value: any) {
