@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ICmedService} from '../models/cmedservice.model';
-import {CmedServicesService} from '../services/cmedservices.service';
-import {BaseComponent} from '../../shared/base/base.component';
-import {AuthService} from '../../auth/shared/auth.service';
+import {ICmedService} from '../../models/cmedservice.model';
+import {CmedServicesService} from '../../services/cmedservices.service';
+import {BaseComponent} from '../../../shared/base/base.component';
+import {AuthService} from '../../../auth/shared/auth.service';
 
 @Component({
   selector: 'app-servicelist',

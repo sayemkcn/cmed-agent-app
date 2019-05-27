@@ -10,15 +10,19 @@ import {ICmedService} from '../models/cmedservice.model';
 })
 export class CmedServicesService {
 
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/json; charset=utf-8',
+    Authorization: 'Bearer ' + this.auth.getAccessToken()
+  });
+
   constructor(private apiEndpoint: ApiEndpoints, private auth: AuthService, private http: HttpClient) {
   }
 
   getServices(): Observable<ICmedService[]> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json; charset=utf-8',
-      Authorization: 'Bearer ' + this.auth.getAccessToken()
-    });
-    return this.http.get<ICmedService[]>(this.apiEndpoint.SERVICES.FETCH, {headers});
+    return this.http.get<ICmedService[]>(this.apiEndpoint.SERVICES.FETCH, {headers: this.headers});
   }
 
+  createService(cmedService: ICmedService): Observable<ICmedService> {
+    return this.http.post<ICmedService>(this.apiEndpoint.SERVICES.CREATE, cmedService, {headers: this.headers});
+  }
 }
