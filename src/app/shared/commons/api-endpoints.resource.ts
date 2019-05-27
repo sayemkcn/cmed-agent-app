@@ -16,4 +16,9 @@ export class ApiEndpoints {
     CREATE: environment.base_url + this.API_VERSION + '/admin/services'
   };
 
+  AGENT_TYPES = {
+    FETCH: environment.base_url + this.API_VERSION + '/admin/agent_types',
+    CREATE: environment.base_url + this.API_VERSION + '/admin/agent_types',
+  };
+
 }

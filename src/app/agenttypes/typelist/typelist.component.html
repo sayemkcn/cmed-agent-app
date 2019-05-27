@@ -1,3 +1,32 @@
-<p>
-  typeslist works!
-</p>
+<div class="row col-sm-12">
+
+  <div class="card">
+    <div class="card-header card-title">
+      Agent Types
+      <a class="btn btn-primary pull-right" [routerLink]="['create']">Create</a>
+    </div>
+    <div class="card-body">
+      <table class="table table-hover table-striped table-hover table-active table-condensed">
+        <thead>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>DESCRIPTION</th>
+        <th>SILENT PROMO</th>
+        <th>CREATED AT</th>
+        <th>UPDATED AT</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let type of agentTypePage?.content ">
+          <td>{{ type.id }}</td>
+          <td>{{ type.name }}</td>
+          <td>{{ type.description }}</td>
+          <td>{{ type.promo_code }}</td>
+          <td>{{ type.created_at | date: 'short' }}</td>
+          <td>{{ type.updated_at | date: 'short' }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

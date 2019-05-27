@@ -14,6 +14,7 @@ import {ToastrModule} from 'ngx-toastr';
 import {Toastr} from './shared/services/toastr.service';
 import { LogoutComponent } from './auth/logout/logout.component';
 import {ApiEndpoints} from './shared/commons/api-endpoints.resource';
+import { BaseComponent } from './shared/base/base.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {ApiEndpoints} from './shared/commons/api-endpoints.resource';
     LoginComponent,
     NavComponent,
     FooterComponent,
-    LogoutComponent
+    LogoutComponent,
+    BaseComponent
   ],
   imports: [
     BrowserModule,
