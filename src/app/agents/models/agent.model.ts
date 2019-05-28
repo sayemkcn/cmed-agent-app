@@ -3,6 +3,8 @@ import {ICmedService} from '../../cmedservices/models/cmedservice.model';
 export interface IAgent {
   id: number;
   name: string;
+  cmed_id: string;
+  company: string;
   designation: string;
   description: string;
   promo_code: string;

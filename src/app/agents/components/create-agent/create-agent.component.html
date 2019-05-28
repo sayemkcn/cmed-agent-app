@@ -42,8 +42,8 @@
             <input class="form-control" type="text" id="cmed_id" [value]="selectedUser?.cmed_id" disabled/>
           </div>
           <div class="col-sm-2">
-            <label for="change_button">Change User</label>
-            <a class="btn btn-warning" id="change_button" (click)="clearUserSelection()">Change</a>
+            <label for="change_button" class="pull-right">Change User</label>
+            <a class="btn btn-warning pull-right" id="change_button" (click)="clearUserSelection()">Change</a>
           </div>
         </div>
 
@@ -90,14 +90,15 @@
           <select name="parent_id" id="parent_id" class="form-control">
             <option>Select Parent</option>
             <option *ngFor="let parent of agentPage?.content" [value]="parent.id">
-              {{ parent.name}} ( {{ parent.purchase_commission_rate }} )
+              {{ parent.name}} | {{ parent.cmed_id }} <span *ngIf="parent.company">| {{ parent.company}}</span>
             </option>
           </select>
         </div>
 
         <div class="form-group">
           <hr/>
-          <em class="text text-info text-justify">( Please check if you're creating a sub-agent or sub-distributor who will use their parent distributor/agent's payment account )</em><br/>
+          <em class="text text-info text-justify">( Please check if you're creating a sub-agent or sub-distributor who
+            will use their parent distributor/agent's payment account )</em><br/>
           <input formControlName="use_parent_payment_acc" type="checkbox"
                  id="use_parent_payment_acc"/> Use parent payment account
         </div>
