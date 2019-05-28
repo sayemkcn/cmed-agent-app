@@ -19,6 +19,8 @@ export class UserService {
 
 
   searchUsers(query: string, page: number): Observable<IUserPage> {
+    // console.log(this.apiEndpoints.USERS.SEARCH(query, page));
+    // console.log(this.auth.getAccessToken());
     return this.http.get<IUserPage>(this.apiEndpoints.USERS.SEARCH(query, page), {headers: this.headers});
   }
 }

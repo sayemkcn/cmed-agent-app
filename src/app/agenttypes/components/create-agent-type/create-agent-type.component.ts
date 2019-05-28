@@ -38,13 +38,15 @@ export class CreateAgentTypeComponent extends BaseComponent implements OnInit {
 
     // pre-populate fields for edit
     const paramId = this.route.snapshot.paramMap.get('id');
-    this.agentTypeService.getAgentType(parseInt(paramId, 0))
-      .subscribe(agentType => {
-        id.setValue(agentType.id);
-        name.setValue(agentType.name);
-        description.setValue(agentType.description);
-        promoCode.setValue(agentType.promo_code);
-      }, err => this.handleError(err));
+    if (paramId) {
+      this.agentTypeService.getAgentType(parseInt(paramId, 0))
+        .subscribe(agentType => {
+          id.setValue(agentType.id);
+          name.setValue(agentType.name);
+          description.setValue(agentType.description);
+          promoCode.setValue(agentType.promo_code);
+        }, err => this.handleError(err));
+    }
   }
 
   createAgentType(value: any) {
