@@ -9,6 +9,9 @@ import {AgentTypeService} from '../../../agenttypes/services/agent-type.service'
 import {IAgentTypePage} from '../../../agenttypes/models/agenttype-page.model';
 import {IAgentPage} from '../../models/agent-page.model';
 import {AgentService} from '../../services/agent-service.service';
+import {IAgent} from '../../models/agent.model';
+import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-agent',
@@ -28,7 +31,9 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
   constructor(private userService: UserService,
               private auth: AuthService,
               private agentTypeService: AgentTypeService,
-              private agentService: AgentService) {
+              private agentService: AgentService,
+              private toastr: ToastrService,
+              private router: Router) {
     super(auth);
   }
 
@@ -43,7 +48,13 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
   }
 
   createAgent(value: any) {
-
+    const agent = value as IAgent;
+    agent.user_id = this.selectedUser.id;
+    this.agentService.createAgents(agent)
+      .subscribe(a => {
+        this.toastr.success('Successfully created agent: ' + agent + ' for cmed id: ' + agent.cmed_id);
+        this.router.navigate(['/agents']);
+      }, err => this.handleError(err));
   }
 
   selectUser(user: IUser) {
@@ -68,6 +79,8 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
     const purchaseCommissionRate = new FormControl();
     const promoCode = new FormControl();
     const transactional = new FormControl();
+    const agentTypeId = new FormControl();
+    const parentId = new FormControl();
     const useParentPaymentAcc = new FormControl();
 
     this.createAgentForm = new FormGroup({
@@ -78,6 +91,8 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
       purchase_commission_rate: purchaseCommissionRate,
       promo_code: promoCode,
       transactional,
+      agent_type_id: agentTypeId,
+      parent_id: parentId,
       use_parent_payment_acc: useParentPaymentAcc
     });
   }

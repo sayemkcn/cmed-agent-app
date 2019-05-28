@@ -8,7 +8,7 @@ export class ApiEndpoints {
 
   AGENTS = {
     FETCH: environment.base_url + ApiEndpoints.API_VERSION + '/admin/agents',
-    CREATE: environment + ApiEndpoints.API_VERSION + '/admin/agents'
+    CREATE: environment.base_url + ApiEndpoints.API_VERSION + '/admin/agents'
   };
 
   SERVICES = {
