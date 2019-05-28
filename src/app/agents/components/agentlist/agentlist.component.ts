@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {IAgentPage} from '../models/agent-page.model';
-import {AgentService} from '../services/agent-service.service';
-import {AuthService} from '../../auth/shared/auth.service';
-import {BaseComponent} from '../../shared/base/base.component';
+import {IAgentPage} from '../../models/agent-page.model';
+import {AgentService} from '../../services/agent-service.service';
+import {AuthService} from '../../../auth/shared/auth.service';
+import {BaseComponent} from '../../../shared/base/base.component';
 
 
 @Component({

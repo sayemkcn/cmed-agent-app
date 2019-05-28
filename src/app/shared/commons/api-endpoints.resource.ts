@@ -28,4 +28,10 @@ export class ApiEndpoints {
     },
   };
 
+  USERS = {
+    SEARCH(query, page) {
+      return environment.base_url + ApiEndpoints.API_VERSION + '/users/search?q=' + query + '&page=' + page;
+    }
+  };
+
 }
