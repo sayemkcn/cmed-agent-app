@@ -24,6 +24,10 @@ export class AgentService {
     return this.http.get<IAgentPage>(this.apiEndpoints.AGENTS.FETCH, {headers: this.headers});
   }
 
+  getAgentDetails(id: number): Observable<IAgent> {
+    return this.http.get<IAgent>(this.apiEndpoints.AGENTS.FETCH_DETAILS(id), {headers: this.headers});
+  }
+
   createAgents(agent: IAgent): Observable<IAgent> {
     return this.http.post<IAgent>(this.apiEndpoints.AGENTS.CREATE, agent, {headers: this.headers});
   }

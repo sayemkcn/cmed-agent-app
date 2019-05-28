@@ -2,12 +2,12 @@
 
   <div class="col-sm-12 card">
     <div class="card-header card-title">
-      <span class="text text-primary">Create Agent Type</span>
+      <span class="text text-primary">Create Agent</span>
       <a class="btn btn-primary pull-right" [routerLink]="['/agents']" href="#">All Agents</a>
     </div>
     <div class="card-body">
 
-      <form *ngIf="!selectedUser" class="form" [formGroup]="searchForm">
+      <form *ngIf="!showCreateAgentForm()" class="form" [formGroup]="searchForm">
         <div class="form-group">
           <label>CMED ID / Name</label>
           <input (change)="onChangeSearch($event)" formControlName="search" class="form-control" type="text"
@@ -29,17 +29,18 @@
         </table>
       </form>
 
-      <form *ngIf="selectedUser" [formGroup]="createAgentForm" class="form"
+      <form *ngIf="showCreateAgentForm()" [formGroup]="createAgentForm" class="form"
             (ngSubmit)="createAgent(createAgentForm.value)">
         <div class="form-group" hidden>
           <label for="id">ID</label>
           <input formControlName="id" class="form-control" type="number" id="id"/>
         </div>
 
-        <div class="row">
+        <div class="row bg-highlight p-2">
           <div class="form-group col-sm-10">
             <label for="cmed_id">CMED ID</label>
-            <input class="form-control" type="text" id="cmed_id" [value]="selectedUser?.cmed_id" disabled/>
+            <input formControlName="cmed_id" class="form-control" type="text" id="cmed_id"
+                   [value]="selectedUser?.cmed_id"/>
           </div>
           <div class="col-sm-2">
             <label for="change_button" class="pull-right">Change User</label>
@@ -68,11 +69,6 @@
           <label for="promo_code">Promo Code</label>
           <input formControlName="promo_code" class="form-control" type="text" id="promo_code"/>
         </div>
-        <div class="form-group">
-          <!--          <label for="transactional">Transactional</label>-->
-          <input formControlName="transactional" type="checkbox" id="transactional"/> Transactional
-        </div>
-
 
         <div class="form-group">
           <label for="agent_type_id">Agent Type</label>
@@ -84,27 +80,37 @@
             </option>
           </select>
         </div>
+        <!-------------------------Can't be updated for now----------------------->
+        <div [ngClass]="{'bg-disabled': edit}" class="bg-sensitive p-3 mb-2">
+          <em *ngIf="edit" class="text text-danger">(These fields can't be updated for now)</em>
+          <div class="form-group">
+            <label for="parent_id">Parent Agent</label>
+            <select formControlName="parent_id" name="parent_id" id="parent_id" class="form-control">
+              <option>Select Parent</option>
+              <option *ngFor="let parent of agentPage?.content" [value]="parent.id">
+                {{ parent.name}} | {{ parent.cmed_id }} <span *ngIf="parent.company">| {{ parent.company}}</span>
+              </option>
+            </select>
+          </div>
 
-        <div class="form-group">
-          <label for="parent_id">Parent Agent</label>
-          <select formControlName="parent_id" name="parent_id" id="parent_id" class="form-control">
-            <option>Select Parent</option>
-            <option *ngFor="let parent of agentPage?.content" [value]="parent.id">
-              {{ parent.name}} | {{ parent.cmed_id }} <span *ngIf="parent.company">| {{ parent.company}}</span>
-            </option>
-          </select>
+          <div class="form-group">
+            <hr/>
+
+            <div class="form-group">
+              <!--          <label for="transactional">Transactional</label>-->
+              <input formControlName="transactional" type="checkbox" id="transactional"/> Transactional
+            </div>
+
+            <em class="text text-info text-justify">( Please check if you're creating a sub-agent or sub-distributor who
+              will use their parent distributor/agent's payment account )</em><br/>
+            <input formControlName="use_parent_payment_acc" type="checkbox"
+                   id="use_parent_payment_acc"/> Use parent payment account
+          </div>
         </div>
+        <!-------------------------End Can't be updated for now----------------------->
 
-        <div class="form-group">
-          <hr/>
-          <em class="text text-info text-justify">( Please check if you're creating a sub-agent or sub-distributor who
-            will use their parent distributor/agent's payment account )</em><br/>
-          <input formControlName="use_parent_payment_acc" type="checkbox"
-                 id="use_parent_payment_acc"/> Use parent payment account
-        </div>
-
-        <a [routerLink]="['/agents']" class="btn btn-primary" href="#">Cancel</a>
-        <button type="submit" class="btn btn-primary ml-2">Create</button>
+        <button type="submit" class="btn btn-success mr-2">Create</button>
+        <a [routerLink]="['/agents']" class="btn btn-warning" href="#">Cancel</a>
       </form>
     </div>
   </div>

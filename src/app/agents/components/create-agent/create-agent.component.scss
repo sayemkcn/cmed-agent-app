@@ -3,6 +3,22 @@
   max-width: 500px;
   width: 100%;
 }
+
 .tp-full-width {
   width: 100%;
+}
+
+.bg-sensitive {
+  background: lightcyan;
+  color: black;
+}
+
+.bg-disabled {
+  background: #dddddd;
+  color: black;
+}
+
+.bg-highlight {
+  background: antiquewhite;
+  color: #000;
 }

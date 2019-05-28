@@ -5,7 +5,8 @@ import {CreateAgentComponent} from './components/create-agent/create-agent.compo
 
 const routes: Route[] = [
   {path: '', component: AgentListComponent},
-  {path: 'create', component: CreateAgentComponent}
+  {path: 'create', component: CreateAgentComponent},
+  {path: 'edit/:id', component: CreateAgentComponent}
 ];
 
 @NgModule({

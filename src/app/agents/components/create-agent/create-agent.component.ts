@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validator, Validators} from '@angular/forms';
 import {IUserPage} from '../../../users/models/user-page.model';
 import {UserService} from '../../../users/services/user.service';
 import {BaseComponent} from '../../../shared/base/base.component';
@@ -11,7 +11,7 @@ import {IAgentPage} from '../../models/agent-page.model';
 import {AgentService} from '../../services/agent-service.service';
 import {IAgent} from '../../models/agent.model';
 import {ToastrService} from 'ngx-toastr';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-agent',
@@ -28,12 +28,16 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
   private agentTypePage: IAgentTypePage;
   private agentPage: IAgentPage;
 
+  private edit: boolean;
+  private exAgent: IAgent;
+
   constructor(private userService: UserService,
               private auth: AuthService,
               private agentTypeService: AgentTypeService,
               private agentService: AgentService,
               private toastr: ToastrService,
-              private router: Router) {
+              private router: Router,
+              private route: ActivatedRoute) {
     super(auth);
   }
 
@@ -45,14 +49,24 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
 
     this.initAgentTypes();
     this.initAgents();
+
+    // for edit agent
+    const paramId: string = this.route.snapshot.paramMap.get('id');
+    if (paramId) {
+      this.edit = true;
+      this.populateCreateAgentForm(parseInt(paramId, 0));
+    }
+
   }
 
   createAgent(value: any) {
     const agent = value as IAgent;
-    agent.user_id = this.selectedUser.id;
+    console.log('Ex:' + this.exAgent);
+    console.log('Selected:' + this.selectedUser);
+    agent.user_id = this.exAgent ? this.exAgent.user_id : this.selectedUser.id;
     this.agentService.createAgents(agent)
       .subscribe(a => {
-        this.toastr.success('Successfully created agent: ' + agent + ' for cmed id: ' + agent.cmed_id);
+        this.toastr.success('Successfully created agent: ' + a.name + ' for cmed id: ' + a.cmed_id);
         this.router.navigate(['/agents']);
       }, err => this.handleError(err));
   }
@@ -74,6 +88,7 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
   private initCreateAgentForm() {
     const id = new FormControl();
     const name = new FormControl();
+    const cmedId = new FormControl({value: '', disabled: true}, Validators.required);
     const designation = new FormControl();
     const description = new FormControl();
     const purchaseCommissionRate = new FormControl();
@@ -86,6 +101,7 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
     this.createAgentForm = new FormGroup({
       id,
       name,
+      cmed_id: cmedId,
       designation,
       description,
       purchase_commission_rate: purchaseCommissionRate,
@@ -118,4 +134,41 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
     this.agentService.getAgents()
       .subscribe(ap => this.agentPage = ap, err => this.handleError(err));
   }
+
+  private populateCreateAgentForm(paramId: number) {
+    this.agentService.getAgentDetails(paramId)
+      .subscribe(exAgent => {
+        console.log(exAgent);
+        this.exAgent = exAgent;
+        this.createAgentForm.controls.cmed_id.setValue(exAgent.cmed_id);
+        this.createAgentForm.controls.id.setValue(exAgent.id);
+        this.createAgentForm.controls.name.setValue(exAgent.name);
+        this.createAgentForm.controls.designation.setValue(exAgent.designation);
+        this.createAgentForm.controls.description.setValue(exAgent.description);
+        this.createAgentForm.controls.purchase_commission_rate.setValue(exAgent.purchase_commission_rate);
+        this.createAgentForm.controls.promo_code.setValue(exAgent.promo_code);
+        this.createAgentForm.controls.agent_type_id.setValue(exAgent.agent_type_id);
+
+        this.createAgentForm.controls.transactional.setValue(exAgent.transactional);
+        this.createAgentForm.controls.parent_id.setValue(exAgent.parent_id);
+        this.createAgentForm.controls.use_parent_payment_acc.setValue(exAgent.use_parent_payment_acc);
+
+        // disable edit
+        this.createAgentForm.controls.transactional.disable({onlySelf: true, emitEvent: false});
+        this.createAgentForm.controls.parent_id.disable({onlySelf: true, emitEvent: false});
+        this.createAgentForm.controls.use_parent_payment_acc.disable({onlySelf: true, emitEvent: false});
+
+      }, err => this.handleError(err));
+  }
+
+  showCreateAgentForm(): boolean {
+    if (this.selectedUser) {
+      return true;
+    }
+    if (this.edit) {
+      return true;
+    }
+    return false;
+  }
+
 }

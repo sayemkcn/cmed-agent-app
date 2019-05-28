@@ -10,6 +10,10 @@ export interface IAgent {
   description: string;
   promo_code: string;
   path: string;
+  transactional: boolean;
+  use_parent_payment_acc: boolean;
+  agent_type_id: number;
+  parent_id: number;
   created_at: Date;
   updated_at: Date;
   purchase_commission_rate: number;

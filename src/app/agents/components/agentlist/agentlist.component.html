@@ -6,7 +6,7 @@
       <a class="btn btn-dark pull-right" [routerLink]="['/agents/create']">Create</a>
     </div>
     <div class="card-body">
-      <table class="table table-hover table-striped table-hover table-active table-condensed">
+      <table class="table table-hover table-striped table-hover table-active table-condensed table-responsive">
         <thead>
         <th>ID</th>
         <th>NAME</th>
@@ -17,6 +17,7 @@
         <th>PURCHASE COMMISSION RATE</th>
         <th>CREATED AT</th>
         <th>UPDATED AT</th>
+        <th>EDIT</th>
         </thead>
         <tbody>
         <tr *ngFor="let agent of agentPage?.content ">
@@ -29,6 +30,7 @@
           <td>{{ agent.purchase_commission_rate | percent }}</td>
           <td>{{ agent.created_at | date: 'short' }}</td>
           <td>{{ agent.updated_at | date: 'short' }}</td>
+          <td><a class="btn btn-warning" [routerLink]="['/agents/edit',agent.id]">Edit</a></td>
         </tr>
         </tbody>
       </table>
