@@ -23,17 +23,16 @@ export class LocalStorage {
   }
 
   static putAuth(userAuth: IUserAuth) {
+    localStorage.setItem(this.KEYS.username, userAuth.cmedId);
     localStorage.setItem(this.KEYS.accessToken, userAuth.access_token);
     localStorage.setItem(this.KEYS.refreshToken, userAuth.refresh_token);
     localStorage.setItem(this.KEYS.authorities, JSON.stringify(userAuth.authorities));
-    localStorage.setItem(this.KEYS.username, userAuth.cmedId);
   }
 
   static clear(): void {
     localStorage.removeItem(this.KEYS.username);
     localStorage.removeItem(this.KEYS.accessToken);
     localStorage.removeItem(this.KEYS.refreshToken);
-    localStorage.removeItem(this.KEYS.clientId);
-    localStorage.removeItem(this.KEYS.clientSecret);
+    localStorage.removeItem(this.KEYS.authorities);
   }
 }

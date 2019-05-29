@@ -1,0 +1,35 @@
+<div class="row">
+
+  <div class="col-sm-12 card">
+    <div class="card-header card-title">
+      <span class="text text-primary">Refill Agent</span>
+      <a class="btn btn-primary pull-right" [routerLink]="['/agents']" href="#">All Agents</a>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="refillForm" class="form" (ngSubmit)="refillAgent(refillForm.value)">
+
+        <div class="form-group">
+          <label for="agent_details">Refill Agent</label>
+          <input formControlName="agent_details" class="form-control" type="text" id="agent_details"/>
+        </div>
+        <div class="form-group">
+          <label for="agent_id">Agent ID</label>
+          <input formControlName="agent_id" class="form-control" type="number" id="agent_id"/>
+        </div>
+        <div class="form-group">
+          <label for="amount">How much money do you want to recharge?</label>
+          <input formControlName="amount" class="form-control" type="number" id="amount"
+                 (change)="onAmountChange($event)"/>
+        </div>
+        <div class="form-group">
+          <label for="balance">Amount of balance that will be added</label>
+          <input formControlName="balance" class="form-control" type="number" id="balance"/>
+        </div>
+
+        <a [routerLink]="['/agents']" class="btn btn-primary" href="#">Cancel</a>
+        <button type="submit" class="btn btn-success ml-2">Refill</button>
+      </form>
+    </div>
+  </div>
+
+</div>

@@ -31,6 +31,7 @@
           <td>{{ agent.created_at | date: 'short' }}</td>
           <td>{{ agent.updated_at | date: 'short' }}</td>
           <td><a class="btn btn-warning" [routerLink]="['/agents/edit',agent.id]">Edit</a></td>
+          <td><a class="btn btn-info" [routerLink]="['/agents/refill',agent.id]">Refill</a></td>
         </tr>
         </tbody>
       </table>

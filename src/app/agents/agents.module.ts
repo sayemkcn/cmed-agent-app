@@ -6,11 +6,13 @@ import {AgentService} from './services/agent-service.service';
 import {CreateAgentComponent} from './components/create-agent/create-agent.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatAutocompleteModule, MatInputModule} from '@angular/material';
+import { RefillComponent } from './components/refill/refill.component';
 
 @NgModule({
     declarations: [
       AgentListComponent,
-      CreateAgentComponent
+      CreateAgentComponent,
+      RefillComponent
     ],
     imports: [
       CommonModule,

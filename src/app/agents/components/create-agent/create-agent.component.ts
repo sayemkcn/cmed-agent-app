@@ -12,6 +12,7 @@ import {AgentService} from '../../services/agent-service.service';
 import {IAgent} from '../../models/agent.model';
 import {ToastrService} from 'ngx-toastr';
 import {ActivatedRoute, Router} from '@angular/router';
+import {THIS_EXPR} from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-create-agent',
@@ -61,9 +62,8 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
 
   createAgent(value: any) {
     const agent = value as IAgent;
-    console.log('Ex:' + this.exAgent);
-    console.log('Selected:' + this.selectedUser);
     agent.user_id = this.exAgent ? this.exAgent.user_id : this.selectedUser.id;
+    console.log(agent);
     this.agentService.createAgents(agent)
       .subscribe(a => {
         this.toastr.success('Successfully created agent: ' + a.name + ' for cmed id: ' + a.cmed_id);
@@ -73,6 +73,7 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
 
   selectUser(user: IUser) {
     this.selectedUser = user;
+    this.createAgentForm.controls.name.setValue(user.name);
   }
 
   onChangeSearch($event: any) {

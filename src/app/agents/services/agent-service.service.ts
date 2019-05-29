@@ -31,4 +31,8 @@ export class AgentService {
   createAgents(agent: IAgent): Observable<IAgent> {
     return this.http.post<IAgent>(this.apiEndpoints.AGENTS.CREATE, agent, {headers: this.headers});
   }
+
+  refillAgent(agentId: number, amount: number): Observable<any> {
+    return this.http.post<any>(this.apiEndpoints.AGENTS.REFILL(agentId, amount), null, {headers: this.headers});
+  }
 }

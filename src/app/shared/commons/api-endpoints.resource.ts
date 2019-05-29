@@ -11,6 +11,9 @@ export class ApiEndpoints {
     CREATE: environment.base_url + ApiEndpoints.API_VERSION + '/admin/agents',
     FETCH_DETAILS(id: number) {
       return environment.base_url + ApiEndpoints.API_VERSION + '/admin/agents/' + id;
+    },
+    REFILL(agentId: number, amount: number) {
+      return environment.base_url + ApiEndpoints.API_VERSION + '/admin/payment_accounts/refill?agent_id=' + agentId + '&amount=' + amount;
     }
   };
 
