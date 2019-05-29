@@ -12,7 +12,11 @@ import {AgentService} from '../../services/agent-service.service';
 import {IAgent} from '../../models/agent.model';
 import {ToastrService} from 'ngx-toastr';
 import {ActivatedRoute, Router} from '@angular/router';
-import {THIS_EXPR} from '@angular/compiler/src/output/output_ast';
+import {CmedServicesService} from '../../../cmedservices/services/cmedservices.service';
+import {ICmedService} from '../../../cmedservices/models/cmedservice.model';
+import {IAgentRequest} from '../../models/agent-request.model';
+import {forEach} from '@angular/router/src/utils/collection';
+import {el} from '@angular/platform-browser/testing/src/browser_util';
 
 @Component({
   selector: 'app-create-agent',
@@ -28,9 +32,12 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
 
   private agentTypePage: IAgentTypePage;
   private agentPage: IAgentPage;
+  private cmedServices: ICmedService[];
 
   private edit: boolean;
   private exAgent: IAgent;
+  private agentReq: IAgentRequest;
+  private selectedServiceIds: number[] = [];
 
   constructor(private userService: UserService,
               private auth: AuthService,
@@ -38,7 +45,8 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
               private agentService: AgentService,
               private toastr: ToastrService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private cmedServicesService: CmedServicesService) {
     super(auth);
   }
 
@@ -50,6 +58,7 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
 
     this.initAgentTypes();
     this.initAgents();
+    this.initCmedServices();
 
     // for edit agent
     const paramId: string = this.route.snapshot.paramMap.get('id');
@@ -61,13 +70,15 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
   }
 
   createAgent(value: any) {
-    const agent = value as IAgent;
-    agent.user_id = this.exAgent ? this.exAgent.user_id : this.selectedUser.id;
-    console.log(agent);
-    this.agentService.createAgents(agent)
+    this.agentReq = value as IAgentRequest;
+    this.agentReq.user_id = this.exAgent ? this.exAgent.user_id : this.selectedUser.id;
+    this.agentReq.services = this.selectedServiceIds;
+    console.log(JSON.stringify(this.agentReq));
+    this.agentService.createAgents(this.agentReq)
       .subscribe(a => {
         this.toastr.success('Successfully created agent: ' + a.name + ' for cmed id: ' + a.cmed_id);
         this.router.navigate(['/agents']);
+        console.log(a);
       }, err => this.handleError(err));
   }
 
@@ -159,6 +170,7 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
         this.createAgentForm.controls.parent_id.disable({onlySelf: true, emitEvent: false});
         this.createAgentForm.controls.use_parent_payment_acc.disable({onlySelf: true, emitEvent: false});
 
+        exAgent.available_services.forEach(a => this.selectedServiceIds.push(a.id), err => this.handleError(err));
       }, err => this.handleError(err));
   }
 
@@ -171,5 +183,28 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
     }
     return false;
   }
+
+  private initCmedServices() {
+    this.cmedServicesService.getServices()
+      .subscribe(cs => this.cmedServices = cs, err => this.handleError(err));
+  }
+
+  onServiceChecked($event, service: ICmedService) {
+    console.log(service);
+
+    if ($event.target.checked) {
+      if (!this.selectedServiceIds.includes(service.id)) {
+        this.selectedServiceIds.push(service.id);
+      }
+    } else {
+      for (let i = 0; i < this.selectedServiceIds.length; i++) {
+        if (this.selectedServiceIds[i] === service.id) {
+          this.selectedServiceIds.splice(i, 1);
+        }
+      }
+    }
+    console.log(this.selectedServiceIds);
+  }
+
 
 }

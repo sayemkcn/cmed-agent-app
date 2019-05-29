@@ -5,6 +5,7 @@ import {IAgentPage} from '../models/agent-page.model';
 import {ApiEndpoints} from '../../shared/commons/api-endpoints.resource';
 import {Observable} from 'rxjs';
 import {IAgent} from '../models/agent.model';
+import {IAgentRequest} from '../models/agent-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class AgentService {
     return this.http.get<IAgent>(this.apiEndpoints.AGENTS.FETCH_DETAILS(id), {headers: this.headers});
   }
 
-  createAgents(agent: IAgent): Observable<IAgent> {
+  createAgents(agent: IAgentRequest): Observable<IAgent> {
     return this.http.post<IAgent>(this.apiEndpoints.AGENTS.CREATE, agent, {headers: this.headers});
   }
 

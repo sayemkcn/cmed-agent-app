@@ -50,7 +50,7 @@
 
         <div class="form-group">
           <label for="name">Name</label>
-          <input formControlName="name" class="form-control" type="text" id="name" />
+          <input formControlName="name" class="form-control" type="text" id="name"/>
         </div>
         <div class="form-group">
           <label for="designation">Designation</label>
@@ -80,6 +80,15 @@
             </option>
           </select>
         </div>
+
+        <label class="text text-primary">Select available services for this agent</label>
+        <div class="form-group row">
+          <div *ngFor="let service of cmedServices" class="col-sm-4">
+            <input type="checkbox" name="service" [checked]="selectedServiceIds.includes(service.id)"
+                   (change)="onServiceChecked($event, service)"> {{ service.name }} {{ service.code }}
+          </div>
+        </div>
+
         <!-------------------------Can't be updated for now----------------------->
         <div [ngClass]="{'bg-disabled': edit}" class="bg-sensitive p-3 mb-2">
           <em *ngIf="edit" class="text text-danger">(These fields can't be updated for now)</em>
