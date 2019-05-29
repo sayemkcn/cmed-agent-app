@@ -27,12 +27,14 @@ export class CreateServiceComponent extends BaseComponent implements OnInit {
   ngOnInit() {
     const id = new FormControl();
     const name = new FormControl();
+    const code = new FormControl();
     const description = new FormControl();
     const cost = new FormControl();
     const serviceTypeId = new FormControl();
     this.createServiceForm = new FormGroup({
       id,
       name,
+      code,
       description,
       cost,
       service_type_id: serviceTypeId
@@ -45,6 +47,7 @@ export class CreateServiceComponent extends BaseComponent implements OnInit {
       exService.subscribe(es => {
         id.setValue(es.id);
         name.setValue(es.name);
+        code.setValue(es.code);
         description.setValue(es.description);
         cost.setValue(es.cost);
         serviceTypeId.setValue(es.service_type_id);
