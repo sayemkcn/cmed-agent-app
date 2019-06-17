@@ -11,7 +11,7 @@ import {BaseComponent} from '../../../shared/base/base.component';
   styleUrls: ['./agentlist.component.scss']
 })
 export class AgentListComponent extends BaseComponent implements OnInit {
-  private agentPage: IAgentPage;
+  agentPage: IAgentPage;
 
   constructor(private agentService: AgentService, private auth: AuthService) {
     super(auth);

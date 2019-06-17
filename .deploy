@@ -1,0 +1,2 @@
+ng build --prod --base-href="https://sayemkcn.github.io/cmed-agent-app/cmed-agent-app/"
+ngh --no-silent

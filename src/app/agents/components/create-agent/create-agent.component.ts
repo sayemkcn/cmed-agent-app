@@ -70,6 +70,10 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
   }
 
   createAgent(value: any) {
+    if (!this.createAgentForm.valid) {
+      this.toastr.error('Error!', 'Input not valid!');
+      return;
+    }
     this.agentReq = value as IAgentRequest;
     this.agentReq.user_id = this.exAgent ? this.exAgent.user_id : this.selectedUser.id;
     this.agentReq.services = this.selectedServiceIds;
@@ -99,11 +103,11 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
 
   private initCreateAgentForm() {
     const id = new FormControl();
-    const name = new FormControl();
+    const name = new FormControl('', [Validators.required, Validators.minLength(3)]);
     const cmedId = new FormControl({value: '', disabled: true}, Validators.required);
-    const designation = new FormControl();
+    const designation = new FormControl('', [Validators.required, Validators.minLength(3)]);
     const description = new FormControl();
-    const purchaseCommissionRate = new FormControl();
+    const purchaseCommissionRate = new FormControl([Validators.required, Validators.min(0), Validators.max(1)]);
     const promoCode = new FormControl();
     const transactional = new FormControl();
     const agentTypeId = new FormControl();
@@ -206,5 +210,8 @@ export class CreateAgentComponent extends BaseComponent implements OnInit {
     console.log(this.selectedServiceIds);
   }
 
+  caForm() {
+    return this.createAgentForm.controls;
+  }
 
 }

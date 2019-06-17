@@ -14,7 +14,7 @@ import {Toastr} from '../../../shared/services/toastr.service';
 })
 export class RefillComponent extends BaseComponent implements OnInit {
 
-  private refillForm: FormGroup;
+  refillForm: FormGroup;
   private agent: IAgent;
 
   constructor(private route: ActivatedRoute,
@@ -68,6 +68,6 @@ export class RefillComponent extends BaseComponent implements OnInit {
     if (!this.agent.purchase_commission_rate) {
       return;
     }
-    return (100 * money) / (this.agent.purchase_commission_rate * 10);
+    return (money) / (this.agent.purchase_commission_rate);
   }
 }

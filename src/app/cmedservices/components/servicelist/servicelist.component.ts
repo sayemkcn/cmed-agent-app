@@ -10,7 +10,7 @@ import {AuthService} from '../../../auth/shared/auth.service';
   styleUrls: ['./servicelist.component.scss']
 })
 export class ServiceListComponent extends BaseComponent implements OnInit {
-  private services: ICmedService[] = [];
+  services: ICmedService[] = [];
 
   constructor(private cmedServicesService: CmedServicesService, private auth: AuthService) {
     super(auth);

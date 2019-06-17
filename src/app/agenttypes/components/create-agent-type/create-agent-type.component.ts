@@ -14,7 +14,7 @@ import {Toastr} from '../../../shared/services/toastr.service';
 })
 export class CreateAgentTypeComponent extends BaseComponent implements OnInit {
 
-  private createAgentTypeForm: FormGroup;
+  createAgentTypeForm: FormGroup;
 
   constructor(private agentTypeService: AgentTypeService,
               private router: Router,

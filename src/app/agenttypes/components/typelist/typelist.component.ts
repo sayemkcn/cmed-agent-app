@@ -11,7 +11,7 @@ import {AuthService} from '../../../auth/shared/auth.service';
 })
 export class TypeListComponent extends BaseComponent implements OnInit {
 
-  private agentTypePage: IAgentTypePage;
+  agentTypePage: IAgentTypePage;
 
   constructor(private typeService: AgentTypeService, private auth: AuthService) {
     super(auth);
