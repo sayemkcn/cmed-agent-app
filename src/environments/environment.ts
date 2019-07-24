@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-    base_url: 'https://localhost:8081',
+    // base_url: 'https://localhost:8081',
+    base_url: 'https://staging.cmedhealth.com',
   client_id: 'android-client',
   client_secret: 'android-secret'
 };

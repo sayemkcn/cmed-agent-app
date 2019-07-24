@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="13" height="15" viewBox="0 0 13 15">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #16b4fc;
+        font-size: 14px;
+        font-family: FontAwesome5ProLight, "Font Awesome 5 Pro";
+      }
+    </style>
+  </defs>
+  <text id="calendar" class="cls-1" transform="translate(0 13)"><tspan x="0" y="0">calendar</tspan></text>
+</svg>

@@ -15,8 +15,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CmedServicesService} from '../../../cmedservices/services/cmedservices.service';
 import {ICmedService} from '../../../cmedservices/models/cmedservice.model';
 import {IAgentRequest} from '../../models/agent-request.model';
-import {forEach} from '@angular/router/src/utils/collection';
-import {el} from '@angular/platform-browser/testing/src/browser_util';
+// import {forEach} from '@angular/router/src/utils/collection';
+// import {el} from '@angular/platform-browser/testing/src/browser_util';
 
 @Component({
   selector: 'app-create-agent',

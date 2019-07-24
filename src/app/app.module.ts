@@ -15,6 +15,8 @@ import {Toastr} from './shared/services/toastr.service';
 import { LogoutComponent } from './auth/logout/logout.component';
 import {ApiEndpoints} from './shared/commons/api-endpoints.resource';
 import { BaseComponent } from './shared/base/base.component';
+import {MatMomentDateModule} from "@angular/material-moment-adapter";
+
 
 @NgModule({
   declarations: [
@@ -31,11 +33,13 @@ import { BaseComponent } from './shared/base/base.component';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatMomentDateModule,
+
     ToastrModule.forRoot({
       closeButton: true,
       progressBar: true,
       progressAnimation: 'increasing',
-    })
+    }),
   ],
   providers: [
     AuthService,

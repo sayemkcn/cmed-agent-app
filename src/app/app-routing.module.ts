@@ -8,8 +8,12 @@ const routes: Routes = [
   {path: 'logout', component: LogoutComponent},
   {path: 'services', loadChildren: () => import('./cmedservices/cmedservices.module').then(m => m.CmedServicesModule)},
   {path: 'agent-types', loadChildren: () => import('./agenttypes/agenttypes.module').then(m => m.AgentTypesModule)},
-  {path: 'agents', loadChildren: () => import('./agents/agents.module').then(m => m.AgentsModule)}
+  {path: 'agents', loadChildren: () => import('./agents/agents.module').then(m => m.AgentsModule)},
+  {path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)},
+
+
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #666666;
+        font-size: 14px;
+        font-family: FontAwesome5ProRegular, "Font Awesome 5 Pro";
+      }
+    </style>
+  </defs>
+  <text id="download" class="cls-1" transform="translate(8 13)"><tspan x="-7.875" y="0">download</tspan></text>
+</svg>

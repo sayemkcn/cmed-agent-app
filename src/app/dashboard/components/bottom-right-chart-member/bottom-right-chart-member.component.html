@@ -1,0 +1,27 @@
+<div style="height: 50%">
+  <div style="background-color: #F9F9F9">
+
+    <h4 class="one" >
+      Member <span style="color: #117eb1">screened</span> and total <span style="color: #12ded0;">measured</span>
+    </h4>
+  </div>
+
+
+  <div>
+    <div  style=" background: linear-gradient(rgba(167, 227, 255, 0.5), rgba(167, 227, 255, 0.06)) ">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [chartType]="barChartType">
+      </canvas>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

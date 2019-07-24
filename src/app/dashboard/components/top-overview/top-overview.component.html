@@ -1,0 +1,195 @@
+
+<div>
+  <div style="
+            color: #666666;
+            font-family: Montserrat;
+              /*margin-right: 50px;*/
+              /*margin-left: 50px;*/
+              /*margin-top: 0px;*/
+              /*margin-bottom: 10px;*/
+              ">
+
+    <div style="background-color: #F9F9F9">
+      <div class="row" style="margin: 0px; margin-top: 15px">
+        <div class="col-3" >
+          <div style="padding-top: 10px; font-size: 14px"> Today</div>
+          <b>
+            <div style="font-weight: bolder;font-size: 24px">{{today_date | date}}</div></b>
+        </div>
+
+        <div class="col-8 ">
+          <div class="row">
+
+            <div style="padding-top:20px;padding-right:20px;padding-left: 217px;font-size: 16px"> Select Date </div>
+            <div style="padding-right: 10px">
+              <mat-form-field >
+                <input matInput [matDatepicker]="picker1" placeholder="From">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field >
+                <input matInput [matDatepicker]="picker2" placeholder="To">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-1">
+          <div class="alert alert-light" role="alert">
+            <img src="" alt="..">
+            <a href="#" class="alert-link"></a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Card content -->
+    <div style="border: 1px none red; background-color: #FFFFFF; font-weight: bold;padding-top:10px">
+      <div class="container-fluid" style="height: inherit; width: inherit">
+        <div class="row" style="height: 100%; width: 100%">
+
+
+
+          <div class="col" style="border: 1px none red; margin-left: 10px">
+            <div style="font-size: 20px; margin-top: 5px">Total Employee </div>
+            <div style=" border-right: 1px solid #16B4FC; padding: 30px; height: 140px">
+              <div>
+                <img src="../../../../assets/image_resources/employee.svg" style="display: inline-block;height: 22px;margin-bottom: 10px">
+                <div style="display: inline-block; color: #16B4FC; font-weight: bold; font-size: 34px; margin-left: 40px">150</div>
+              </div>
+              <div style="margin-top: 33px">
+                <img src="../../../../assets/image_resources/ic_male.png" style="display: inline-block; width: 15px">
+                <div style="display: inline-block; color: #16B4FC; font-weight: bold; font-size: 25px; margin-left: 10px; margin-right: 15px"> 110 </div>
+                <img src="../../../../assets/image_resources/ic_female.png" style="display: inline-block; width: 15px">
+                <div style="display: inline-block; color: #16B4FC; font-weight: bold; font-size: 25px; margin-left: 10px; margin-right: 15px"> 45 </div>
+                <img src="../../../../assets/image_resources/others.svg" style="display: inline-block; width: 26px">
+                <div style="display: inline-block; color: #16B4FC; font-weight: bold; font-size: 25px; margin-left: 10px; margin-right: 15px"> 0 </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+          <div class="col" style="border: 1px none red; margin-left: 10px">
+            <div style="font-size: 20px; margin-top: 5px"> Served This Month </div>
+            <div style=" border-right: 1px solid #16B4FC; padding: 0px; height: 140px">
+              <div>
+                <table class="table table-borderless" style="table-layout: fixed;word-wrap: break-word; font-family: Montserrat; font-size: 10pt">
+                  <tbody>
+                  <tr style="border: 1px none black">
+                    <td style="text-align: left; border: 1px none black">
+                      <div [ngClass]="progressValue">
+                        <span>{{this.percentageServed}}%</span>
+                        <div class="slice">
+                          <div class="bar"></div>
+                          <div class="fill"></div>
+                        </div>
+                      </div>
+                      <div style="display: inline-block; color: #16B4FC; font-weight: bold; font-size: 34px; margin-left: 50px; margin-top: 25px">150</div>
+                    </td>
+                  </tr>
+                  </tbody>
+                  <div style="margin-top: 0px">
+                    <img src="../../../../assets/image_resources/ic_male.png" style="display: inline-block; width: 15px">
+                    <div style="display: inline-block; color: #16B4FC; font-weight: bold; font-size: 25px; margin-left: 10px; margin-right: 15px"> 110 </div>
+                    <img src="../../../../assets/image_resources/ic_female.png" style="display: inline-block; width: 15px">
+                    <div style="display: inline-block; color: #16B4FC; font-weight: bold; font-size: 25px; margin-left: 10px; margin-right: 15px"> 45 </div>
+                    <img src="../../../../assets/image_resources/others.svg" style="display: inline-block; width: 24px">
+                    <div style="display: inline-block; color: #16B4FC; font-weight: bold; font-size: 25px; margin-left: 10px; margin-right: 15px"> 0 </div>
+                  </div>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <div class="col" style="border: 1px none black; ">
+            <div style="font-size: 20px; margin-top: 5px">Measurements Done </div>
+            <table class="table table-borderless" style="border-right: 1px solid #16B4FC;  table-layout: fixed;word-wrap: break-word; font-family: Montserrat; font-size: 10pt">
+              <tbody>
+              <tr>
+                <td style="text-align: left">
+                  <div style="font-size: 16px">B.P.</div>
+                  <div style="color: #16B4FC; font-size: 24px">107</div>
+                </td>
+                <td style="text-align: left">
+                  <div style="font-size: 16px"> Glucose </div>
+                  <div style="color: #16B4FC; font-size: 24px"> 105 </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left">
+                  <div style="font-size: 16px">BMI</div>
+                  <div style=" color: #16B4FC; font-size: 24px ">107</div>
+                </td>
+                <td style="text-align: left">
+                  <div style=" font-size: 16px"> Temperature </div>
+                  <div style=" color: #16B4FC; font-size: 24px"> 105 </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+
+
+          <div class="col" style="border: 1px none black; ">
+            <div style="font-size: 20px; margin-top: 5px"> Employee Status </div>
+            <table class="table table-borderless" style=" table-layout: fixed;word-wrap: break-word; font-family: Montserrat; font-size: 10pt">
+              <tbody>
+              <tr>
+                <td style="text-align: left">
+                  <div style="font-size: 16px"> Active </div>
+                  <div style="  color: #16B4FC; font-size: 24px">107</div>
+                </td>
+                <td style="text-align: left">
+                  <div style="font-size: 16px"> Inactive </div>
+                  <div style="color: #16B4FC; font-size: 24px"> 105 </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left">
+                  <div style="font-size: 16px"> Newly Registered </div>
+                  <div style="color: #16B4FC; font-size: 24px">107</div>
+                </td>
+                <td style="text-align: left">
+                  <div style="font-size: 16px"> De Registered </div>
+                  <div style="color: #16B4FC; font-size: 24px"> 105 </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+

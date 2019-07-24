@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="22" viewBox="0 0 28 22">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #16b4fc;
+        font-size: 22px;
+        font-family: FontAwesome5ProLight, "Font Awesome 5 Pro";
+      }
+    </style>
+  </defs>
+  <text id="users" class="cls-1" transform="translate(14 19)"><tspan x="-13.75" y="0">users</tspan></text>
+</svg>

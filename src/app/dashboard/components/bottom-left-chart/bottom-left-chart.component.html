@@ -1,0 +1,144 @@
+
+<div class="div " style="background-color: #F9F9F9;font-family: Montserrat;">
+  <div class="row" >
+    <div class="col-6">
+      <div class="oneLine" style="font-size: 20px; font-family: Montserrat">
+          Measurements of all the employees
+      </div>
+    </div>
+    <div class="col-3">
+      <div style="padding-right: 10px; float: right;">
+        <mat-form-field >
+          <input matInput [matDatepicker]="picker1" placeholder="From">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+  <div class="col-3">
+      <div style="float: right;">
+        <mat-form-field >
+          <input matInput [matDatepicker]="picker2" placeholder="To">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+  </div>
+
+  </div>
+</div>
+
+<div class="card" style="color: #666666;font-family: Montserrat">
+
+  <div class="row" style=" display: flex">
+    <div class="col-12">
+
+      <div >
+        <mat-tab-group style="background-color:#ECEFF4">
+
+          <mat-tab label="Blood Pressure" >
+            <ng-template matTabContent>
+              <div style="display: block; background-color: white">
+                <canvas baseChart
+                        [chartType]="chartType"
+                        [datasets]="chartDatasets"
+                        [labels]="chartLabels"
+                        [colors]="chartColors"
+                        [options]="chartOptions"
+                        [legend]="true">
+                  <!--                                (chartHover)="chartHovered($event)"-->
+                  <!--                                (chartClick)="chartClicked($event)"-->
+
+                </canvas>
+              </div>
+            </ng-template>
+          </mat-tab>
+          <mat-tab  label="Pulse">
+            <ng-template matTabContent>
+              <div style="display: block">
+                <canvas baseChart
+                        [chartType]="chartType"
+                        [datasets]="chartDatasets"
+                        [labels]="chartLabels"
+                        [colors]="chartColors"
+                        [options]="chartOptions"
+                        [legend]="true">
+
+                </canvas>
+              </div>
+            </ng-template>
+          </mat-tab>
+          <mat-tab  label="Glucose">
+            <ng-template matTabContent>
+              <div style="display: block">
+                <canvas baseChart
+                        [chartType]="chartType"
+                        [datasets]="chartDatasets"
+                        [labels]="chartLabels"
+                        [colors]="chartColors"
+                        [options]="chartOptions"
+                        [legend]="true">
+                  <!--                                (chartHover)="chartHovered($event)"-->
+                  <!--                                (chartClick)="chartClicked($event)"-->
+
+                </canvas>
+              </div>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="B.M.I">
+            <ng-template matTabContent>
+              <div style="display: block">
+                <canvas baseChart
+                        [chartType]="chartType"
+                        [datasets]="chartDatasets"
+                        [labels]="chartLabels"
+                        [colors]="chartColors"
+                        [options]="chartOptions"
+                        [legend]="true">
+                  <!--                                (chartHover)="chartHovered($event)"-->
+                  <!--                                (chartClick)="chartClicked($event)"-->
+
+                </canvas>
+              </div>
+            </ng-template>
+          </mat-tab >
+          <mat-tab  label="Temp">
+            <ng-template matTabContent>
+              <div style="display: block">
+                <canvas baseChart
+                        [chartType]="chartType"
+                        [datasets]="chartDatasets"
+                        [labels]="chartLabels"
+                        [colors]="chartColors"
+                        [options]="chartOptions"
+                        [legend]="true">
+                  <!--                                (chartHover)="chartHovered($event)"-->
+                  <!--                                (chartClick)="chartClicked($event)"-->
+
+                </canvas>
+              </div>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+
+      </div>
+    </div>
+  </div>
+  <div class="row" style="padding:0px;margin-bottom:20px;margin-left: 30px;margin-top: 30px">
+    <span style="padding:8px;background-color: #FBD332;margin-right: 10px"></span>low
+    <span style="padding:8px;background-color: #12DE77;margin-right: 10px;margin-left: 5px"></span>Normal
+    <span style="padding:8px;background-color: #E6A068;margin-right: 10px;margin-left: 5px"></span>Prehyper tension
+    <span style="padding:8px;background-color: #E66E61;margin-right: 10px;margin-left: 5px"></span>High
+    <span style="padding:8px;background-color: #E8779D;margin-right: 10px;margin-left: 5px"></span>Mid High
+    <span style="padding:8px;background-color: #E64B61;margin-right: 10px;margin-left: 5px"></span>Moderate High
+    <span style="padding:8px;background-color: #A44545;margin-right: 10px;margin-left: 5px"></span>Severe High
+
+  </div>
+</div>
+
+
+
+
+
+
+
