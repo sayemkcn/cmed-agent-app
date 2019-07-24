@@ -6,9 +6,9 @@ import {LogoutComponent} from './auth/logout/logout.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
-  {path: 'services', loadChildren: './cmedservices/cmedservices.module#CmedServicesModule'},
-  {path: 'agent-types', loadChildren: './agenttypes/agenttypes.module#AgentTypesModule'},
-  {path: 'agents', loadChildren: './agents/agents.module#AgentsModule'}
+  {path: 'services', loadChildren: () => import('./cmedservices/cmedservices.module').then(m => m.CmedServicesModule)},
+  {path: 'agent-types', loadChildren: () => import('./agenttypes/agenttypes.module').then(m => m.AgentTypesModule)},
+  {path: 'agents', loadChildren: () => import('./agents/agents.module').then(m => m.AgentsModule)}
 ];
 
 @NgModule({
