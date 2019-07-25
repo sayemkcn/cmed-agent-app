@@ -1,0 +1,34 @@
+
+
+<div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-5" style="border: 1px none red; width: inherit; height: inherit">
+        <app-reports-list (messageEvent)="getSelectedItem($event)"></app-reports-list>
+      </div>
+      <div class="col-7" style="border: 1px none black; width: inherit; height: inherit">
+        <div *ngIf="this.selectedItem === 1">
+          <app-daywise-health-report ></app-daywise-health-report>
+        </div>
+        <div *ngIf="this.selectedItem === 2">
+          <app-employee-registration-report></app-employee-registration-report>
+        </div>
+        <div *ngIf="this.selectedItem === 3">
+          <app-employee-list-detailed-report></app-employee-list-detailed-report>
+        </div>
+        <div *ngIf="this.selectedItem === 4">
+          <app-all-measurements-report></app-all-measurements-report>
+        </div>
+        <div *ngIf="this.selectedItem === 5">
+          <app-health-status-report></app-health-status-report>
+        </div>
+        <div *ngIf="this.selectedItem === 6">
+          <app-active-employee-status-report></app-active-employee-status-report>
+        </div>
+        <div *ngIf="this.selectedItem === 7">
+          <app-service-provider-report></app-service-provider-report>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -23,6 +23,19 @@ import { EmployeeListTableComponent } from './employees/employee-list-table/empl
 import { EmployeeSearchComponent } from './employees/employee-search/employee-search.component';
 import { RegisterEmployeeComponent } from './employees/register-employee/register-employee.component';
 import { EmployeesComponent } from './employees/employees.component';
+import { InventoryComponent } from './inventory/inventory.component';
+import { InventoryListComponent } from './inventory/inventory-list/inventory-list.component';
+import { InventoryListTableComponent } from './inventory/inventory-list-table/inventory-list-table.component';
+import { InventorySearchComponent } from './inventory/inventory-search/inventory-search.component';
+import { ReportsComponent } from './reports/reports.component';
+import { ActiveEmployeeStatusReportComponent } from './reports/active-employee-status-report/active-employee-status-report.component';
+import { AllMeasurementsReportComponent } from './reports/all-measurements-report/all-measurements-report.component';
+import { DaywiseHealthReportComponent } from './reports/daywise-health-report/daywise-health-report.component';
+import { EmployeeListDetailedReportComponent } from './reports/employee-list-detailed-report/employee-list-detailed-report.component';
+import { EmployeeRegistrationReportComponent } from './reports/employee-registration-report/employee-registration-report.component';
+import { HealthStatusReportComponent } from './reports/health-status-report/health-status-report.component';
+import { ReportsListComponent } from './reports/reports-list/reports-list.component';
+import { ServiceProviderReportComponent } from './reports/service-provider-report/service-provider-report.component';
 @NgModule({
   declarations: [StatsComponent,
     TopOverviewComponent,
@@ -34,7 +47,20 @@ import { EmployeesComponent } from './employees/employees.component';
     EmployeeListTableComponent,
     EmployeeSearchComponent,
     RegisterEmployeeComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    InventoryComponent,
+    InventoryListComponent,
+    InventoryListTableComponent,
+    InventorySearchComponent,
+    ReportsComponent,
+    ActiveEmployeeStatusReportComponent,
+    AllMeasurementsReportComponent,
+    DaywiseHealthReportComponent,
+    EmployeeListDetailedReportComponent,
+    EmployeeRegistrationReportComponent,
+    HealthStatusReportComponent,
+    ReportsListComponent,
+    ServiceProviderReportComponent
   ],
   imports: [
     CommonModule,

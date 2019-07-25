@@ -1,1 +1,225 @@
-<p>register-employee works!</p>
+<div>
+  <div class="container main">
+    <form  style="padding-bottom: 60px;margin-bottom: 60px">
+      <div class="row" style="background-color: white;padding: 25px ">
+
+      </div>
+      <div class="employeeInfo row form-group">
+        <div class="col-8">
+          <h2 style="color: #16B4FC; font-family: Montserrat ;font-size: 45px; font-weight: 100;"> Register Employee</h2>
+        </div>
+
+        <div class="col-1" >
+          <input class="form-control searchInput" type="text" placeholder="Rx" aria-label="Search">
+
+        </div>
+        <div class="col-2" style="padding-left: 25px">
+          <button style="background-color: #ECEFF4;height: 33px; padding-top:3px" class="btn btn-primary"><img src="../../../../assets/image_resources/go_to_prescription.svg" alt=""></button>
+        </div>
+      </div>
+
+      <!--    beginning of first row-->
+      <div class="row form-group" style="margin-bottom: 0px">
+
+        <div class="col-3">
+
+          <div class="imageClass">
+            <img style="width: 100% ;height: 100%" src="../../../../assets/image_resources/image1" alt="">
+          </div>
+        </div>
+
+
+
+        <div class="col-9">
+          <div class="row " style="padding-bottom: 10px">
+            <div class="col-4" style="padding-right: 0px;">
+              <label for="">First Name</label>
+              <input type="text" class="form-control boxHeight" id="">
+            </div>
+            <div class="col-4" style="padding-right: 0px;">
+              <label for="">Last Name</label>
+              <input type="text" class="form-control boxHeight" id="">
+            </div>
+            <div class="col-4">
+              <label for="">Registered Date</label>
+              <input type="date" class="form-control boxHeight" id="">
+            </div>
+          </div>
+          <div class="row" style="padding-bottom: 10px; padding-right: 0px">
+            <div class="col-4" style="padding-right: 0px">
+              <label for="">Phone Number</label>
+              <input type="tel" class="form-control boxHeight" id="">
+            </div>
+            <div class="col-4" style="padding-right: 0px">
+              <label for="">Email(Optional)</label>
+              <input type="email" class="form-control boxHeight" id="">
+            </div>
+            <div class="col-4">
+              <label for="">Last Check-Up</label>
+              <input type="date" class="form-control boxHeight" >
+            </div>
+          </div>
+          <div class="row " style="padding-bottom: 10px">
+            <div class="col-3 padZero">
+              <label for="">Date of Birth</label>
+              <input type="date" class="form-control boxHeight " >
+            </div>
+            <div class="col-3 padZero" style="padding-left: 10px">
+              <label for="">Employee ID</label>
+              <input type="number" class="form-control boxHeight " >
+            </div>
+            <div class="col-2 padZero" style="padding-left: 10px">
+              <label for="">Dept</label>
+              <input type="text" class="form-control boxHeight " >
+            </div>
+            <div class="col-2 padZero" style="padding-left: 10px">
+              <label for="">Unit</label>
+              <input type="text" class="form-control boxHeight " >
+            </div>
+            <div class="col-2" style="padding-left: 10px">
+              <label for="">Job Title</label>
+              <input type="text" class="form-control boxHeight " >
+            </div>
+          </div>
+
+
+
+        </div>
+
+        <!--        end of column 9-->
+
+      </div>
+      <!--    end of first row-->
+
+      <!--     beginning of second row-->
+      <div class="row form-group">
+        <div class="col-3" style="margin-top: 20px; padding-left: 40px">
+          <button type="button" class="btn btn-primary"><img style="padding-right: 2px" src="../../../../assets/image_resources/upload.svg" alt="">Upload</button>
+          <button style="margin-left: 5px" type="button" class="btn btn-primary">Remove</button>
+          <div class="row">
+            <label for="diabeticCheck" id="diabeticId">Is Diabetic?</label>
+          </div>
+          <div class="row">
+            <label for="hypertensive" id="diabeticId">Is Hypertensive?</label>
+          </div>
+
+        </div>
+
+        <div class="col-3 form-control" style="background-color: #ECEFF4; border-radius: 6px; margin-left: 10px; margin-top: 20px">
+          <div class="row">
+
+            <label style="font-size: 16px; color: #1AA4E3; padding-right:20px; margin-top:2px; margin-left:8px; margin-right: 66px" > Gender</label>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label" > <img style="height: 22px;padding-right:4px" src="../../../../assets/image_resources/ic_male.png"> </label>
+              <input type="radio" class="form-check-input" name="gender">
+            </div>
+
+            <div class="form-check form-check-inline" style="margin-right: 0px">
+              <label class="form-check-label"  ><img style="height: 22px; padding-right: 4px" src="../../../../assets/image_resources/ic_female.png"></label>
+              <input type="radio" class="form-check-input" name="gender">
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label" >
+                <img style="height: 22px" src="../../../../assets/image_resources/others.svg">
+              </label>
+              <input type="radio" class="form-check-input" name="gender">
+
+            </div>
+          </div>
+          <div class="row" style=" margin-top: 20px; padding-top: 20px;padding-bottom: 15px;">
+
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample" mdbInput>
+              <label class="custom-control-label" for="defaultInline1">No</label>
+            </div>
+
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample" mdbInput>
+              <label class="custom-control-label" for="defaultInline2">Yes</label>
+            </div>
+
+
+          </div>
+
+          <div class="row" style="margin-top: 20px">
+
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="defaultInline3" name="inlineDefaultRadiosExample" mdbInput>
+              <label class="custom-control-label" for="defaultInline3">No</label>
+            </div>
+
+
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="defaultInline4" name="inlineDefaultRadiosExample" mdbInput>
+              <label class="custom-control-label" for="defaultInline4">Yes</label>
+            </div>
+
+
+          </div>
+
+        </div>
+
+        <div class="col-2 form-control form-control-inline" id="blood" >
+
+          <select name="bloodGroup" id="bloodGroup" style="color:#1AA4E3 ">
+            <option >Blood Group</option>
+            <option *ngFor="let blood of bloodGroup" > {{blood.label}} </option>
+          </select>
+        </div>
+
+        <div class="col-3" style="padding-left: 9px" >
+
+
+          <div class="form-group"  >
+            <label for="address">Address</label>
+            <textarea class="form-control textStyle" id="address" rows="3" style="width: 328px">
+
+                        </textarea>
+            <div class="row" style="width: 353px; margin-left: -13px;">
+
+              <div class=" col-4 form-control" id="controlAddress" style="padding-right: 0px;" >
+                <select name="division" id="addressId">
+                  <option>Division</option>
+                  <option *ngFor="let divi of division" > {{divi.label}} </option>
+                </select>
+              </div>
+              <div class=" col-4 form-control" id="controlAddress" style="padding-left: 0px;padding-right:0px">
+                <select name="district" id="addressId">
+                  <option>District</option>
+                  <option *ngFor="let dist of district" > {{dist.label}} </option>
+                </select>
+              </div>
+              <div class=" col-4 form-control" id="controlAddress" style="padding-left: 0px">
+                <select name="thana" id="addressId">
+                  <option>Thana</option>
+                  <option *ngFor="let pos of policeStation" > {{pos.label}} </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!--    end of second row-->
+
+
+
+      <div class="row" style="margin-top: 20px; padding-top: 20px;">
+        <div class="col-5" style="padding-left: 40px;">
+          <button class="btn btn-primary" style="width: 28%" routerLink="/dashboard/employee"> <img src="../../../../assets/image_resources/back.svg" alt="" class="logo-img"> Go Back</button>
+        </div>
+        <div class="col-6">
+          <button class="btn btn-success" style=";background-color: #16B4FC;color:white"><img style="padding-right: 8px" src="" alt=""> Add</button>
+          <button class="btn btn-outline-danger"  style="margin-left:8px; color:#FC3E43; border-color: #FC3E43" routerLink="/dashboard/employee"><img src="" alt=""> Cancel</button>
+        </div>
+      </div>
+
+
+
+
+    </form>
+
+  </div>
+
+  <router-outlet></router-outlet>
+</div>

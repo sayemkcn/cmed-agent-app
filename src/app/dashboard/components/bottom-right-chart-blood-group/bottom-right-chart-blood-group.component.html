@@ -9,14 +9,50 @@
 
 
   <div>
-    <div  style=" background: linear-gradient(rgba(167, 227, 255, 0.5), rgba(167, 227, 255, 0.06)) ">
-      <canvas baseChart
-              [datasets]="barChartData"
-              [labels]="barChartLabels"
-              [options]="barChartOptions"
-              [legend]="barChartLegend"
-              [chartType]="barChartType">
-      </canvas>
+    <div  style=" background: white">
+
+
+      <ul class="chart" style="padding-inline-start: 20px;
+               padding-inline-end: 20px;
+                padding-block-end: 51px;
+               background-color: white">
+
+
+          <li >28
+            <span style="height:20%;background-color: #E64B61;color: #E64B61 " title="A+"></span>
+          </li>
+
+
+        <li>2
+<!--          <span style="background-color: #ECEFF4;height: 100%"  title="A-">3-->
+            <span style="height:10%;background-color: #DF9A83; color: #DF9A83" title="A-"></span>
+
+<!--          </span>-->
+        </li>
+        <li>28
+          <span style="height:20%;background-color: #FBD332; color: #FBD332 " title="AB+"></span>
+        </li>
+        <li >1
+          <span style="height:25%;background-color: #30C69F;color: #30C69F " title="AB-"></span>
+        </li>
+        <li >40
+          <span style="height:25%;background-color: #22D1D8; color: #22D1D8;" title="B+"></span>
+        </li>
+        <li >2
+          <span style="height:25%;background-color: #22AEE3; color: #22AEE3;" title="B-"></span>
+        </li>
+        <li >45
+          <span style="height:25%;background-color: #5874C1;color: #5874C1 " title="O+"></span>
+        </li>
+        <li >2
+          <span style="height:25%;background-color: #CB6CC8;color: #CB6CC8 " title="O-"></span>
+        </li>
+        <li >17
+          <span style="height:25%;background-color: #4F5D6F;color: #4F5D6F " title="Unk"></span>
+        </li>
+
+      </ul>
+
     </div>
   </div>
 </div>

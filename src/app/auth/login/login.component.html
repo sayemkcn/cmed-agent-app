@@ -8,18 +8,16 @@
       <form class="col-6 offset-3" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
 
         <div class="form-group  fadeIn second">
-<!--          <label for="username">CMED ID</label>-->
           <input formControlName="username" type="text" name="username" placeholder="CMED ID" class="form-control"
                  id="username" />
         </div>
 
         <div class="form-group  fadeIn third">
-<!--          <label  for="password">Password</label>-->
           <input formControlName="password" type="password" name="password" placeholder="Password" class="form-control"
                  id="password" />
         </div>
 
-        <button class="btn btn-success btn-block fadeIn fourth" type="submit" style="margin-bottom: 10px">Login</button>
+        <button class="btn btn-success btn-block fadeIn fourth" type="submit" style="margin-bottom: 10px" routerLink="/dashboard/home">Login</button>
 
       </form>
 

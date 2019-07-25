@@ -1,0 +1,61 @@
+
+
+
+
+.downloadButton{
+  background-color: #16B4FC;
+  color: white;
+  font-family: Montserrat;
+  font-size: 9pt;
+  width: 90px;
+  height: 30px;
+  border-radius: 4px;
+  outline-color: white;
+  border: none
+}
+
+
+
+.viewButton{
+  background-color: white;
+  color: #16B4FC;
+  border-color : #16B4FC;
+  border: 1px solid #16B4FC;
+  font-family: Montserrat;
+  font-size: 9pt;
+  width: 90px;
+  height: 30px;
+  border-radius: 4px;
+  outline-color: white;
+  transition: 0.1s;
+}
+
+.viewButton:hover{
+  background-color:  #16B4FC;
+  color: white;
+}
+
+
+
+
+
+
+
+.cancelButton{
+  background-color: white;
+  color: #FC3E43;
+  border-color : #FC3E43;
+  border: 1px solid #FC3E43;
+  font-family: Montserrat;
+  font-size: 9pt;
+  width: 90px;
+  height: 30px;
+  border-radius: 4px;
+  outline-color: white;
+  transition: 0.1s;
+}
+
+.cancelButton:hover{
+  background-color:  #FC3E43;
+  color: white;
+}

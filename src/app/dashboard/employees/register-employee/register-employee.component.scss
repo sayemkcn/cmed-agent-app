@@ -1,0 +1,116 @@
+.main {
+  background-color: white;
+  margin-top: 40px;
+}
+
+
+button{
+  border-radius: 22px;
+  width: 100px;
+  background-color: white;
+  color: #16B4FC;
+  border-color: #16B4FC;
+}
+input{
+  border-radius: 12px;
+  background-color: #ECEFF4;
+}
+.padZero{
+  padding-right: 0px;
+}
+.boxHeight{
+  height: 36px;
+  pading-bottom:10px !important;
+  border-radius: 6px;
+}
+
+
+.searchInput{
+  border-radius: 22px;
+  width: 99px;
+  background-color: #ECEFF4;
+  color: #16B4FC;
+  border-color: #16B4FC;
+  padding-left: 12px;
+  height: 33px;
+}
+
+.employeeInfo{
+  padding: 20px 0px;
+  background-color: #ECEFF4;
+}
+.imageClass {
+  border: 7px solid #16B4FC;
+  width: 76%;
+  height: 92%;
+  margin-top: 10px;
+  margin-left: 29px;
+  margin-right: 3px;
+}
+
+.genderStyle{
+  font-size: 15px;
+  color: #1AA4E3;
+  padding-right: 20px;
+  margin-top: 4px;
+  margin-left: 8px;
+  margin-right: 72px;
+}
+
+label{
+  /*line-height: .2;*/
+  /*margin-left: 30px;*/
+  margin-bottom: 0px;
+  color: #A9AFB8;
+}
+.radioButton{
+  height: 30px;
+  color:dodgerblue;
+}
+
+#blood{
+  border:none;
+  margin-left: 0px;
+  margin-top: 20px;
+  padding-top: 0px;
+}
+#bloodGroup{
+  background-color: #ECEFF4;
+
+  padding: 8px 30px;
+  border-radius: 6px;
+}
+
+#controlAddress{
+  border:none;
+  padding-top: 0px;
+  /*width: 50px;*/
+}
+
+#diabeticId{
+  font-size: 14px;
+  padding-top: 40px;
+  padding-left: 20px;
+  color: #666666;
+}
+#addressId{
+  background-color: #ECEFF4;
+  padding: 4px 0px;
+  border-radius: 3px;
+  color:#A9AFB8;
+  /*border:solid 1px #666666;*/
+  /*border-color: #666666;*/
+  width: 100%;
+}
+.textStyle{
+  background-color: #ECEFF4;
+  border-radius: 7px;
+  width: 300px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.logo-img {
+  filter: invert(.5) sepia(1) saturate(5) hue-rotate(175deg);
+  padding-right: 4px;
+}
