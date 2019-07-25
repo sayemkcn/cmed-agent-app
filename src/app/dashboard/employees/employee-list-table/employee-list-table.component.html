@@ -1,0 +1,42 @@
+
+<div>
+  <table class="table" style=" table-layout: fixed;word-wrap: break-word; font-family: Montserrat; font-size: 16pt">
+    <thead style="background-color: #ECEFF4">
+    <tr>
+      <th scope="col" style="text-align: center; width: 5%"></th>
+      <th scope="col" style="text-align: center; width: 14%"> <b>Name</b> </th>
+      <th scope="col" style="text-align: center"> <b>ID</b> </th>
+      <th scope="col" style="text-align: center"> <b>Phone</b> </th>
+      <th scope="col" style="text-align: center"> <b>Unit</b> </th>
+      <th scope="col" style="text-align: center; width: 11%"> <b>Department</b> </th>
+      <th scope="col" style="text-align: center"> <b>Job Title</b> </th>
+      <th scope="col" style="text-align: center;"> <b>Last Measured</b> </th>
+      <th scope="col" style="text-align: center; width: 20%"></th>
+    </tr>
+    </thead>
+    <tbody   *ngFor="let employee of employees">
+    <tr>
+      <td scope="row" style="text-align: center;">
+        <div *ngIf="employee.gender === 'male'; else templateName">
+          <img src="../../../../assets/image_resources/ic_male.png" style="" alt="Responsive image">
+        </div>
+        <ng-template #templateName>
+          <img src="../../../../assets/image_resources/ic_female.png" style="" alt="Responsive image">
+        </ng-template>
+      </td>
+      <td class="col-sm-2" style=" text-align: center; "> {{employee.name}} </td>
+      <td style="text-align: center"> {{employee.id}} </td>
+      <td style="text-align: center"> {{employee.phone}} </td>
+      <td style="text-align: center"> {{employee.unit}} </td>
+      <td style="text-align: center"> {{employee.department}} </td>
+      <td style="text-align: center"> {{employee.jobTitle}} </td>
+      <td style="text-align: center"> {{employee.lastMeasured}} </td>
+      <!--        <td style="text-align: center"> <div ><button class="viewButton"> <b>View</b> </button>  <button class="prescriptionButton" > <b>Prescriptions</b> </button></div> </td>-->
+      <td style="text-align: center"> <button class="viewButton" routerLink="/employeesInformation"> View </button>
+        <button class="prescriptionButton" > Prescriptions </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <router-outlet></router-outlet>
+</div>

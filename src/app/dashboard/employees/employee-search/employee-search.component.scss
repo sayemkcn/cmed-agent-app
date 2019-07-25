@@ -1,0 +1,98 @@
+
+
+/*button styles*/
+.blueButton{
+  background-color: #16B4FC;
+  color: white;
+  font-family: Montserrat;
+  font-size: 10pt;
+  width: 230px;
+  height: 40px;
+  border-radius: 150px;
+  outline-color: white;
+  border: none
+}
+
+
+
+.whiteButton{
+  background-color: white;
+  color: #16B4FC;
+  border-color : #16B4FC;
+  border: 1px solid #16B4FC;
+  font-family: Montserrat;
+  font-size: 10pt;
+  width: 230px;
+  height: 40px;
+  border-radius: 150px;
+  outline-color: white;
+  transition: 0.1s;
+}
+
+.whiteButton:hover{
+  background-color:  #16B4FC;
+  color: white;
+}
+
+
+
+
+
+/*
+**************************************************************************
+**************************************************************************
+**************************************************************************
+**************************************************************************
+**************************************************************************
+**************************************************************************
+**************************************************************************
+*/
+
+/*@media(max-width:767px) {*/
+
+/*    .myimage {*/
+/*        max-width: 50%;*/
+/*        max-height: auto;*/
+/*        width: 50%;*/
+/*        height: auto;*/
+/*        min-width: 100px;!*Note the px*!*/
+/*        min-height: auto;*/
+/*    }*/
+
+/*}*/
+
+
+
+
+
+.searchBar{
+  font-family: Montserrat;
+  font-size: 13pt;
+  outline-color: white;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  border: 1px solid #A9AFB8;
+  height: 35px;
+  padding-left: 10px;
+  width: 80%;
+}
+
+.searchBar:focus::-webkit-input-placeholder { color:transparent; }
+
+.searchButton{
+  margin-bottom: 0px;
+  /*border: 1px solid #A9AFB8;*/
+  height: 35px;
+  background: none;
+  outline: none;
+  transition: 0.1s;
+}
+
+/*.searchButton:hover{*/
+/*     background-color:  #16B4FC;*/
+/*     background-image: none;*/
+/*    border: 1px solid #16B4FC;*/
+/* }*/
+
+
+

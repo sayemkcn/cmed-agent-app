@@ -17,12 +17,24 @@ import {
 } from '@angular/material';
 import {ChartsModule} from 'ng2-charts';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
+import { EmployeeInformationComponent } from './employees/employee-information/employee-information.component';
+import { EmployeeListTableComponent } from './employees/employee-list-table/employee-list-table.component';
+import { EmployeeSearchComponent } from './employees/employee-search/employee-search.component';
+import { RegisterEmployeeComponent } from './employees/register-employee/register-employee.component';
+import { EmployeesComponent } from './employees/employees.component';
 @NgModule({
   declarations: [StatsComponent,
     TopOverviewComponent,
     BottomLeftChartComponent,
     BottomRightChartMemberComponent,
-    BottomRightChartBloodGroupComponent
+    BottomRightChartBloodGroupComponent,
+    EmployeeListComponent,
+    EmployeeInformationComponent,
+    EmployeeListTableComponent,
+    EmployeeSearchComponent,
+    RegisterEmployeeComponent,
+    EmployeesComponent
   ],
   imports: [
     CommonModule,
