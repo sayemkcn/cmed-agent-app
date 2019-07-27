@@ -11,13 +11,12 @@ export class BottomLeftChartComponent implements OnInit {
 
   patientInfo : PatientInfoService[];
 
-  constructor( service: Service) {
+  constructor( service: Service, pts:PatientInfoService) {
     this.patientInfo = service.getPatientsInfo();
   }
 
   customizeTooltip(arg: any) {
     return {
-      // number: arg.percentNumber
       text: arg.percentText + ' - ' + arg.valueText
     };
   }
