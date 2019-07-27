@@ -17,6 +17,9 @@ import {ApiEndpoints} from './shared/commons/api-endpoints.resource';
 import { BaseComponent } from './shared/base/base.component';
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
 
+import { DxChartModule } from 'devextreme-angular';
+
+import {PatientInfoService, Service} from './dashboard/service/patient-info.service'
 
 @NgModule({
   declarations: [
@@ -34,17 +37,22 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatMomentDateModule,
+    DxChartModule,
 
     ToastrModule.forRoot({
       closeButton: true,
       progressBar: true,
       progressAnimation: 'increasing',
     }),
+
+
   ],
   providers: [
     AuthService,
     Toastr,
-    ApiEndpoints
+    ApiEndpoints,
+    PatientInfoService,
+    Service
   ],
   bootstrap: [AppComponent]
 })

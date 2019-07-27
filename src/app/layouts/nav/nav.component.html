@@ -24,11 +24,6 @@
   <button routerLink="/home" style="margin: 10px; outline: none; border: none; background-color: white">
     <img src="../assets/image_resources/ic_company_logo.svg">
   </button>
-
-  <!--  <a class="navbar-brand" href="#">Navbar</a>-->
-  <!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
-  <!--    <span class="navbar-toggler-icon"></span>-->
-  <!--  </button>-->
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item" style="margin-right: 15px; margin-left: 15px; ">
@@ -62,9 +57,16 @@
         </div>
       </li>
 
-      <li class="nav-item" style="margin-right: 15px; margin-left: 15px; ">
-        <a class="nav-link" routerLink="/login" style="display: inline-block">Log In</a>
-      </li>
+<!--      <li class="nav-item" style="margin-right: 15px; margin-left: 15px; ">-->
+<!--        <a class="nav-link" routerLink="/login" style="display: inline-block">Log In</a>-->
+<!--      </li>-->
     </ul>
   </div>
+
+<!--  <div class="navbar-nav ml-auto">-->
+<!--    &lt;!&ndash;        <a *ngIf="!isLoggedIn()" class="nav-item nav-link">Register</a>&ndash;&gt;-->
+<!--    <a *ngIf="!isLoggedIn()" [routerLink]="['login']" class="nav-item nav-link">Login</a>-->
+<!--    <a *ngIf="isLoggedIn()" [routerLink]="['logout']" class="nav-item nav-link">Logout</a>-->
+<!--  </div>-->
+
 </nav>

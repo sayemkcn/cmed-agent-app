@@ -54,7 +54,7 @@ export class AuthService {
     userAuth.subscribe((auth: IUserAuth) => {
       LocalStorage.putAuth(auth);
       this.toastr.success('Success', 'Successfully logged in!');
-      this.router.navigate(['/']);
+      this.router.navigate(['/dashboard/home']);
       // window.location.href = '/';
     });
   }

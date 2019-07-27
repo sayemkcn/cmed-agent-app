@@ -36,6 +36,7 @@ import { EmployeeRegistrationReportComponent } from './reports/employee-registra
 import { HealthStatusReportComponent } from './reports/health-status-report/health-status-report.component';
 import { ReportsListComponent } from './reports/reports-list/reports-list.component';
 import { ServiceProviderReportComponent } from './reports/service-provider-report/service-provider-report.component';
+import {DxChartModule} from "devextreme-angular";
 @NgModule({
   declarations: [StatsComponent,
     TopOverviewComponent,
@@ -74,7 +75,8 @@ import { ServiceProviderReportComponent } from './reports/service-provider-repor
     MatDatepickerModule,
     MatIconModule,
     MatTabsModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    DxChartModule
   ]
 })
 export class DashboardModule { }
