@@ -11,7 +11,7 @@ const routes: Route[] = [
   {path: '', component: StatsComponent},
   {path: 'home', component: StatsComponent},
   {path: 'employee', component: EmployeesComponent},
-  {path: 'employeesInformation', component: EmployeeInformationComponent},
+  {path: 'employeesInformation/:id', component: EmployeeInformationComponent},
   {path: 'employeesRegistration', component: RegisterEmployeeComponent},
   {path: 'inventory', component: InventoryComponent},
   {path: 'reports', component: ReportsComponent},

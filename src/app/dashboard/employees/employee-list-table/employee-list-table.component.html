@@ -1,6 +1,6 @@
 
 <div>
-  <table class="table" style=" table-layout: fixed;word-wrap: break-word; font-family: Montserrat; font-size: 16pt">
+    <table class="table" style=" table-layout: fixed;word-wrap: break-word; font-family: Montserrat; font-size: 16pt">
     <thead style="background-color: #ECEFF4">
     <tr>
       <th scope="col" style="text-align: center; width: 5%"></th>
@@ -14,8 +14,8 @@
       <th scope="col" style="text-align: center; width: 20%"></th>
     </tr>
     </thead>
-    <tbody   *ngFor="let employee of employees">
-    <tr>
+    <tbody   >
+    <tr *ngFor="let employee of employees">
       <td scope="row" style="text-align: center;">
         <div *ngIf="employee.gender === 'male'; else templateName">
           <img src="../../../../assets/image_resources/ic_male.png" style="" alt="Responsive image">
@@ -31,8 +31,7 @@
       <td style="text-align: center"> {{employee.department}} </td>
       <td style="text-align: center"> {{employee.jobTitle}} </td>
       <td style="text-align: center"> {{employee.lastMeasured}} </td>
-      <!--        <td style="text-align: center"> <div ><button class="viewButton"> <b>View</b> </button>  <button class="prescriptionButton" > <b>Prescriptions</b> </button></div> </td>-->
-      <td style="text-align: center"> <button class="viewButton" routerLink="/dashboard/employeesInformation"> View </button>
+      <td style="text-align: center"> <button class="viewButton" [routerLink]="['/dashboard/employeesInformation',employee.id]"> View </button>
         <button class="prescriptionButton" > Prescriptions </button>
       </td>
     </tr>

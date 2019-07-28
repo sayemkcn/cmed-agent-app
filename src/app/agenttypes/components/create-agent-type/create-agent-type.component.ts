@@ -30,9 +30,9 @@ export class CreateAgentTypeComponent extends BaseComponent implements OnInit {
     const description = new FormControl();
     const promoCode = new FormControl();
     this.createAgentTypeForm = new FormGroup({
-      id,
-      name,
-      description,
+      id : id,
+      name:  name,
+      description: description,
       promo_code: promoCode
     });
 
