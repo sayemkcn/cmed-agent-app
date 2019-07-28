@@ -4,7 +4,7 @@ import { EmployeelistComponent } from './components/employeelist/employeelist.co
 import { CreateEmployeeComponent } from './components/create-employee/create-employee.component';
 import {DashboardRoutingModule} from "./employee-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
-
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 @NgModule({
@@ -12,7 +12,8 @@ import {ReactiveFormsModule} from "@angular/forms";
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonToggleModule
   ]
 })
 export class EmployeeModule { }

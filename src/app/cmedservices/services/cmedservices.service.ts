@@ -30,3 +30,4 @@ export class CmedServicesService {
     return this.http.get<ICmedService>(this.apiEndpoint.SERVICES.FETCH_DETAILS(paramId), {headers: this.headers});
   }
 }
+

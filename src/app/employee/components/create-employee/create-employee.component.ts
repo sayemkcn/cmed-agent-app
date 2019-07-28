@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class CreateEmployeeComponent implements OnInit {
   updateEmployeeInformationForm: FormGroup;
   title: string="Register Employee";
-
+  selectedFile;
 
   constructor(private router: Router,
               private route: ActivatedRoute,) {
@@ -64,6 +64,9 @@ export class CreateEmployeeComponent implements OnInit {
     })
     const paramId = this.route.snapshot.paramMap.get('id');
 
+  }
+  onFileChanged(event){
+    this.selectedFile = event.target.files[0]
   }
 
 }
