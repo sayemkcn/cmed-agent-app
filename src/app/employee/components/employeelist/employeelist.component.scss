@@ -1,0 +1,160 @@
+
+
+/*button styles*/
+.blueButton{
+  background-color: #16B4FC;
+  color: white;
+  font-family: Montserrat;
+  font-size: 10pt;
+  width: 230px;
+  height: 40px;
+  border-radius: 150px;
+  outline-color: white;
+  border: none
+}
+
+
+
+.whiteButton{
+  background-color: white;
+  color: #16B4FC;
+  border-color : #16B4FC;
+  border: 1px solid #16B4FC;
+  font-family: Montserrat;
+  font-size: 10pt;
+  width: 230px;
+  height: 40px;
+  border-radius: 150px;
+  outline-color: white;
+  transition: 0.1s;
+}
+
+.whiteButton:hover{
+  background-color:  #16B4FC;
+  color: white;
+}
+
+
+
+
+
+/*
+**************************************************************************
+**************************************************************************
+**************************************************************************
+**************************************************************************
+**************************************************************************
+**************************************************************************
+**************************************************************************
+*/
+
+/*@media(max-width:767px) {*/
+
+/*    .myimage {*/
+/*        max-width: 50%;*/
+/*        max-height: auto;*/
+/*        width: 50%;*/
+/*        height: auto;*/
+/*        min-width: 100px;!*Note the px*!*/
+/*        min-height: auto;*/
+/*    }*/
+
+/*}*/
+
+
+
+
+
+.searchBar{
+  font-family: Montserrat;
+  font-size: 13pt;
+  outline-color: white;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  border: 1px solid #A9AFB8;
+  height: 35px;
+  padding-left: 10px;
+  width: 80%;
+}
+
+.searchBar:focus::-webkit-input-placeholder { color:transparent; }
+
+.searchButton{
+  margin-bottom: 0px;
+  /*border: 1px solid #A9AFB8;*/
+  height: 35px;
+  background: none;
+  outline: none;
+  transition: 0.1s;
+}
+
+/*.searchButton:hover{*/
+/*     background-color:  #16B4FC;*/
+/*     background-image: none;*/
+/*    border: 1px solid #16B4FC;*/
+/* }*/
+
+
+
+
+.tableHeader{
+  background: #eceff4;
+  padding: 20px;
+  font-weight: bold;
+}
+
+.tableRow{
+  font-family: Montserrat;
+  background: white;
+  padding: 20px;
+  border-bottom: 1px #eceff4 solid;
+  table-layout: fixed;
+}
+
+.tableColumn{
+  font-family: Montserrat;
+  text-align: center;
+  word-wrap: break-word;
+  min-width: 100px;
+  max-width: 160px;
+}
+
+
+
+
+
+.viewButton{
+  background-color: white;
+  color: #16B4FC;
+  border-color : #16B4FC;
+  border: 2px solid white;
+  font-family: Montserrat;
+  border-radius: 7px  ;
+  font-size: 16px;
+  width: 80px;
+  height: 30px;
+  outline-color: white;
+  transition: 0.1s;
+}
+.viewButton:hover{
+  background-color:  #16B4FC;
+  color: white;
+}
+
+.prescriptionButton{
+  background-color: white;
+  color: #12de77;
+  border-color :#12de77;
+  border: 2px solid white;
+  font-family: Montserrat;
+  font-size: 16px;
+  border-radius: 7px  ;
+  width: 115px;
+  height: 30px;
+  outline-color: white;
+  transition: 0.1s;
+}
+.prescriptionButton:hover{
+  background-color:  #12de77;
+  color: white;
+}

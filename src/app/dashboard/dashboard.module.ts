@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {DashboardRoutingModule} from './dashboard-routing.module';
-import { StatsComponent } from './components/stats/stats.component';
-import { TopOverviewComponent } from './components/top-overview/top-overview.component';
-import { BottomLeftChartComponent } from './components/bottom-left-chart/bottom-left-chart.component';
-import { BottomRightChartMemberComponent } from './components/bottom-right-chart-member/bottom-right-chart-member.component';
-import { BottomRightChartBloodGroupComponent } from './components/bottom-right-chart-blood-group/bottom-right-chart-blood-group.component';
+import { StatsComponent } from './Home/stats/stats.component';
+import { TopOverviewComponent } from './Home/top-overview/top-overview.component';
+import { BottomLeftChartComponent } from './Home/bottom-left-chart/bottom-left-chart.component';
+import { BottomRightChartMemberComponent } from './Home/bottom-right-chart-member/bottom-right-chart-member.component';
+import { BottomRightChartBloodGroupComponent } from './Home/bottom-right-chart-blood-group/bottom-right-chart-blood-group.component';
 import {
   MatButtonModule,
   MatCardModule,
