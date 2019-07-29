@@ -6,7 +6,7 @@ import {DashboardRoutingModule} from "./employee-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { PrescriptionComponent } from './components/prescription/prescription.component';
-
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   declarations: [EmployeelistComponent, CreateEmployeeComponent, PrescriptionComponent],
@@ -14,7 +14,8 @@ import { PrescriptionComponent } from './components/prescription/prescription.co
     CommonModule,
     DashboardRoutingModule,
     ReactiveFormsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    HttpModule
   ]
 })
 export class EmployeeModule { }

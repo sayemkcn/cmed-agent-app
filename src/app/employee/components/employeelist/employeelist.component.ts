@@ -10,6 +10,8 @@ import {UserService} from "../../../users/services/user.service";
 import {ToastrService} from "ngx-toastr";
 import {ActivatedRoute, Router} from "@angular/router";
 import {IUser} from "../../../users/models/user.model";
+import {FileServiceService} from "../../services/file-service.service";
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-employeelist',
@@ -36,11 +38,16 @@ export class EmployeelistComponent extends BaseComponent implements OnInit {
   employeeListTable: IemployeeList;
   private selectedUser: IUser;
 
+
+
+  fileUrl;
   constructor(private employeeService: EmployeeService, private auth: AuthService,
               private userService: UserService,
               private toastr: ToastrService,
               private router: Router,
               private route: ActivatedRoute,
+              private files: FileServiceService,
+              private sanitizer: DomSanitizer
               ) {
     super(auth);
   }
@@ -53,9 +60,13 @@ export class EmployeelistComponent extends BaseComponent implements OnInit {
       this.employeeListTable = ap;
     }, err => this.handleError(err));
 
+    const data = 'some text';
+    const blob = new Blob([data], { type: 'application/octet-stream' });
 
+    this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
 
   }
+
 
 
   private initSearchForm() {
@@ -73,5 +84,7 @@ export class EmployeelistComponent extends BaseComponent implements OnInit {
         this.userPage = up;
       }, err => this.handleError(err));
   }
+
+
 
 }

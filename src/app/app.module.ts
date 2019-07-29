@@ -16,7 +16,7 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import {ApiEndpoints} from './shared/commons/api-endpoints.resource';
 import { BaseComponent } from './shared/base/base.component';
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
-
+import {HttpModule} from '@angular/http';
 import { DxChartModule } from 'devextreme-angular';
 
 import {PatientInfoService, Service} from './dashboard/service/patient-info.service'
@@ -38,6 +38,7 @@ import {PatientInfoService, Service} from './dashboard/service/patient-info.serv
     BrowserAnimationsModule,
     MatMomentDateModule,
     DxChartModule,
+    HttpModule,
 
     ToastrModule.forRoot({
       closeButton: true,
