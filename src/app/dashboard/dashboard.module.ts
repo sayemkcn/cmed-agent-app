@@ -17,12 +17,12 @@ import {
 } from '@angular/material';
 import {ChartsModule} from 'ng2-charts';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
-import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
-import { EmployeeInformationComponent } from './employees/employee-information/employee-information.component';
-import { EmployeeListTableComponent } from './employees/employee-list-table/employee-list-table.component';
-import { EmployeeSearchComponent } from './employees/employee-search/employee-search.component';
-import { RegisterEmployeeComponent } from './employees/register-employee/register-employee.component';
-import { EmployeesComponent } from './employees/employees.component';
+// import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
+// // import { EmployeeInformationComponent } from './employees/employee-information/employee-information.component';
+// import { EmployeeListTableComponent } from './employees/employee-list-table/employee-list-table.component';
+// import { EmployeeSearchComponent } from './employees/employee-search/employee-search.component';
+// import { RegisterEmployeeComponent } from './employees/register-employee/register-employee.component';
+// import { EmployeesComponent } from './employees/employees.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { InventoryListComponent } from './inventory/inventory-list/inventory-list.component';
 import { InventoryListTableComponent } from './inventory/inventory-list-table/inventory-list-table.component';
@@ -37,18 +37,19 @@ import { HealthStatusReportComponent } from './reports/health-status-report/heal
 import { ReportsListComponent } from './reports/reports-list/reports-list.component';
 import { ServiceProviderReportComponent } from './reports/service-provider-report/service-provider-report.component';
 import {DxChartModule} from "devextreme-angular";
+import {ReactiveFormsModule} from "@angular/forms";
 @NgModule({
   declarations: [StatsComponent,
     TopOverviewComponent,
     BottomLeftChartComponent,
     BottomRightChartMemberComponent,
     BottomRightChartBloodGroupComponent,
-    EmployeeListComponent,
-    EmployeeInformationComponent,
-    EmployeeListTableComponent,
-    EmployeeSearchComponent,
-    RegisterEmployeeComponent,
-    EmployeesComponent,
+    // EmployeeListComponent,
+    // // EmployeeInformationComponent,
+    // EmployeeListTableComponent,
+    // EmployeeSearchComponent,
+    // RegisterEmployeeComponent,
+    // EmployeesComponent,
     InventoryComponent,
     InventoryListComponent,
     InventoryListTableComponent,
@@ -76,7 +77,8 @@ import {DxChartModule} from "devextreme-angular";
     MatIconModule,
     MatTabsModule,
     MatMomentDateModule,
-    DxChartModule
+    DxChartModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardModule { }

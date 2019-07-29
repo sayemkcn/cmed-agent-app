@@ -31,6 +31,13 @@ export class DateUtil {
     return this.monthNamesShort[monthIndex] + ' ' + day + ', ' + year;
   }
 
+  public static formatReadableDateDay(date) {
+    const dayIndex = date.getDate();
+    const month = date.getMonth();
+    const year = date.getFullYear();
+    return this.monthNamesShort[dayIndex] + ' ' + month + ', ' + year;
+  }
+
   public static isInValidDateForSharing(month: string, year: number) {
     if (month == null || year == null) { return true; }
 

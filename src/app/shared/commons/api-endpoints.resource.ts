@@ -54,4 +54,11 @@ export class ApiEndpoints {
     }
   }
 
+  STATISTICS={
+    FETCH(companyCode:string, dateFrom:string, dateTo: string ){
+      return environment.base_url + ApiEndpoints.API_VERSION + '/corporate/'+companyCode+'/stats?from='+dateFrom + '&to='+dateTo;
+    }
+  }
+
+
 }
