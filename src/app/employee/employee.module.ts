@@ -5,10 +5,11 @@ import { CreateEmployeeComponent } from './components/create-employee/create-emp
 import {DashboardRoutingModule} from "./employee-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { PrescriptionComponent } from './components/prescription/prescription.component';
 
 
 @NgModule({
-  declarations: [EmployeelistComponent, CreateEmployeeComponent],
+  declarations: [EmployeelistComponent, CreateEmployeeComponent, PrescriptionComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

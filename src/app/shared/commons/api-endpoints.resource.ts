@@ -34,10 +34,24 @@ export class ApiEndpoints {
     },
   };
 
+
   USERS = {
     SEARCH(query, page) {
       return environment.base_url + ApiEndpoints.API_VERSION + '/users/search?q=' + query + '&page=' + page;
     }
   };
+
+  // CORPORATE DASHBOARD
+
+
+
+  EMPLOYEES ={
+    FETCH: environment.base_url + ApiEndpoints.API_VERSION + '/admin/employees/',
+    CREATE: environment.base_url + ApiEndpoints.API_VERSION + '/admin/employees/',
+    UPDATE: environment.base_url + ApiEndpoints.API_VERSION + '/admin/employees/',
+    FETCH_DETAILS (id: number) {
+      return environment.base_url + ApiEndpoints.API_VERSION + '/admin/employees/' + id;
+    }
+  }
 
 }

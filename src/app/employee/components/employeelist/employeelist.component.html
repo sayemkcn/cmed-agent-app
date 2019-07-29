@@ -100,7 +100,7 @@
             <td style="text-align: center"> {{employee.jobTitle}} </td>
             <td style="text-align: center"> {{employee.lastMeasured}} </td>
             <td style="text-align: center"> <button class="viewButton" [routerLink]="['/employees/create',employee.id]"> View </button>
-              <button class="prescriptionButton" > Prescriptions </button>
+              <button class="prescriptionButton"  [routerLink]="['/employees/prescription',employee.id]"> Prescriptions </button>
             </td>
           </tr>
           </tbody>

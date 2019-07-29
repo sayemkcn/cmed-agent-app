@@ -1,12 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import {EmployeeModule} from "../../../dashboard/models/employee.module";
+import {EmployeeModule} from "../../models/employee.module";
+import {IemployeeList} from "../../models/iemployee-list";
+import {AuthService} from "../../../auth/shared/auth.service";
+import {EmployeeService} from "../../services/employee.service";
+import {BaseComponent} from "../../../shared/base/base.component";
+import {FormControl, FormGroup} from "@angular/forms";
+import {IUserPage} from "../../../users/models/user-page.model";
+import {UserService} from "../../../users/services/user.service";
+import {ToastrService} from "ngx-toastr";
+import {ActivatedRoute, Router} from "@angular/router";
+import {IUser} from "../../../users/models/user.model";
 
 @Component({
   selector: 'app-employeelist',
   templateUrl: './employeelist.component.html',
   styleUrls: ['./employeelist.component.scss']
 })
-export class EmployeelistComponent implements OnInit {
+export class EmployeelistComponent extends BaseComponent implements OnInit {
+  private searchForm: FormGroup;
+  private userPage: IUserPage;
 
   public  employees = [
     new EmployeeModule("Sakib Abrar Hossain","111213", "01711881659", "Unit 1", "Dep 1", "Excecutive", "12 March 2019", "male"),
@@ -20,9 +32,46 @@ export class EmployeelistComponent implements OnInit {
     new EmployeeModule("Nazmul Arif","111220", "01711881659", "Unit 1", "Dep 1", "Excecutive", "12 March 2019", "female"),
     new EmployeeModule("Nazmul Arif","111223", "01711881659", "Unit 1", "Dep 1", "Excecutive", "12 March 2019", "female"),
   ];
-  constructor() { }
 
-  ngOnInit() {
+  employeeListTable: IemployeeList;
+  private selectedUser: IUser;
+
+  constructor(private employeeService: EmployeeService, private auth: AuthService,
+              private userService: UserService,
+              private toastr: ToastrService,
+              private router: Router,
+              private route: ActivatedRoute,
+              ) {
+    super(auth);
+  }
+
+  ngOnInit():void {
+    this.selectedUser = null;
+    this.initSearchForm();
+
+    this.employeeService.getEmployees().subscribe(ap => {
+      this.employeeListTable = ap;
+    }, err => this.handleError(err));
+
+
+
+  }
+
+
+  private initSearchForm() {
+    const search = new FormControl();
+    this.searchForm = new FormGroup({
+      search
+    });
+  }
+
+  onChangeSearch($event: any) {
+    console.log($event.target.value);
+    this.userService.searchUsers($event.target.value, 0)
+      .subscribe((up: IUserPage) => {
+        console.log(up);
+        this.userPage = up;
+      }, err => this.handleError(err));
   }
 
 }
