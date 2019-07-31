@@ -14,12 +14,14 @@ export class BottomRightChartBloodGroupComponent extends BaseComponent implement
   private bloodStats: IBloodGroup;
 
 
+
   constructor(private bloodService:BloodGroupServiceService, private auth: AuthService) {
     super(auth);
+
   }
 
   ngOnInit() {
-    this.bloodService.getBloodGroups().subscribe(stats => {
+    this.bloodService.getBloodGroups(this.auth.getCompanyCode()).subscribe(stats => {
       this.bloodStats = stats;
     }, err => this.handleError(err))
 
@@ -33,7 +35,6 @@ export class BottomRightChartBloodGroupComponent extends BaseComponent implement
 
 
   getColor(bloodGroupName:string){
-    // if(bloodGroupName=='A+') document.body.style.background='#E64B61'
     if(bloodGroupName=='A+') return '#E64B61'
     else if(bloodGroupName=='A-') return '#DF9A83'
     else if(bloodGroupName=='B+') return '#22D1D8'
@@ -45,7 +46,7 @@ export class BottomRightChartBloodGroupComponent extends BaseComponent implement
     else if(bloodGroupName=='Unknown') return '#4F5D6F'
   }
   getHeight(height:number){
-    return ((height*100)/1906) +5+ "%";
+    return ((height*100)/1906) +10+ "%";
   }
 
 

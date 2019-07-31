@@ -44,32 +44,39 @@ export class ApiEndpoints {
   // CORPORATE DASHBOARD
 
 
+  EMPLOYEES = {
+    FETCH(companyCode: string, query: string, gender: string, page: number): string {
+      let url = environment.base_url + ApiEndpoints.API_VERSION + '/corporate/' + companyCode + '/employees?';
+      if (query!=null && query!='')
+        url+='query=' +query;
+      if(gender!=null && gender!='')
+        url+= '&gender=' + gender;
+      if(page!=null)
+        url+='&page=' + page;
+      return url;
+    },
 
-  EMPLOYEES ={
-    FETCH: environment.base_url + ApiEndpoints.API_VERSION + '/admin/employees/',
-    CREATE: environment.base_url + ApiEndpoints.API_VERSION + '/admin/employees/',
-    UPDATE: environment.base_url + ApiEndpoints.API_VERSION + '/admin/employees/',
-    FETCH_DETAILS (id: number) {
+    FETCH_DETAILS(id: number) {
       return environment.base_url + ApiEndpoints.API_VERSION + '/admin/employees/' + id;
     }
-  }
+  };
 
-  STATISTICS={
-    FETCH(companyCode:string, dateFrom:string, dateTo: string ){
-      return environment.base_url + ApiEndpoints.API_VERSION + '/corporate/'+companyCode+'/stats?from='+dateFrom + '&to='+dateTo;
+  STATISTICS = {
+    FETCH(companyCode: string, dateFrom: string, dateTo: string) :string {
+      return environment.base_url + ApiEndpoints.API_VERSION + '/corporate/' + companyCode + '/stats?from=' + dateFrom + '&to=' + dateTo;
     }
-  }
-  MEASUREMENTS={
-    FETCH(companyCode:string,measurementType:string,dateFrom:string,dateTo:string){
-      return environment.base_url+ApiEndpoints.API_VERSION+ '/corporate/'+companyCode+'/measurementstats?measurement_type='+measurementType+'&from='+dateFrom+'&to='+dateTo;
+  };
+  MEASUREMENTS = {
+    FETCH(companyCode: string, measurementType: string, dateFrom: string, dateTo: string):string {
+      return environment.base_url + ApiEndpoints.API_VERSION + '/corporate/' + companyCode + '/measurementstats?measurement_type=' + measurementType + '&from=' + dateFrom + '&to=' + dateTo;
     }
-  }
+  };
 
-  BLOOD_GROUP ={
-    FETCH(companyCode:string){
-      return environment.base_url + ApiEndpoints.API_VERSION + '/corporate/'+companyCode+'/stats/blood_groups'
+  BLOOD_GROUP = {
+    FETCH(companyCode: string):string {
+      return environment.base_url + ApiEndpoints.API_VERSION + '/corporate/' + companyCode + '/stats/blood_groups';
     }
-  }
+  };
 
 
 }

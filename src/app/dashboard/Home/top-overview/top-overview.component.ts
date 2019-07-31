@@ -32,7 +32,7 @@ export class TopOverviewComponent extends BaseComponent implements OnInit {
 
 
   ngOnInit() {
-    this.statService.getStatistics(this.fromDate, this.tooDate).subscribe(stats => {
+    this.statService.getStatistics(this.auth.getCompanyCode(), this.fromDate, this.tooDate).subscribe(stats => {
       this.measurementStatistics = stats;
       // console.log(stats);
     }, err => this.handleError(err))
@@ -53,7 +53,7 @@ export class TopOverviewComponent extends BaseComponent implements OnInit {
 
   getStats() {
     if (this.fromDate != '' && this.tooDate != '') {
-      this.statService.getStatistics(this.fromDate, this.tooDate).subscribe(stats => {
+      this.statService.getStatistics(this.auth.getCompanyCode(),this.fromDate, this.tooDate).subscribe(stats => {
         this.measurementStatistics = stats;
       }, err => this.handleError(err))
     }

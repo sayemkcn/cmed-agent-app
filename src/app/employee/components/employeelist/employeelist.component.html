@@ -14,8 +14,9 @@
         <div class="col-5 align-self-center" style="margin-left: 25px ; margin-right: 30px; border: 1px none green;">
           <div class="form-group" style="width: inherit; border: 1px none goldenrod; margin-top: 10px">
             <div style="min-width: inherit; border: 1px none darkblue;" >
-              <input type="text" class="searchBar" spellcheck="false" placeholder="Search">
-              <button class="searchButton"> <img src="../../../../assets/image_resources/ic_search.png"></button>
+
+              <input type="text" [(ngModel)]="search"  class="searchBar" spellcheck="false" placeholder="Search" (change)="searchEmployee()">
+              <button class="searchButton" > <img src="../../../../assets/image_resources/ic_search.png"></button>
             </div>
           </div>
         </div>
@@ -23,22 +24,23 @@
           <div class="row" style="border: 1px none black; height: 50px;margin-bottom: 13px;margin-top: 10px">
             <div class="form-group" style="width: 100%; height: inherit">
               <small  class="form-text text-muted">Select Filter</small>
-              <select class="form-control" id="exampleFormControlSelect1" style="">
-                <option>Gender</option>
+              <select [(ngModel)]="gender" class="form-control" id="exampleFormControlSelect1" style="" (change)="searchEmployee()">
+                <option *ngFor="let gend of genderArra" [value]="gend">{{gend}}</option>
               </select>
+
             </div>
           </div>
           <div class="row" style=" border: 1px none black">
             <div class="form-group" style="width: 100%">
               <small  class="form-text text-muted">Filter Options</small>
-              <select class="form-control" style="">
-                <option>All</option>
+              <select class="form-control" style="" >
+                <option ></option>
               </select>
             </div>
           </div>
         </div>
         <div class="col align-self-center">
-          <div class="row justify-content-center" style="margin-bottom: 5px"><a [href]="fileUrl" download="file.txt" ><button class="blueButton">Download Employee List</button> </a>  </div>
+          <div class="row justify-content-center" style="margin-bottom: 5px"><a [href]="employeePage" download="file.txt" ><button class="blueButton">Download Employee List</button> </a>  </div>
           <div class="row justify-content-center" style="margin-top: 10px"> <button class="whiteButton" [routerLink]="['/employees/create']"  >Register Employee</button></div>
         </div>
       </div>
@@ -61,7 +63,7 @@
     <div class="card-title" style="height: 15px; ">
       <div class="row" style="margin: 10px; margin-top: 15px;">
         <div class="col"> <h5 style="color: #333333; font-family: Montserrat; font-size: 20px">Showing all the employee list below</h5> </div>
-        <div class="col text-right"> <h5 style="color: #333333; font-family: Montserrat; font-size: 20px; margin-right: 50px">Total Employee {{employees.length}}</h5> </div>
+        <div class="col text-right"> <h5 style="color: #333333; font-family: Montserrat; font-size: 20px; margin-right: 50px">Total Employee {{employeePage.size}}</h5> </div>
       </div>
     </div>
 
@@ -83,24 +85,24 @@
           </tr>
           </thead>
           <tbody   >
-          <tr *ngFor="let employee of employees">
+          <tr *ngFor="let employee of employeePage.content">
             <td scope="row" style="text-align: center;">
-              <div *ngIf="employee.gender === 'male'; else templateName">
+              <div *ngIf="employee.gender === 'm'; else templateName">
                 <img src="../../../../assets/image_resources/ic_male.png" style="" alt="Responsive image">
               </div>
               <ng-template #templateName>
                 <img src="../../../../assets/image_resources/ic_female.png" style="" alt="Responsive image">
               </ng-template>
             </td>
-            <td class="col-sm-2" style=" text-align: center; "> {{employee.name}} </td>
-            <td style="text-align: center"> {{employee.id}} </td>
-            <td style="text-align: center"> {{employee.phone}} </td>
-            <td style="text-align: center"> {{employee.unit}} </td>
-            <td style="text-align: center"> {{employee.department}} </td>
-            <td style="text-align: center"> {{employee.jobTitle}} </td>
+            <td class="col-sm-2" style=" text-align: center; "> {{employee.firstName + ' '}}  {{employee.lastName}} </td>
+            <td style="text-align: center"> {{employee.companyEmployeeId}} </td>
+            <td style="text-align: center"> {{employee.phoneNumber}} </td>
+            <td style="text-align: center">  </td>
+            <td style="text-align: center"> </td>
+            <td style="text-align: center"> {{employee.companyJobTitle}} </td>
             <td style="text-align: center"> {{employee.lastMeasured}} </td>
-            <td style="text-align: center"> <button class="viewButton" [routerLink]="['/employees/create',employee.id]"> View </button>
-              <button class="prescriptionButton"  [routerLink]="['/employees/prescription',employee.id]"> Prescriptions </button>
+            <td style="text-align: center"> <button class="viewButton" [routerLink]="['/employees/create',employee.companyEmployeeId]"> View </button>
+              <button class="prescriptionButton"  [routerLink]="['/employees/prescription',employee.companyEmployeeId]"> Prescriptions </button>
             </td>
           </tr>
           </tbody>

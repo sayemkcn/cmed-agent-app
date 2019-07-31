@@ -3,7 +3,7 @@ import {AuthService} from '../../auth/shared/auth.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ApiEndpoints} from '../../shared/commons/api-endpoints.resource';
 import {Observable} from 'rxjs';
-import {IemployeeList} from "../models/iemployee-list";
+import {IEmployeePage} from "../models/employee-page.model";
 
 
 
@@ -22,18 +22,8 @@ export class EmployeeService {
 
   }
 
-  getEmployees(): Observable<IemployeeList> {
-    return this.http.get<IemployeeList>(this.apiEndpoints.AGENTS.FETCH, {headers: this.headers});
-  }
-
-  getEmployeeDetails(id: number): Observable<IemployeeList> {
-    return this.http.get<IemployeeList>(this.apiEndpoints.AGENTS.FETCH_DETAILS(id), {headers: this.headers});
-  }
-  registerEmployee(employee: IemployeeList): Observable<IemployeeList> {
-    return this.http.post<IemployeeList>(this.apiEndpoints.AGENTS.CREATE, employee, {headers: this.headers});
-  }
-  refillEmployee(employeeId: number, dept: number): Observable<any> {
-    return this.http.post<any>(this.apiEndpoints.AGENTS.REFILL(employeeId, dept), null, {headers: this.headers});
+  getEmployees( code:string, query:string, gender:string, page:number ): Observable<IEmployeePage> {
+    return this.http.get<IEmployeePage>(this.apiEndpoints.EMPLOYEES.FETCH(code,query,gender,page), {headers: this.headers});
   }
 
 }

@@ -20,7 +20,7 @@
 
 
         <li *ngFor="let blood of bloodStats">
-          <small *ngIf="isValid(blood.bloodGroup)">{{blood.count}}</small>
+          <small *ngIf="isValid(blood.bloodGroup)" style="">{{blood.count}}</small>
           <span *ngIf="isValid(blood.bloodGroup)" [ngStyle]="{backgroundColor:getColor(blood.bloodGroup),color:getColor(blood.bloodGroup), height:getHeight(blood.count) }"   title="{{blood.bloodGroup}}"></span>
         </li>
 
@@ -35,3 +35,10 @@
 
 
 
+
+
+<!--<span *ngIf="isValid(blood.bloodGroup)" [ngStyle]="{ height:getHeight(blood.count)-10 }" style="color: black;background-color: blue"  title="{{blood.bloodGroup}}">{{blood.count}}</span>-->
+<!--<span *ngIf="isValid(blood.bloodGroup)" [ngStyle]="{ height:getHeight(blood.count)-10 }" style="color: black;background-color: green"  title="{{blood.bloodGroup}}">{{blood.count}}</span>-->
+<!--<span *ngIf="isValid(blood.bloodGroup)" [ngStyle]="{ height:getHeight(blood.count)-10 }" style="color: black;background-color: brown "  title="{{blood.bloodGroup}}">{{blood.count}}</span>-->
+<!--<span *ngIf="isValid(blood.bloodGroup)" [ngStyle]="{ height:getHeight(blood.count)-10 }" style="color: black;background-color: blue"  title="{{blood.bloodGroup}}">{{blood.count}}</span>-->
+<!--<span *ngIf="isValid(blood.bloodGroup)" [ngStyle]="{height:getHeight(blood.count) }" style="color: black;background-color: #f4ff42" title="{{blood.bloodGroup}}">{{blood.count}}</span>-->

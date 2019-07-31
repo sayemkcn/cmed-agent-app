@@ -59,6 +59,8 @@ export class AuthService {
     });
   }
 
+
+
   refreshToken() {
     const userAuth: Observable<IUserAuth> = this.http.post<IUserAuth>(this.getRefreshTokenUrl(), null);
     userAuth.subscribe((auth: IUserAuth) => {
@@ -68,6 +70,9 @@ export class AuthService {
     }, err => this.logout());
   }
 
+  getCompanyCode():string{
+    return LocalStorage.retrive(LocalStorage.KEYS.companyCode) as string;
+  }
   getUsername(): string {
     return LocalStorage.retrive(LocalStorage.KEYS.username) as string;
   }

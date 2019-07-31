@@ -42,12 +42,9 @@
           <mat-tab label="Blood Pressure" >
             <ng-template matTabContent >
               <div style="display: block; background-color: white">
-                <dx-chart
-                  [barGroupPadding]="0.7"
-                  id="chart"
-                  [dataSource]="chartDatas">
+                <dx-chart [barGroupPadding]="0.7" id="chart" [dataSource]="chartDatas">
 
-                  <dxi-series color="#FBD332"  valueField="low" name="Low"></dxi-series>
+                  <dxi-series  color="#FBD332"  valueField="low" name="Low"></dxi-series>
                   <dxi-series color="#12DE77" valueField="normal" name="Normal"></dxi-series>
                   <dxi-series color="#FCA34B" valueField="prehyper_tension" name="Prehyper Tension"></dxi-series>
                   <dxi-series color="#FB6843" valueField="high" name="High"></dxi-series>
@@ -55,10 +52,7 @@
                   <dxi-series color="#FC3E43" valueField="moderate_high" name="Moderate High"></dxi-series>
                   <dxi-series color="#A44545" valueField="severe_high" name="Severe High"></dxi-series>
 
-                  <dxo-common-series-settings
-                    argumentField="month"
-                    type="fullStackedBar"
-                     >
+                  <dxo-common-series-settings argumentField="month" type="fullStackedBar" >
 
                   </dxo-common-series-settings>
                   <dxo-legend

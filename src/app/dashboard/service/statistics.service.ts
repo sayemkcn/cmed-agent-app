@@ -18,8 +18,8 @@ export class StatisticsService {
   constructor(private auth: AuthService, private http: HttpClient, private apiEndpoints: ApiEndpoints) {
 
   }
-  getStatistics(fromDate:string,tooDate:string): Observable<Statistics> {
-    return this.http.get<Statistics>(this.apiEndpoints.STATISTICS.FETCH("cmed",fromDate,tooDate), {headers: this.headers});
+  getStatistics(code:string,fromDate:string,tooDate:string): Observable<Statistics> {
+    return this.http.get<Statistics>(this.apiEndpoints.STATISTICS.FETCH(code,fromDate,tooDate), {headers: this.headers});
   }
 
 }

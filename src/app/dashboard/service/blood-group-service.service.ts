@@ -5,6 +5,7 @@ import {ApiEndpoints} from "../../shared/commons/api-endpoints.resource";
 import {Observable} from "rxjs";
 import {IBloodGroup} from "../models/blood-group.model";
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,8 +20,8 @@ export class BloodGroupServiceService {
 
   }
 
-  getBloodGroups(): Observable<IBloodGroup> {
-    return this.http.get<IBloodGroup >(this.apiEndpoints.BLOOD_GROUP.FETCH("cmed"), {headers: this.headers});
+    getBloodGroups(code:string): Observable<IBloodGroup> {
+    return this.http.get<IBloodGroup >(this.apiEndpoints.BLOOD_GROUP.FETCH(code), {headers: this.headers});
   }
 
 

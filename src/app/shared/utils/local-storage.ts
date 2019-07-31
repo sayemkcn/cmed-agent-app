@@ -8,7 +8,8 @@ export class LocalStorage {
     accessToken: 'B57UB5&ehyr&5b&*6',
     refreshToken: 'INB*gege&U4^345%36^5u',
     authorities: 'BUegeg&v3$76u%^&*',
-    username: 'B^4^3&tertre'
+    username: 'B^4^3&tertre',
+    companyCode:'er4647y5ehtrytg'
   };
 
   constructor() {
@@ -26,6 +27,7 @@ export class LocalStorage {
     localStorage.setItem(this.KEYS.username, userAuth.cmedId);
     localStorage.setItem(this.KEYS.accessToken, userAuth.access_token);
     localStorage.setItem(this.KEYS.refreshToken, userAuth.refresh_token);
+    localStorage.setItem(this.KEYS.companyCode, userAuth.company_code);
     localStorage.setItem(this.KEYS.authorities, JSON.stringify(userAuth.authorities));
   }
 
@@ -33,6 +35,7 @@ export class LocalStorage {
     localStorage.removeItem(this.KEYS.username);
     localStorage.removeItem(this.KEYS.accessToken);
     localStorage.removeItem(this.KEYS.refreshToken);
+    localStorage.removeItem(this.KEYS.companyCode);
     localStorage.removeItem(this.KEYS.authorities);
   }
 }

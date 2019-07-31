@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { EmployeelistComponent } from './components/employeelist/employeelist.component';
 import { CreateEmployeeComponent } from './components/create-employee/create-employee.component';
 import {DashboardRoutingModule} from "./employee-routing.module";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { PrescriptionComponent } from './components/prescription/prescription.component';
 import {HttpModule} from '@angular/http';
@@ -15,7 +15,8 @@ import {HttpModule} from '@angular/http';
     DashboardRoutingModule,
     ReactiveFormsModule,
     MatButtonToggleModule,
-    HttpModule
+    HttpModule,
+    FormsModule
   ]
 })
 export class EmployeeModule { }

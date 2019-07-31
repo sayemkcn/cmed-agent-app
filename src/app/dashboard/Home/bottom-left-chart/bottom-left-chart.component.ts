@@ -43,6 +43,8 @@ export class BottomLeftChartComponent extends BaseComponent implements OnInit {
       this.patientInfo = measurement;
       // console.log(measurement);
     }, err => this.handleError(err))
+
+    // this.convertData(this.patientInfo)
   }
 
   addEventFrom(event: MatDatepickerInputEvent<Date>) {
@@ -68,8 +70,11 @@ export class BottomLeftChartComponent extends BaseComponent implements OnInit {
   }
 
   convertData(patientData: Map<string, IStatusCount[]>): any[] {
+
     console.log(patientData)
+
     let chartData: any=[];
+
     Object.keys(patientData).forEach(function (key){
       let chartItem: Map<string, any>;
       chartItem.set('month', key);

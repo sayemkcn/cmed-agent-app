@@ -8,5 +8,6 @@ export interface IUserAuth {
   scope: string;
   name: string;
   cmedId: string;
+  company_code?:string,
   authorities: IAuthority[];
 }
