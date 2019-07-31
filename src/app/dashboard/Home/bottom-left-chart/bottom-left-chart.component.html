@@ -1,26 +1,26 @@
 
-<div class="div " style="background-color: #F9F9F9;font-family: Montserrat;">
+<div class="div embed-responsive" style="background-color: #F9F9F9;font-family: Montserrat;">
   <div class="row" >
-    <div class="col-4">
+    <div class="col-md-4">
       <div class="oneLine" style="font-size: 20px; font-family: Montserrat">
           Measurements of all the employees
       </div>
     </div>
-    <div class="col-1"></div>
-    <div class="col-3" >
+    <div class="col-md-1"></div>
+    <div class="col-md-3" >
       <div >
         <mat-form-field >
-          <input matInput [matDatepicker]="picker1" placeholder="From">
+          <input matInput [matDatepicker]="picker1" placeholder="From" (dateChange)="addEventFrom($event)">
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
       </div>
     </div>
-    <div class="col-1"></div>
-  <div class="col-3" >
+<!--    <div class="col-md-1"></div>-->
+  <div class="col-md-3" >
       <div >
         <mat-form-field >
-          <input matInput [matDatepicker]="picker2" placeholder="To">
+          <input matInput [matDatepicker]="picker2" placeholder="To" (dateChange)="addEventToo($event)">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
@@ -36,23 +36,24 @@
     <div class="col-12">
 
       <div >
+
         <mat-tab-group style="background-color:#ECEFF4">
 
           <mat-tab label="Blood Pressure" >
-            <ng-template matTabContent>
+            <ng-template matTabContent >
               <div style="display: block; background-color: white">
                 <dx-chart
                   [barGroupPadding]="0.7"
                   id="chart"
-                  [dataSource]="patientInfo">
+                  [dataSource]="chartDatas">
 
-                  <dxi-series color="#FBD332"  valueField="low" name="low"></dxi-series>
-                  <dxi-series color="#12DE77" valueField="normal" name="normal"></dxi-series>
-                  <dxi-series color="#FCA34B" valueField="prehyper_tension" name="prehyper_tension"></dxi-series>
-                  <dxi-series color="#FB6843" valueField="high" name="high"></dxi-series>
-                  <dxi-series color="#FE728A" valueField="mid_high" name="mid_high"></dxi-series>
-                  <dxi-series color="#FC3E43" valueField="moderate_high" name="moderate_high"></dxi-series>
-                  <dxi-series color="#A44545" valueField="severe_high" name="severe_high"></dxi-series>
+                  <dxi-series color="#FBD332"  valueField="low" name="Low"></dxi-series>
+                  <dxi-series color="#12DE77" valueField="normal" name="Normal"></dxi-series>
+                  <dxi-series color="#FCA34B" valueField="prehyper_tension" name="Prehyper Tension"></dxi-series>
+                  <dxi-series color="#FB6843" valueField="high" name="High"></dxi-series>
+                  <dxi-series color="#FE728A" valueField="mid_high" name="Mid High"></dxi-series>
+                  <dxi-series color="#FC3E43" valueField="moderate_high" name="Moderate High"></dxi-series>
+                  <dxi-series color="#A44545" valueField="severe_high" name="Severe High"></dxi-series>
 
                   <dxo-common-series-settings
                     argumentField="month"
@@ -73,16 +74,20 @@
                     [customizeTooltip]="customizeTooltip">
                   </dxo-tooltip>
                 </dx-chart>
+
               </div>
             </ng-template>
           </mat-tab>
+
+          <!------End of blood pressure-->
+
           <mat-tab  label="Pulse">
             <ng-template matTabContent>
               <div style="display: block; background-color: white">
                 <dx-chart
                   [barGroupPadding]="0.7"
-                  id="chart"
-                  [dataSource]="patientInfo">
+                  id="chart1"
+                  [dataSource]="chartDatas">
 
                   <dxi-series color="#FBD332"  valueField="low" name="low"></dxi-series>
                   <dxi-series color="#12DE77" valueField="normal" name="normal"></dxi-series>
@@ -110,13 +115,16 @@
               </div>
             </ng-template>
           </mat-tab>
+          <!------End of Pulse-->
+
+
           <mat-tab  label="Glucose">
             <ng-template matTabContent>
               <div style="display: block; background-color: white">
                 <dx-chart
                   [barGroupPadding]="0.7"
-                  id="chart"
-                  [dataSource]="patientInfo">
+                  id="chart2"
+                  [dataSource]="chartDatas">
                   <dxi-series color="#FBD332"  valueField="low" name="low"></dxi-series>
                   <dxi-series color="#12DE77" valueField="normal" name="normal"></dxi-series>
                   <dxi-series color="#FCA34B" valueField="prehyper_tension" name="prehyper_tension"></dxi-series>
@@ -143,13 +151,17 @@
               </div>
             </ng-template>
           </mat-tab>
+          <!------End of Glucose-->
+
+
+
           <mat-tab label="B.M.I">
             <ng-template matTabContent>
               <div style="display: block; background-color: white">
                 <dx-chart
                   [barGroupPadding]="0.7"
-                  id="chart"
-                  [dataSource]="patientInfo">
+                  id="chart3"
+                  [dataSource]="chartDatas">
                   <dxi-series color="#FBD332"  valueField="low" name="low"></dxi-series>
                   <dxi-series color="#12DE77" valueField="normal" name="normal"></dxi-series>
                   <dxi-series color="#FCA34B" valueField="prehyper_tension" name="prehyper_tension"></dxi-series>
@@ -176,13 +188,16 @@
               </div>
             </ng-template>
           </mat-tab >
+          <!-----End of glucose------->
+
+
           <mat-tab  label="Temp">
             <ng-template matTabContent>
               <div style="display: block; background-color: white">
                 <dx-chart
                   [barGroupPadding]="0.7"
-                  id="chart"
-                  [dataSource]="patientInfo">
+                  id="chart4"
+                  [dataSource]="chartDatas">
                   <dxi-series color="#FBD332"  valueField="low" name="low"></dxi-series>
                   <dxi-series color="#12DE77" valueField="normal" name="normal"></dxi-series>
                   <dxi-series color="#FCA34B" valueField="prehyper_tension" name="prehyper_tension"></dxi-series>
@@ -209,6 +224,9 @@
               </div>
             </ng-template>
           </mat-tab>
+          <!-----End of Temperature------->
+
+
         </mat-tab-group>
 
       </div>

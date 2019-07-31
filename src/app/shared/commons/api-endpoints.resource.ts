@@ -59,6 +59,17 @@ export class ApiEndpoints {
       return environment.base_url + ApiEndpoints.API_VERSION + '/corporate/'+companyCode+'/stats?from='+dateFrom + '&to='+dateTo;
     }
   }
+  MEASUREMENTS={
+    FETCH(companyCode:string,measurementType:string,dateFrom:string,dateTo:string){
+      return environment.base_url+ApiEndpoints.API_VERSION+ '/corporate/'+companyCode+'/measurementstats?measurement_type='+measurementType+'&from='+dateFrom+'&to='+dateTo;
+    }
+  }
+
+  BLOOD_GROUP ={
+    FETCH(companyCode:string){
+      return environment.base_url + ApiEndpoints.API_VERSION + '/corporate/'+companyCode+'/stats/blood_groups'
+    }
+  }
 
 
 }

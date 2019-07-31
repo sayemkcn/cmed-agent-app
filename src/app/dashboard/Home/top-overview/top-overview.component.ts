@@ -3,47 +3,62 @@ import {Statistics} from "../../models/statistics";
 import {StatisticsService} from "../../service/statistics.service";
 import {AuthService} from "../../../auth/shared/auth.service";
 import {BaseComponent} from "../../../shared/base/base.component";
-import {DateUtil} from "../../../shared/utils/date-util";
-import {FormControl, FormGroup} from "@angular/forms";
 import {DatePipe} from '@angular/common';
+import {MatDatepickerInputEvent} from "@angular/material";
 
 @Component({
   selector: 'app-top-overview',
   templateUrl: './top-overview.component.html',
   styleUrls: ['./top-overview.component.scss'],
-  providers:[DatePipe]
+  providers: [DatePipe]
 })
 export class TopOverviewComponent extends BaseComponent implements OnInit {
 
 
-  dateRange=new FormGroup({
-    fromDate: new FormControl(),
-    tooDate: new FormControl()
-  })
+  private fromDate= new DatePipe('en-US').transform(Date.now(), 'yyyy-MM-dd');
+  private tooDate = "2019-08-23";
 
 
-  public today_date =Date();
+  private percentageServed = 70;
+  private progressValue = 'c100 p' + this.percentageServed + ' blue';
+
+  private measurementStatistics: Statistics;
+  private currentDate = Date.now();
 
 
-  public percentageServed = 70;
-  public progressValue = 'c100 p' + this.percentageServed + ' blue';
-
-  private measurementStatistics:Statistics;
-
-  constructor(private statService: StatisticsService, private auth: AuthService,private datePipe: DatePipe,) {
+  constructor(private statService: StatisticsService, private auth: AuthService, private datePipe: DatePipe) {
     super(auth)
   }
-  // public one= this.datePipe.transform(dateStart,'dd-MM-yyyy').toString()
-  public one="20/07/2019";
-  public two="23/07/2019";
-  ngOnInit():void {
 
-    this.statService.getStatistics(this.one,this.two).subscribe(stats=>{
-      this.measurementStatistics=stats;
-    },err=>this.handleError(err) )
+
+  ngOnInit() {
+    this.statService.getStatistics(this.fromDate, this.tooDate).subscribe(stats => {
+      this.measurementStatistics = stats;
+      // console.log(stats);
+    }, err => this.handleError(err))
 
   }
 
+  addEventFrom(event: MatDatepickerInputEvent<Date>) {
+    this.fromDate = this.datePipe.transform(event.value, 'yyyy-MM-dd').toString();
+    // console.log(this.fromDate);
+    this.getStats()
+  }
+
+  addEventToo(event: MatDatepickerInputEvent<Date>) {
+    this.tooDate = this.datePipe.transform(event.value, 'yyyy-MM-dd').toString();
+    // console.log(this.tooDate);
+    this.getStats()
+  }
+
+  getStats() {
+    if (this.fromDate != '' && this.tooDate != '') {
+      this.statService.getStatistics(this.fromDate, this.tooDate).subscribe(stats => {
+        this.measurementStatistics = stats;
+      }, err => this.handleError(err))
+    }
+
+  }
 
 
 }

@@ -63,10 +63,10 @@
     </ul>
   </div>
 
-<!--  <div class="navbar-nav ml-auto">-->
-<!--    &lt;!&ndash;        <a *ngIf="!isLoggedIn()" class="nav-item nav-link">Register</a>&ndash;&gt;-->
-<!--    <a *ngIf="!isLoggedIn()" [routerLink]="['login']" class="nav-item nav-link">Login</a>-->
-<!--    <a *ngIf="isLoggedIn()" [routerLink]="['logout']" class="nav-item nav-link">Logout</a>-->
-<!--  </div>-->
+  <div class="navbar-nav ml-auto">
+    <!--        <a *ngIf="!isLoggedIn()" class="nav-item nav-link">Register</a>-->
+    <a *ngIf="!isLoggedIn()" [routerLink]="['login']" class="nav-item nav-link">Login</a>
+    <a *ngIf="isLoggedIn()" [routerLink]="['logout']" class="nav-item nav-link">Logout</a>
+  </div>
 
 </nav>

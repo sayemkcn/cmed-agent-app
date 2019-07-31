@@ -23,10 +23,10 @@ import {MatMomentDateModule} from '@angular/material-moment-adapter';
 // import { EmployeeSearchComponent } from './employees/employee-search/employee-search.component';
 // import { RegisterEmployeeComponent } from './employees/register-employee/register-employee.component';
 // import { EmployeesComponent } from './employees/employees.component';
-import { InventoryComponent } from './inventory/inventory.component';
-import { InventoryListComponent } from './inventory/inventory-list/inventory-list.component';
-import { InventoryListTableComponent } from './inventory/inventory-list-table/inventory-list-table.component';
-import { InventorySearchComponent } from './inventory/inventory-search/inventory-search.component';
+// import { InventoryComponent } from './inventory/inventory.component';
+// import { InventoryListComponent } from './inventory/inventory-list/inventory-list.component';
+// import { InventoryListTableComponent } from './inventory/inventory-list-table/inventory-list-table.component';
+// import { InventorySearchComponent } from './inventory/inventory-search/inventory-search.component';
 import { ReportsComponent } from './reports/reports.component';
 import { ActiveEmployeeStatusReportComponent } from './reports/active-employee-status-report/active-employee-status-report.component';
 import { AllMeasurementsReportComponent } from './reports/all-measurements-report/all-measurements-report.component';
@@ -38,6 +38,7 @@ import { ReportsListComponent } from './reports/reports-list/reports-list.compon
 import { ServiceProviderReportComponent } from './reports/service-provider-report/service-provider-report.component';
 import {DxChartModule} from "devextreme-angular";
 import {ReactiveFormsModule} from "@angular/forms";
+import {DxoDataSourceModule} from "devextreme-angular/ui/nested/data-source";
 @NgModule({
   declarations: [StatsComponent,
     TopOverviewComponent,
@@ -50,10 +51,10 @@ import {ReactiveFormsModule} from "@angular/forms";
     // EmployeeSearchComponent,
     // RegisterEmployeeComponent,
     // EmployeesComponent,
-    InventoryComponent,
-    InventoryListComponent,
-    InventoryListTableComponent,
-    InventorySearchComponent,
+    // InventoryComponent,
+    // InventoryListComponent,
+    // InventoryListTableComponent,
+    // InventorySearchComponent,
     ReportsComponent,
     ActiveEmployeeStatusReportComponent,
     AllMeasurementsReportComponent,
@@ -78,7 +79,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatTabsModule,
     MatMomentDateModule,
     DxChartModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DxoDataSourceModule
   ]
 })
 export class DashboardModule { }

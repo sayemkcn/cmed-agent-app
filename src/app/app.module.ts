@@ -19,7 +19,7 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {HttpModule} from '@angular/http';
 import { DxChartModule } from 'devextreme-angular';
 
-import {PatientInfoService, Service} from './dashboard/service/patient-info.service'
+// import {PatientInfoService, Service} from './dashboard/service/patient-info.service'
 
 @NgModule({
   declarations: [
@@ -52,8 +52,7 @@ import {PatientInfoService, Service} from './dashboard/service/patient-info.serv
     AuthService,
     Toastr,
     ApiEndpoints,
-    PatientInfoService,
-    Service
+
   ],
   bootstrap: [AppComponent]
 })
