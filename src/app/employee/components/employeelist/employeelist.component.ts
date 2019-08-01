@@ -3,12 +3,14 @@ import {AuthService} from "../../../auth/shared/auth.service";
 import {EmployeeService} from "../../services/employee.service";
 import {BaseComponent} from "../../../shared/base/base.component";
 import {IEmployeePage} from "../../models/employee-page.model";
+import {DatePipe} from "@angular/common";
 
 
 @Component({
   selector: 'app-employeelist',
   templateUrl: './employeelist.component.html',
-  styleUrls: ['./employeelist.component.scss']
+  styleUrls: ['./employeelist.component.scss'],
+  providers:[DatePipe]
 })
 export class EmployeelistComponent extends BaseComponent implements OnInit {
 

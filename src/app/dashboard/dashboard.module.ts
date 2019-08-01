@@ -37,7 +37,7 @@ import { HealthStatusReportComponent } from './reports/health-status-report/heal
 import { ReportsListComponent } from './reports/reports-list/reports-list.component';
 import { ServiceProviderReportComponent } from './reports/service-provider-report/service-provider-report.component';
 import {DxChartModule} from "devextreme-angular";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DxoDataSourceModule} from "devextreme-angular/ui/nested/data-source";
 @NgModule({
   declarations: [StatsComponent,
@@ -80,7 +80,8 @@ import {DxoDataSourceModule} from "devextreme-angular/ui/nested/data-source";
     MatMomentDateModule,
     DxChartModule,
     ReactiveFormsModule,
-    DxoDataSourceModule
+    DxoDataSourceModule,
+    FormsModule
   ]
 })
 export class DashboardModule { }

@@ -99,10 +99,10 @@
             <td style="text-align: center"> {{employee.phoneNumber}} </td>
             <td style="text-align: center">  </td>
             <td style="text-align: center"> </td>
-            <td style="text-align: center"> {{employee.companyJobTitle}} </td>
-            <td style="text-align: center"> {{employee.lastMeasured}} </td>
-            <td style="text-align: center"> <button class="viewButton" [routerLink]="['/employees/create',employee.companyEmployeeId]"> View </button>
-              <button class="prescriptionButton"  [routerLink]="['/employees/prescription',employee.companyEmployeeId]"> Prescriptions </button>
+            <td style="text-align: center"> {{employee.id}} </td>
+            <td style="text-align: center"> {{employee.updated_at| date }} </td>
+            <td style="text-align: center"> <button class="viewButton" [routerLink]="['/employees/create',employee.id]"> View </button>
+              <button class="prescriptionButton"  [routerLink]="['/employees/prescription',employee.id]"> Prescriptions </button>
             </td>
           </tr>
           </tbody>
