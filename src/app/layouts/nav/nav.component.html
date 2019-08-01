@@ -67,6 +67,8 @@
     <!--        <a *ngIf="!isLoggedIn()" class="nav-item nav-link">Register</a>-->
     <a *ngIf="!isLoggedIn()" [routerLink]="['login']" class="nav-item nav-link">Login</a>
     <a *ngIf="isLoggedIn()" [routerLink]="['logout']" class="nav-item nav-link">Logout</a>
+
+
   </div>
 
 </nav>

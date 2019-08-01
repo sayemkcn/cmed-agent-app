@@ -30,20 +30,20 @@ export class BottomRightChartBloodGroupComponent extends BaseComponent implement
   isValid(bloodGroup: string){
     return bloodGroup=='A+' || bloodGroup=='A-'
           ||bloodGroup=='B+' || bloodGroup=='B-'
-          ||bloodGroup=='O+' || bloodGroup=='O-'||bloodGroup=='AB+' || bloodGroup=='AB-'||bloodGroup=='Unknown'
+          ||bloodGroup=='O+' || bloodGroup=='O-'||bloodGroup=='AB+' || bloodGroup=='AB-'||bloodGroup=='Unknown';
   }
 
 
   getColor(bloodGroupName:string){
-    if(bloodGroupName=='A+') return '#E64B61'
-    else if(bloodGroupName=='A-') return '#DF9A83'
-    else if(bloodGroupName=='B+') return '#22D1D8'
-    else if(bloodGroupName=='B-') return '#22AEE3'
-    else if(bloodGroupName=='O+') return '#5874C1'
-    else if(bloodGroupName=='O-') return '#CB6CC8'
-    else if(bloodGroupName=='AB+') return '#FBD332'
-    else if(bloodGroupName=='AB-') return '#30C69F'
-    else if(bloodGroupName=='Unknown') return '#4F5D6F'
+    if(bloodGroupName=='A+') return '#E64B61';
+    else if(bloodGroupName=='A-') return '#DF9A83';
+    else if(bloodGroupName=='B+') return '#22D1D8';
+    else if(bloodGroupName=='B-') return '#22AEE3';
+    else if(bloodGroupName=='O+') return '#5874C1';
+    else if(bloodGroupName=='O-') return '#CB6CC8';
+    else if(bloodGroupName=='AB+') return '#FBD332';
+    else if(bloodGroupName=='AB-') return '#30C69F';
+    else if(bloodGroupName=='Unknown') return '#4F5D6F';
   }
   getHeight(height:number){
     return ((height*100)/1906) +10+ "%";

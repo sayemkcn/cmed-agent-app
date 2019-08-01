@@ -31,13 +31,13 @@ export class EmployeelistComponent extends BaseComponent implements OnInit {
   }
 
   searchEmployee(){
-    if(this.search!='' && this.gender !='') {
+    if(this.search!='' || this.gender !='') {
       this.employeeService.getEmployees(this.auth.getCompanyCode(), this.search, this.gender, this.page).subscribe(searchVar => {
         this.employeePage = searchVar;
       }, err => this.handleError(err))
     }
-    this.search='';
-    this.gender='';
+    // this.search='';
+    // this.gender='';
   }
 
 

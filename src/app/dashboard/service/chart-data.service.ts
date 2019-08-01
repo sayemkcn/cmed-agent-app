@@ -5,15 +5,19 @@ import { Injectable } from '@angular/core';
 })
 export class ChartDataService {
 
-  constructor( ) { }
+  constructor() {
+
+  }
 
   month: string;
+  mid_high:number;
+  moderate_high: number;
+
   low: number;
   normal: number;
   prehyper_tension: number;
   high: number;
-  mid_high:number;
-  moderate_high: number;
+
   severe_high:number;
 }
 

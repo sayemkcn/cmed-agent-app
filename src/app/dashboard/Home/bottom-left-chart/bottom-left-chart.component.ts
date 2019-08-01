@@ -11,24 +11,23 @@ import {ChartDataService, Service} from "../../service/chart-data.service";
   selector: 'app-bottom-left-chart',
   templateUrl: './bottom-left-chart.component.html',
   styleUrls: ['./bottom-left-chart.component.scss'],
-  providers: [DatePipe, Service, ChartDataService]
+  providers: [DatePipe, ChartDataService,Service]
 })
 export class BottomLeftChartComponent extends BaseComponent implements OnInit {
 
   private patientInfo: Map<string, IStatusCount[]>;
 
+  private chartDatas;
+  private convertedData;
 
-  private chartDatas: ChartDataService[];
-
-
-  private fromDate = new DatePipe('en-US').transform(Date.now(), 'yyyy-MM-dd');
-  private tooDate = "2019-08-23";
+  // private fromDate = new DatePipe('en-US').transform(Date.now(), 'yyyy-MM-dd');
+  private fromDate = "2018-08-01"
+  private tooDate = "2019-02-20";
   private measurementType = "BP";
 
-  constructor(private auth: AuthService, private datePipe: DatePipe, private measurementsService: PatientInfoService,
-              service: Service, catchData: ChartDataService) {
+  constructor(private auth: AuthService, private datePipe: DatePipe, private measurementsService: PatientInfoService,private service:Service ,private chartDataSource: ChartDataService) {
     super(auth);
-    this.chartDatas = service.getChartsInfo();
+    this.chartDatas=service.getChartsInfo();
 
   }
 
@@ -41,10 +40,12 @@ export class BottomLeftChartComponent extends BaseComponent implements OnInit {
   ngOnInit() {
     this.measurementsService.getMeasurements(this.measurementType, this.fromDate, this.tooDate).subscribe(measurement => {
       this.patientInfo = measurement;
-      // console.log(measurement);
-    }, err => this.handleError(err))
+      // console.log((this.convertedData));
+      this.convertedData = this.convertData(this.patientInfo);
+      // this.chartDatas = this.getChartsInfo();
+      console.log(this.convertedData);
+    }, err => this.handleError(err));
 
-    // this.convertData(this.patientInfo)
   }
 
   addEventFrom(event: MatDatepickerInputEvent<Date>) {
@@ -61,31 +62,65 @@ export class BottomLeftChartComponent extends BaseComponent implements OnInit {
     if (this.fromDate != '' && this.tooDate != '') {
       this.measurementsService.getMeasurements(this.measurementType, this.fromDate, this.tooDate).subscribe(measurement => {
         this.patientInfo = measurement;
-        // console.log("here")
-        // console.log(this.convertData(this.patientInfo));
+
+        this.convertedData = this.convertData(this.patientInfo);
+
 
       }, err => this.handleError(err))
     }
 
   }
 
-  convertData(patientData: Map<string, IStatusCount[]>): any[] {
 
-    console.log(patientData)
+  convertData(patientData: Map<string, IStatusCount[]>) {
 
-    let chartData: any=[];
+    let chartData: any[] = [];
+    let chartItem: any[] = [];
+    // let index=0;
+    Object.keys(patientData).forEach(function (key) {
 
-    Object.keys(patientData).forEach(function (key){
-      let chartItem: Map<string, any>;
-      chartItem.set('month', key);
+      chartItem['month'] = key;
+      // console.log(key);
+
       patientData[key].forEach((statusCount: IStatusCount) => {
-        chartItem.set(statusCount.status, statusCount.count);
+        if(statusCount.status=="Low") statusCount.status='low';
+        if(statusCount.status=="Mild High") statusCount.status='mid_high';
+        if(statusCount.status=="Moderate High") statusCount.status='moderate_high';
+        if(statusCount.status=="Normal") statusCount.status='normal';
+        if(statusCount.status=="Prehypertension") statusCount.status='prehyper_tension';
+        if(statusCount.status=="Severe High") statusCount.status='severe_high';
+        if(statusCount.status=="High") statusCount.status='high';
+
+        chartItem[statusCount.status] = statusCount.count;
       });
+
+      // console.log(chartItem);
       chartData.push(chartItem);
+      chartItem=[];
+      // console.log(chartData);
+
     });
 
     return chartData;
+    // console.log(chartData);
+
   }
+
+  getColor(bloodGroupName:string){
+    if(bloodGroupName=='low') return '#E64B61'
+    else if(bloodGroupName=='A-') return '#DF9A83'
+    else if(bloodGroupName=='B+') return '#22D1D8'
+    else if(bloodGroupName=='B-') return '#22AEE3'
+    else if(bloodGroupName=='O+') return '#5874C1'
+    else if(bloodGroupName=='O-') return '#CB6CC8'
+    else if(bloodGroupName=='AB+') return '#FBD332'
+    else if(bloodGroupName=='AB-') return '#30C69F'
+    else if(bloodGroupName=='Unknown') return '#4F5D6F'
+  }
+  getHeight(height:number){
+    return ((height*100)/1906) +10+ "%";
+  }
+
 
 }
 

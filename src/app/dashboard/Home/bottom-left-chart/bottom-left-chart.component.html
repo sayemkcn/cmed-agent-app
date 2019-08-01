@@ -4,6 +4,8 @@
     <div class="col-md-4">
       <div class="oneLine" style="font-size: 20px; font-family: Montserrat">
           Measurements of all the employees
+
+
       </div>
     </div>
     <div class="col-md-1"></div>
@@ -41,34 +43,27 @@
 
           <mat-tab label="Blood Pressure" >
             <ng-template matTabContent >
-              <div style="display: block; background-color: white">
-                <dx-chart [barGroupPadding]="0.7" id="chart" [dataSource]="chartDatas">
+              <div  style="display: block; background-color: white">
+                <ul class="chart" style="padding-inline-start: 20px;padding-inline-end: 20px;padding-block-end: 51px;background-color: white">
 
-                  <dxi-series  color="#FBD332"  valueField="low" name="Low"></dxi-series>
-                  <dxi-series color="#12DE77" valueField="normal" name="Normal"></dxi-series>
-                  <dxi-series color="#FCA34B" valueField="prehyper_tension" name="Prehyper Tension"></dxi-series>
-                  <dxi-series color="#FB6843" valueField="high" name="High"></dxi-series>
-                  <dxi-series color="#FE728A" valueField="mid_high" name="Mid High"></dxi-series>
-                  <dxi-series color="#FC3E43" valueField="moderate_high" name="Moderate High"></dxi-series>
-                  <dxi-series color="#A44545" valueField="severe_high" name="Severe High"></dxi-series>
+                    <li *ngFor="let stats of convertedData">
 
-                  <dxo-common-series-settings argumentField="month" type="fullStackedBar" >
+                      <span [ngStyle]="{height:getHeight(stats.severe_high) }" style="color:black;background-color: #A44545" >{{stats.severe_high}}</span>
 
-                  </dxo-common-series-settings>
-                  <dxo-legend
-                    verticalAlignment="bottom"
-                    horizontalAlignment="center"
-                    itemTextPosition="right"
+                      <span [ngStyle]="{height:getHeight(stats.moderate_high) }" style="color:black;background-color: #E64B61" >{{stats.moderate_high}}</span>
 
-                  >
-                  </dxo-legend>
-<!--                  <dxo-export [enabled]="true"></dxo-export>-->
-                  <dxo-tooltip
-                    [enabled]="true"
-                    [customizeTooltip]="customizeTooltip">
-                  </dxo-tooltip>
-                </dx-chart>
+                      <span [ngStyle]="{height:getHeight(stats.mid_high) }" style="color:black;background-color: #E8779D" >{{stats.mid_high}}</span>
 
+                      <span [ngStyle]="{height:getHeight(stats.high) }" style="color:black;background-color: #FB6843" >{{stats.high}}</span>
+
+                      <span [ngStyle]="{height:getHeight(stats.prehyper_tension) }" style="color:black;background-color: #FCA34B" >{{stats.prehyper_tension}}</span>
+
+                      <span [ngStyle]="{height:getHeight(stats.normal) }" style="color:black;background-color: #12DE77" >{{stats.normal}}</span>
+
+                      <span [ngStyle]="{height:getHeight(stats.low) }" style="color:black;background-color: #FBD332" title="{{stats.month}}">{{stats.low}}</span>
+                    </li>
+
+                </ul>
               </div>
             </ng-template>
           </mat-tab>
@@ -235,3 +230,10 @@
 
 
 
+
+
+<!--<span *ngIf="isValid(blood.bloodGroup)" [ngStyle]="{ height:getHeight(blood.count)-10 }" style="color: black;background-color: blue"  title="{{blood.bloodGroup}}">{{blood.count}}</span>-->
+<!--<span *ngIf="isValid(blood.bloodGroup)" [ngStyle]="{ height:getHeight(blood.count)-10 }" style="color: black;background-color: green"  title="{{blood.bloodGroup}}">{{blood.count}}</span>-->
+<!--<span *ngIf="isValid(blood.bloodGroup)" [ngStyle]="{ height:getHeight(blood.count)-10 }" style="color: black;background-color: brown "  title="{{blood.bloodGroup}}">{{blood.count}}</span>-->
+<!--<span *ngIf="isValid(blood.bloodGroup)" [ngStyle]="{ height:getHeight(blood.count)-10 }" style="color: black;background-color: blue"  title="{{blood.bloodGroup}}">{{blood.count}}</span>-->
+<!--<span *ngIf="isValid(blood.bloodGroup)" [ngStyle]="{height:getHeight(blood.count) }" style="color: black;background-color: #f4ff42" title="{{blood.bloodGroup}}">{{blood.count}}</span>-->
