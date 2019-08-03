@@ -39,6 +39,7 @@ export class CreateAgentTypeComponent extends BaseComponent implements OnInit {
     // pre-populate fields for edit
     const paramId = this.route.snapshot.paramMap.get('id');
     if (paramId) {
+      console.log(paramId);
       this.agentTypeService.getAgentType(parseInt(paramId, 0))
         .subscribe(agentType => {
           id.setValue(agentType.id);

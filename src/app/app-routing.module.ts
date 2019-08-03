@@ -12,9 +12,9 @@ const routes: Routes = [
   {path: 'employees', loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule)},
   {path: 'reports', loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule)},
 
-  // {path: 'services', loadChildren: () => import('./cmedservices/cmedservices.module').then(m => m.CmedServicesModule)},
-  // {path: 'agent-types', loadChildren: () => import('./agenttypes/agenttypes.module').then(m => m.AgentTypesModule)},
-  // {path: 'agents', loadChildren: () => import('./agents/agents.module').then(m => m.AgentsModule)},
+  {path: 'services', loadChildren: () => import('./cmedservices/cmedservices.module').then(m => m.CmedServicesModule)},
+  {path: 'agent-types', loadChildren: () => import('./agenttypes/agenttypes.module').then(m => m.AgentTypesModule)},
+  {path: 'agents', loadChildren: () => import('./agents/agents.module').then(m => m.AgentsModule)},
   {path: 'logout', component: LogoutComponent},
 ];
 

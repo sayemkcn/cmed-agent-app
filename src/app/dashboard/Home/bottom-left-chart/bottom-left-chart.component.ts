@@ -4,31 +4,26 @@ import {MatDatepickerInputEvent, MatTabChangeEvent} from "@angular/material";
 import {AuthService} from "../../../auth/shared/auth.service";
 import {BaseComponent} from "../../../shared/base/base.component";
 import {PatientInfoService} from "../../service/patient-info.service";
-import {ChartDataService, Service} from "../../service/chart-data.service";
 
 
 @Component({
   selector: 'app-bottom-left-chart',
   templateUrl: './bottom-left-chart.component.html',
   styleUrls: ['./bottom-left-chart.component.scss'],
-  providers: [DatePipe, ChartDataService, Service]
+  providers: [DatePipe, ]
 })
 export class BottomLeftChartComponent extends BaseComponent implements OnInit {
 
   private patientInfo: Map<string, IStatusCount[]>;
 
-  private chartDatas;
   private convertedData;
 
-  // private fromDate = new DatePipe('en-US').transform(Date.now(), 'yyyy-MM-dd');
   private fromDate = "2018-08-01"
   private tooDate = "2019-02-20";
   private measurementType = "BP";
 
-  constructor(private auth: AuthService, private datePipe: DatePipe, private measurementsService: PatientInfoService, private service: Service, private chartDataSource: ChartDataService) {
+  constructor(private auth: AuthService, private datePipe: DatePipe, private measurementsService: PatientInfoService) {
     super(auth);
-    this.chartDatas = service.getChartsInfo();
-
   }
 
   ngOnInit() {
@@ -82,6 +77,7 @@ export class BottomLeftChartComponent extends BaseComponent implements OnInit {
     let chartItem: any[] = [];
 
     Object.keys(patientData).forEach(function (key) {
+      let temp:number=0;
 
       chartItem['month'] = key;
 
@@ -95,30 +91,29 @@ export class BottomLeftChartComponent extends BaseComponent implements OnInit {
         if (statusCount.status == "High") statusCount.status = 'high';
 
         chartItem[statusCount.status] = statusCount.count;
+        temp+=statusCount.count;
+
+
+
       });
+      console.log(temp);
+
+
+      // this.totalStats = temp;
 
       chartData.push(chartItem);
       chartItem = [];
 
     });
-
+    // console.log(this.totalStats);
     return chartData;
 
   }
 
-  getColor(bloodGroupName: string) {
-    if (bloodGroupName == 'low') return '#E64B61'
-    else if (bloodGroupName == 'A-') return '#DF9A83'
-    else if (bloodGroupName == 'B+') return '#22D1D8'
-    else if (bloodGroupName == 'B-') return '#22AEE3'
-    else if (bloodGroupName == 'O+') return '#5874C1'
-    else if (bloodGroupName == 'O-') return '#CB6CC8'
-    else if (bloodGroupName == 'AB+') return '#FBD332'
-    else if (bloodGroupName == 'AB-') return '#30C69F'
-    else if (bloodGroupName == 'Unknown') return '#4F5D6F'
-  }
+
 
   getHeight(height: number) {
+    console.log()
     return ((height * 100) / 1906) + 10 + "%";
   }
 

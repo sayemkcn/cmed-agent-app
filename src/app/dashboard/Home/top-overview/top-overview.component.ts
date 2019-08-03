@@ -15,7 +15,7 @@ import {MatDatepickerInputEvent} from "@angular/material";
 export class TopOverviewComponent extends BaseComponent implements OnInit {
 
 
-  private fromDate= new DatePipe('en-US').transform(Date.now(), 'yyyy-MM-dd');
+  private fromDate = new DatePipe('en-US').transform(Date.now(), 'yyyy-MM-dd');
   private tooDate = "2019-08-23";
 
 
@@ -42,7 +42,7 @@ export class TopOverviewComponent extends BaseComponent implements OnInit {
   addEventFrom(event: MatDatepickerInputEvent<Date>) {
     this.fromDate = this.datePipe.transform(event.value, 'yyyy-MM-dd').toString();
     // console.log(this.fromDate);
-    this.getStats()
+    // this.getStats()
   }
 
   addEventToo(event: MatDatepickerInputEvent<Date>) {
@@ -52,8 +52,8 @@ export class TopOverviewComponent extends BaseComponent implements OnInit {
   }
 
   getStats() {
-    if (this.fromDate != '' && this.tooDate != '') {
-      this.statService.getStatistics(this.auth.getCompanyCode(),this.fromDate, this.tooDate).subscribe(stats => {
+    if ((this.fromDate != '' || this.fromDate != null) && (this.tooDate != '' || this.tooDate != null)) {
+      this.statService.getStatistics(this.auth.getCompanyCode(), this.fromDate, this.tooDate).subscribe(stats => {
         this.measurementStatistics = stats;
       }, err => this.handleError(err))
     }

@@ -47,33 +47,40 @@ export class ApiEndpoints {
   EMPLOYEES = {
     FETCH(companyCode: string, query: string, gender: string, page: number): string {
       let url = environment.base_url + ApiEndpoints.API_VERSION + '/corporate/' + companyCode + '/employees?';
-      if (query!=null && query!='')
-        url+='query=' +query;
-      if(gender!=null && gender!='')
-        url+= '&gender=' + gender;
-      if(page!=null)
-        url+='&page=' + page;
+      if (query != null && query != '')
+        url += 'query=' + query;
+      if (gender != null && gender != '')
+        url += '&gender=' + gender;
+      if (page != null)
+        url += '&page=' + page;
       return url;
     },
 
-    FETCH_DETAILS(id: number) {
-      return environment.base_url + ApiEndpoints.API_VERSION + '/admin/employees/' + id;
+    FETCH_DETAILS(id: number, companyCode: string) {
+      return environment.base_url + ApiEndpoints.API_VERSION + '/corporate/' + companyCode + '/employees/' + id;
+    },
+
+    CREATE(companyCode: string): string {
+      return environment.base_url + ApiEndpoints.API_VERSION + '/corporate/' + companyCode + '/employees/';
     }
+
+
   };
 
   STATISTICS = {
-    FETCH(companyCode: string, dateFrom: string, dateTo: string) :string {
+    FETCH(companyCode: string, dateFrom: string, dateTo: string): string {
       return environment.base_url + ApiEndpoints.API_VERSION + '/corporate/' + companyCode + '/stats?from=' + dateFrom + '&to=' + dateTo;
     }
   };
+
   MEASUREMENTS = {
-    FETCH(companyCode: string, measurementType: string, dateFrom: string, dateTo: string):string {
+    FETCH(companyCode: string, measurementType: string, dateFrom: string, dateTo: string): string {
       return environment.base_url + ApiEndpoints.API_VERSION + '/corporate/' + companyCode + '/measurementstats?measurement_type=' + measurementType + '&from=' + dateFrom + '&to=' + dateTo;
     }
   };
 
   BLOOD_GROUP = {
-    FETCH(companyCode: string):string {
+    FETCH(companyCode: string): string {
       return environment.base_url + ApiEndpoints.API_VERSION + '/corporate/' + companyCode + '/stats/blood_groups';
     }
   };
