@@ -37,31 +37,31 @@
           <div class="row " style="padding-bottom: 10px">
             <div class="form-group " hidden>
               <label for="id">ID</label>
-              <input formControlName="id" class="form-control" type="number" id="id"/>
+              <input formControlName="id" class="form-control" type="number" id="id" [value]="employeeDetails.id">
             </div>
 
 
             <div class="col-4 form-group" style="padding-right: 0px;">
               <label for="firstName">First Name</label>
-              <input type="text" formControlName="firstName" class="form-control boxHeight" id="firstName">
+              <input type="text" formControlName="firstName" class="form-control boxHeight" id="firstName" [value]="employeeDetails.firstName">
             </div>
             <div class="col-4 form-group" style="padding-right: 0px;">
               <label for="lastName">Last Name</label>
-              <input formControlName="lastName" type="text" class="form-control boxHeight" id="lastName">
+              <input formControlName="lastName" type="text" class="form-control boxHeight" id="lastName" [value]="employeeDetails.lastName">
             </div>
             <div class="col-4 form-group">
               <label for="created_at">Registered Date</label>
-              <input formControlName="created_at" type="date" class="form-control boxHeight" id="created_at">
+              <input formControlName="created_at" type="date" class="form-control boxHeight" id="created_at" [value]="employeeDetails.created_at | date: 'dd MMM, yyyy'">
             </div>
           </div>
           <div class="row" style="padding-bottom: 10px; padding-right: 0px">
             <div class="col-4 form-group" style="padding-right: 0px">
               <label for="phoneNumber">Phone Number</label>
-              <input formControlName="phoneNumber" type="tel" class="form-control boxHeight" id="phoneNumber">
+              <input formControlName="phoneNumber" type="tel" class="form-control boxHeight" id="phoneNumber" [value]="employeeDetails.phoneNumber">
             </div>
             <div class="col-4 form-group" style="padding-right: 0px">
               <label for="email">Email(Optional)</label>
-              <input formControlName="email" type="email" class="form-control boxHeight" id="email">
+              <input formControlName="email" type="email" class="form-control boxHeight" id="email" [value]="employeeDetails.email">
             </div>
             <div class="col-4 form-group">
               <label for="last_check_up">Last Check-Up</label>
@@ -71,11 +71,11 @@
           <div class="row " style="padding-bottom: 10px">
             <div class="col-3 padZero form-group">
               <label for="date_of_birth">Date of Birth</label>
-              <input formControlName="date_of_birth" type="date" class="form-control boxHeight " id="date_of_birth">
+              <input formControlName="date_of_birth" type="date" class="form-control boxHeight " id="date_of_birth" [value]="employeeDetails.dateOfConception">
             </div>
             <div class="col-3 padZero form-group" style="padding-left: 10px">
               <label for="companyEmployeeId">Employee ID</label>
-              <input formControlName="companyEmployeeId" type="number" class="form-control boxHeight " id="companyEmployeeId">
+              <input formControlName="companyEmployeeId" type="number" class="form-control boxHeight " id="companyEmployeeId" [value]="employeeDetails.companyEmployeeId">
             </div>
             <div class="col-2 padZero form-group" style="padding-left: 10px">
               <label for="department">Dept</label>
@@ -87,7 +87,7 @@
             </div>
             <div class="col-2 form-group" style="padding-left: 10px">
               <label for="companyJobTitle">Job Title</label>
-              <input type="text" class="form-control boxHeight " id="companyJobTitle" formControlName="companyJobTitle" >
+              <input type="text" class="form-control boxHeight " id="companyJobTitle" formControlName="companyJobTitle" [value]="employeeDetails.companyJobTitle">
             </div>
           </div>
 
@@ -108,36 +108,44 @@
 
         </div>
         <div class="col-3" style="margin-top: 23px">
-<!--          <div class="form-group" style="background-color: #ECEFF4; border-radius: 6px;  padding-top: 6px; height: 38px;">-->
 
-<!--              <label style="font-size: 16px; color: #1AA4E3; padding-right:20px; margin-top:2px; margin-left:8px; margin-right: 42px" > Gender</label>-->
-<!--                <div class="form-check-inline" style="margin: 0px">-->
-<!--                  <label style="padding-right: 5px" class="radio-inline" > <img style="height: 22px;padding-right:4px" src="../../../../assets/image_resources/ic_male.png"> </label>-->
-<!--                  <input type="radio" class="form-check-input" name="button" formControlName="gender" >-->
-<!--                </div>-->
-<!--              <div class="form-check-inline" style="margin: 0px">-->
-<!--                  <label  class="radio-inline"  ><img style="height: 22px; padding-right: 4px" src="../../../../assets/image_resources/ic_female.png"></label>-->
-<!--                  <input type="radio" class="form-check-input" name="button" formControlName="gender" >-->
-<!--              </div>-->
-<!--              <div class="form-check-inline" style="margin: 0px">-->
-<!--                  <label class="radio-inline" ><img style="height: 22px" src="../../../../assets/image_resources/others.svg"></label>-->
-<!--                  <input type="radio" class="form-check-input" name="button" formControlName="gender" >-->
-<!--              </div>-->
-<!--          </div>-->
+          <div class="form-group" style="background-color: #ECEFF4; border-radius: 6px;  padding-top: 6px; height: 38px;">
+
+              <label style="font-size: 16px; color: #1AA4E3; padding-right:20px; margin-top:2px; margin-left:8px; margin-right: 42px" > Gender</label>
+                <div class="form-check-inline" style="margin: 0px">
+                  <label style="padding-right: 5px" class="radio-inline" > <img style="height: 22px;padding-right:4px" src="../../../../assets/image_resources/ic_male.png"> </label>
+                  <input type="radio" class="form-check-input" name="gender" formControlName="gender" [value]="employeeDetails.gender">
+                </div>
+              <div class="form-check-inline" style="margin: 0px">
+                  <label  class="radio-inline"  ><img style="height: 22px; padding-right: 4px" src="../../../../assets/image_resources/ic_female.png"></label>
+                  <input type="radio" class="form-check-input" name="gender" formControlName="gender" [value]="employeeDetails.gender">
+              </div>
+              <div class="form-check-inline" style="margin: 0px">
+                  <label class="radio-inline" ><img style="height: 22px" src="../../../../assets/image_resources/others.svg"></label>
+                  <input type="radio" class="form-check-input" name="gender" formControlName="gender" [value]="employeeDetails.gender">
+              </div>
+          </div>
+
+
         </div>
 
         <div class="col-2 form-group form-control-inline"  style="margin-top: 23px; padding-left: 0px;padding-right: 0px" >
 
           <select name="bloodGroup" formControlName="bloodGroup" style="color:#1AA4E3 ; width: -webkit-fill-available; height: 35px;border-radius: 6px;background-color: #ECEFF4">
-            <option >Blood Group</option>
-            <option *ngFor="let blood of bloodGroup" > {{blood.label}} </option>
+            <option>Blood group</option>
+            <option *ngFor="let blood of bloodGroup" [value]="employeeDetails.bloodGroup" [selected]="employeeDetails.bloodGroup===blood.value" >
+
+              {{blood.label}}
+
+            </option>
+
           </select>
         </div>
 
-        <div class="col-4">
+        <div class="col-4" [formGroup]="address">
           <div class="form-group">
             <label >Address</label>
-            <textarea class="form-control textStyle" formControlName="address" rows="3" style="width: 366px"></textarea>
+            <textarea class="form-control textStyle" formControlName="address" rows="3" style="width: 366px" [value]="address.postCode" ></textarea>
           </div>
         </div>
 
@@ -146,43 +154,42 @@
       </div>
 
       <div class="row " style="margin-left: 29px">
-<!--          <div class="col-8 form-group" style="padding-right: 0px;max-width: 64%">-->
-<!--            <div class="row">-->
-<!--              <div class="col-4" style="margin-right: 31px">-->
-<!--                <label > Is Diabetic?</label>-->
-<!--              </div>-->
+          <div class="col-8 form-group" style="padding-right: 0px;max-width: 64%">
+            <div class="row">
+              <div class="col-4" style="margin-right: 31px">
+                <label > Is Diabetic?</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input formControlName="selfDiabetes" type="radio" class="custom-control-input" id="customRadio1" name="selfDiabetes">
+                <label class="custom-control-label" for="customRadio1">No</label>
+              </div>
 
-<!--              <div class="custom-control custom-radio custom-control-inline">-->
-<!--                <input formControlName="selfDiabetes" type="radio" class="custom-control-input" id="customRadio1" name="diabetic">-->
-<!--                <label class="custom-control-label" for="customRadio1">No</label>-->
-<!--              </div>-->
-
-<!--              <div class="custom-control custom-radio custom-control-inline">-->
-<!--                <input formControlName="selfDiabetes" type="radio" class="custom-control-input" id="customRadio2" name="diabetic">-->
-<!--                <label class="custom-control-label" for="customRadio2">Yes</label>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--        </div>-->
+              <div class="custom-control custom-radio custom-control-inline">
+                <input formControlName="selfDiabetes" type="radio" class="custom-control-input" id="customRadio2" name="selfDiabetes">
+                <label class="custom-control-label" for="customRadio2">Yes</label>
+              </div>
+            </div>
+        </div>
         <div class="col-3 form-group">
 
-          <div class="custom-control-inline" style="width: 353px; margin-left: -13px;">
+          <div class="custom-control-inline" style="width: 353px; margin-left: -13px;" [formGroup]="address" >
 
             <div class=" col-4 form-group"  style="padding-left: 10px;" >
-              <select formControlName="division" style="height: 28px;width: 122px;background-color: #ECEFF4;">
+              <select formControlName="region" style="height: 28px;width: 122px;background-color: #ECEFF4;">
                 <option>Division</option>
-                <option *ngFor="let divi of division" > {{divi.label}} </option>
+                <option *ngFor="let divi of division" [value]="employeeDetails.division" [selected]="divi.value===employeeDetails.division" > {{divi.label}} </option>
               </select>
             </div>
             <div class=" col-4 form-group" style="padding-left: 14px;padding-right:10px">
-              <select formControlName="district" style="height: 28px;width: 123px;background-color: #ECEFF4;">
+              <select formControlName="districtStr" style="height: 28px;width: 123px;background-color: #ECEFF4;">
                 <option>District</option>
-                <option *ngFor="let dist of district" > {{dist.label}} </option>
+                <option *ngFor="let dist of district" [value]="employeeDetails.address.districtStr" [selected]="dist.value===employeeDetails.address.districtStr"> {{dist.label}} </option>
               </select>
             </div>
             <div class=" col-4 form-group" style="padding-left: 19px">
-              <select formControlName="thana" style="height: 28px;width: 122px;background-color: #ECEFF4;">
+              <select formControlName="city" style="height: 28px;width: 122px;background-color: #ECEFF4;">
                 <option>Thana</option>
-                <option *ngFor="let pos of policeStation" > {{pos.label}} </option>
+                <option *ngFor="let pos of policeStation" [value]="employeeDetails.address.city" [selected]="pos.value===employeeDetails.address.city"> {{pos.label}} </option>
               </select>
             </div>
           </div>
@@ -190,21 +197,21 @@
         </div>
       </div>
 
-<!--      <div class="row form-group" style="margin-left: 29px">-->
-<!--        <div class="col-3">-->
-<!--          <label > Is Hypertensive?</label>-->
-<!--        </div>-->
-<!--        <div class="custom-control custom-radio custom-control-inline">-->
-<!--          <input formControlName="selfHyperTension" type="radio" class="custom-control-input" id="customRadio3" name="hypertensive">-->
-<!--          <label class="custom-control-label" for="customRadio3">No</label>-->
-<!--        </div>-->
+      <div class="row form-group" style="margin-left: 29px">
+        <div class="col-3">
+          <label > Is Hypertensive?</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input formControlName="selfHyperTension" type="radio" class="custom-control-input" id="customRadio3" name="selfHyperTension">
+          <label class="custom-control-label" for="customRadio3">No</label>
+        </div>
 
-<!--        <div class="custom-control custom-radio custom-control-inline">-->
-<!--          <input formControlName="selfHyperTension" type="radio" class="custom-control-input" id="customRadio4" name="hypertensive">-->
-<!--          <label class="custom-control-label" for="customRadio4">Yes</label>-->
-<!--        </div>-->
+        <div class="custom-control custom-radio custom-control-inline">
+          <input formControlName="selfHyperTension" type="radio" class="custom-control-input" id="customRadio4" name="selfHyperTension">
+          <label class="custom-control-label" for="customRadio4">Yes</label>
+        </div>
 
-<!--      </div>-->
+      </div>
 
       <div class="row" style="margin-top: 20px;padding-bottom: 20px; padding-top: 20px;">
         <div class="col-6" style="padding-left: 40px;">

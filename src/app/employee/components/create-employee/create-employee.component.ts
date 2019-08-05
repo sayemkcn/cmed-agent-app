@@ -13,11 +13,12 @@ import {Toastr} from "../../../shared/services/toastr.service";
   styleUrls: ['./create-employee.component.scss']
 })
 export class CreateEmployeeComponent extends BaseComponent implements OnInit {
-  updateEmployeeInformationForm: FormGroup;
+
   private title: string="Register Employee";
   selectedFile;
   private bloodGroup: Array<any>;
   private division: Array<any>;
+  private employeeDetails;
 
   constructor(private router: Router,private route: ActivatedRoute,private employeeDetailsService:SingleEmployeeService,
               private auth: AuthService,private toastr: Toastr) {
@@ -25,12 +26,48 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
 
   }
 
+  updateEmployeeInformationForm = new FormGroup({
+      id : new FormControl(''),
+      firstName : new FormControl(''),
+      lastName : new FormControl(''),
+      created_at : new FormControl(''),
+      phoneNumber : new FormControl(''),
+      email : new FormControl(''),
+      last_check_up : new FormControl(''),
+      date_of_birth : new FormControl(''),
+      companyEmployeeId : new FormControl(''),
+      department : new FormControl(''),
+      unit : new FormControl(''),
+      companyJobTitle : new FormControl(''),
+      gender : new FormControl(''),
+      bloodGroup : new FormControl(''),
+      address : new FormGroup({
+        id: new FormControl(''),
+        street: new FormControl(''),
+        region: new FormControl(''),
+        city: new FormControl(''),
+        postCode: new FormControl(''),
+        districtStr: new FormControl(''),
+        countryCode: new FormControl(''),
+        created_at: new FormControl(''),
+        updated_at: new FormControl('')
+      }),
+
+
+      // division : new FormControl(),
+      // district : new FormControl(),
+      // thana : new FormControl(),
+      selfDiabetes : new FormControl(''),
+      selfHyperTension : new FormControl(''),
+  });
+
+
   ngOnInit() {
-    this.bloodGroup = [{value: '1', label: 'A+'}, {value: '2', label: 'B+'}, {value: '3', label: 'O+'}, {
-      value: '4',
+    this.bloodGroup = [{value: 'A+', label: 'A+'}, {value: 'B+', label: 'B+'}, {value: 'O+', label: 'O+'}, {
+      value: 'AB+',
       label: 'AB+'
     },
-      {value: '5', label: 'A-'}, {value: '6', label: 'B-'}, {value: '7', label: 'O-'}, {value: '8', label: 'AB-'}
+      {value: 'A-', label: 'A-'}, {value: 'B-', label: 'B-'}, {value: 'O-', label: 'O-'}, {value: 'AB-', label: 'AB-'}
     ];
     this.division = [
       {value: '1', label: 'Dhaka'},
@@ -44,50 +81,31 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
     ];
 
 
-    const id = new FormControl();
-    const firstName = new FormControl();
-    const lastName = new FormControl();
-    const registeredDate = new FormControl();
-    const phoneNumber = new FormControl();
-    const email = new FormControl();
-    const lastCheckUp = new FormControl();
-    const dateOfBirth = new FormControl();
-    const employeeId = new FormControl();
-    const department = new FormControl();
-    const unit = new FormControl();
-    const jobTitle = new FormControl();
-    const gender = new FormControl();
-    const bloodGroup = new FormControl();
-    const address = new FormControl();
-    const division = new FormControl();
-    const district = new FormControl();
-    const thana = new FormControl();
-    const selfDiabetes = new FormControl();
-    const selfHyperTension = new FormControl();
 
-    this.updateEmployeeInformationForm = new FormGroup({
-      id: id,
-      firstName: firstName,
-      lastName: lastName,
-      created_at: registeredDate,
-      phoneNumber: phoneNumber,
-      email: email,
-      last_check_up: lastCheckUp,
-      date_of_birth: dateOfBirth,
-      companyEmployeeId: employeeId,
-      department: department,
-      unit: unit,
-      companyJobTitle: jobTitle,
-      gender: gender,
-      bloodGroup: bloodGroup,
-      address: address,
-      division: division,
-      district: district,
-      thana: thana,
-      selfDiabetes: selfDiabetes,
-      selfHyperTension: selfHyperTension
 
-    });
+    // this.updateEmployeeInformationForm = new FormGroup({
+    //   id: id,
+    //   firstName: firstName,
+    //   lastName: lastName,
+    //   created_at: registeredDate,
+    //   phoneNumber: phoneNumber,
+    //   email: email,
+    //   last_check_up: lastCheckUp,
+    //   date_of_birth: dateOfBirth,
+    //   companyEmployeeId: employeeId,
+    //   department: department,
+    //   unit: unit,
+    //   companyJobTitle: jobTitle,
+    //   gender: gender,
+    //   bloodGroup: bloodGroup,
+    //   address: address,
+    //   division: division,
+    //   district: district,
+    //   thana: thana,
+    //   selfDiabetes: selfDiabetes,
+    //   selfHyperTension: selfHyperTension
+    //
+    // });
     const paramId = this.route.snapshot.paramMap.get('id');
     if(paramId){
       this.title="Employee Information";
@@ -95,30 +113,13 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
     }
 
     if(paramId){
-      console.log(id);
+      console.log(paramId);
       this.employeeDetailsService.getEmployeeDetails(parseInt(paramId,0)).subscribe(
-        employeeDetails=>{ id.setValue(employeeDetails.id);
-            id.setValue(employeeDetails.firstName);
-            id.setValue(employeeDetails.lastName);
-            id.setValue(employeeDetails.created_at);
-            id.setValue(employeeDetails.email);
-            id.setValue(employeeDetails.phoneNumber);
-            // id.setValue(employeeDetails.dateOfConception);
-            id.setValue(employeeDetails.companyEmployeeId);
-            id.setValue(employeeDetails.companyJobTitle);
-            id.setValue(employeeDetails.gender);
-            id.setValue(employeeDetails.bloodGroup);
-            id.setValue(employeeDetails.birthday);
-            //
-            // id.setValue(employeeDetails.address.city);
-            // id.setValue(employeeDetails.address.street);
-            // id.setValue(employeeDetails.address.region);
-            // id.setValue(employeeDetails.address.postCode);
-            // id.setValue(employeeDetails.address.districtStr);
-
-            // id.setValue(employeeDetails.selfDiabetes);
-            // id.setValue(employeeDetails.selfHyperTension);
+        employeeInfo=>{ this.employeeDetails=employeeInfo;
         }, err=> this.handleError(err));
+    }
+    else{
+
     }
 
   }
@@ -126,6 +127,7 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
   createEmployee(value:any){
     this.title="Register Employee";
     const employeeInfo= value as IEmployeeTable;
+
     console.log(employeeInfo);
 
     this.employeeDetailsService.createEmployee(employeeInfo).subscribe(at=>{
