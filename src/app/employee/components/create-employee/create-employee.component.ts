@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SingleEmployeeService} from "../../services/single-employee.service.service";
 import {AuthService} from "../../../auth/shared/auth.service";
@@ -19,6 +19,7 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
   private bloodGroup: Array<any>;
   private division: Array<any>;
   private employeeDetails;
+  private submitted= false;
 
   constructor(private router: Router,private route: ActivatedRoute,private employeeDetailsService:SingleEmployeeService,
               private auth: AuthService,private toastr: Toastr) {
@@ -28,10 +29,10 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
 
   updateEmployeeInformationForm = new FormGroup({
       id : new FormControl(''),
-      firstName : new FormControl(''),
-      lastName : new FormControl(''),
-      created_at : new FormControl(''),
-      phoneNumber : new FormControl(''),
+      firstName : new FormControl('', Validators.required),
+      lastName : new FormControl('', Validators.required),
+      created_at : new FormControl('', Validators.required),
+      phoneNumber : new FormControl('', Validators.required),
       email : new FormControl(''),
       last_check_up : new FormControl(''),
       date_of_birth : new FormControl(''),
@@ -64,11 +65,9 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
 
   ngOnInit() {
     this.bloodGroup = [{value: 'A+', label: 'A+'}, {value: 'B+', label: 'B+'}, {value: 'O+', label: 'O+'}, {
-      value: 'AB+',
-      label: 'AB+'
-    },
-      {value: 'A-', label: 'A-'}, {value: 'B-', label: 'B-'}, {value: 'O-', label: 'O-'}, {value: 'AB-', label: 'AB-'}
-    ];
+      value: 'AB+', label: 'AB+'}, {value: 'A-', label: 'A-'}, {value: 'B-', label: 'B-'}, {value: 'O-', label: 'O-'},
+      {value: 'AB-', label: 'AB-'}];
+
     this.division = [
       {value: '1', label: 'Dhaka'},
       {value: '2', label: 'Chattagram'},
@@ -124,13 +123,20 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
 
   }
 
+  get f() {return this.updateEmployeeInformationForm.controls;}
+
   createEmployee(value:any){
+    this.submitted =true;
+    if(this.updateEmployeeInformationForm.invalid){
+      return;
+    }
+
     this.title="Register Employee";
     const employeeInfo= value as IEmployeeTable;
 
     console.log(employeeInfo);
 
-    this.employeeDetailsService.createEmployee(employeeInfo).subscribe(at=>{
+    this.employeeDetailsService.createEmployee(employeeInfo,employeeInfo.id,"user").subscribe(at=>{
       this.toastr.success("Success", at.firstName+" was Registered successfully");
       this.router.navigate(['/employees']);
     })
