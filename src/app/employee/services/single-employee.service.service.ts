@@ -21,8 +21,8 @@ export class SingleEmployeeService {
 
   }
 
-  createEmployee( employee: IEmployeeTable,cmedID:number,role:string ):Observable <IEmployeeTable> {
-    return this.http.post<IEmployeeTable>(this.apiEndpoints.EMPLOYEES.CREATE_NEW_EMPLOYEE(this.auth.getCompanyCode(),cmedID,role,this.auth.getCompanyCode()), employee, {headers:this.headers});
+  createEmployee( employee: IEmployeeTable,cmedID:string,role:string, password: string ):Observable <IEmployeeTable> {
+    return this.http.post<IEmployeeTable>(this.apiEndpoints.EMPLOYEES.CREATE_NEW_EMPLOYEE(this.auth.getCompanyCode(),cmedID,role,password), employee, {headers:this.headers});
 
   }
 

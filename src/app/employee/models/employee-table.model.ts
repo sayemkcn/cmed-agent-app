@@ -3,6 +3,7 @@ export interface IEmployeeTable {
   email?: string,
   email_canonical?: string,
   selfDiabetes?: boolean,
+  selfHyperTension?: boolean,
   userId?: number,
   firstName?: string,
   lastName?: string,
@@ -22,14 +23,11 @@ export interface IEmployeeTable {
     city?: string,
     postCode?: string,
     districtStr?: string,
-    countryCode?: string,
-    created_at?: Date,
-    updated_at?: Date
+    countryCode?: string
   },
   permanentAddress?: string,
   diabetic?: boolean,
   familyDiabetes?: boolean,
-  selfHyperTension?: boolean,
   familyHyperTension?: boolean,
   hasCardioVascularDisease?: boolean,
   hadStroke?: boolean,
@@ -53,7 +51,5 @@ export interface IEmployeeTable {
   disable?: boolean,
   dead?: boolean,
   ageInMonths?: number,
-  name?: string,
-  created_at?: Date,
-  updated_at?: Date
+  name?: string
 }

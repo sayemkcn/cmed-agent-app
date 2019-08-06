@@ -64,7 +64,7 @@ export class ApiEndpoints {
     //   return environment.base_url + ApiEndpoints.API_VERSION + '/corporate/' + companyCode + '/employees/';
     // },
 
-    CREATE_NEW_EMPLOYEE(companyCode: string,cmedID:number,role:string,password:string): string {
+    CREATE_NEW_EMPLOYEE(companyCode: string,cmedID:string,role:string,password:string): string {
       return environment.base_url + ApiEndpoints.API_VERSION + '/corporate/' + companyCode + '/employees?company_code='+companyCode+
         "&cmed_id="+cmedID+"&role="+role+"&password="+password;
 

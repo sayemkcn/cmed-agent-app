@@ -1,25 +1,27 @@
 <div>
   <div class="container main">
 
-      <div class="row" style="background-color: white;padding: 25px ">
+    <div class="row" style="background-color: white;padding: 25px ">
 
-      </div>
-      <div class="employeeInfo row">
-        <div class="col-8">
-          <h2 style="color: #16B4FC; font-style: normal">{{ title }}</h2>
-        </div>
-
-        <div class="col-1" >
-          <input class="form-control searchInput" type="text" placeholder="Rx" aria-label="Search">
-
-        </div>
-        <div class="col-2" style="padding-left: 25px">
-          <button style="background-color: #ECEFF4;height: 33px; padding-top:3px" class="btn btn-primary"><img src="../../../../assets/image_resources/go_to_prescription.svg" alt=""></button>
-        </div>
+    </div>
+    <div class="employeeInfo row">
+      <div class="col-8">
+        <h2 style="color: #16B4FC; font-style: normal">{{ title }}</h2>
       </div>
 
-      <!--    beginning of first row-->
-    <form [formGroup]= "updateEmployeeInformationForm" class="form" (ngSubmit)="createEmployee(updateEmployeeInformationForm.value)"  >
+      <div class="col-1">
+        <input class="form-control searchInput" type="text" placeholder="Rx" aria-label="Search">
+
+      </div>
+      <div class="col-2" style="padding-left: 25px">
+        <button style="background-color: #ECEFF4;height: 33px; padding-top:3px" class="btn btn-primary"><img
+          src="../../../../assets/image_resources/go_to_prescription.svg" alt=""></button>
+      </div>
+    </div>
+
+    <!--    beginning of first row-->
+    <form [formGroup]="updateEmployeeInformationForm" class="form"
+          (ngSubmit)="createEmployee(updateEmployeeInformationForm.value)">
       <div class="row form-group" style="margin-bottom: 0px">
 
         <div class="col-3">
@@ -28,63 +30,68 @@
           </div>
 
 
-
         </div>
-
 
 
         <div class="col-9">
           <div class="row " style="padding-bottom: 10px">
             <div class="form-group " hidden>
               <label for="id">ID</label>
-              <input formControlName="id" class="form-control" type="number" id="id" [value]="employeeDetails.id"/>
+              <input formControlName="id" class="form-control" type="number" id="id" >
             </div>
 
 
             <div class="col-4 form-group" style="padding-right: 0px;">
               <label for="firstName">First Name</label>
-              <input type="text" formControlName="firstName" class="form-control boxHeight" id="firstName" [value]="employeeDetails.firstName"
-                [ngClass]="{'is-invalid':submitted && f.firstName.errors}" >
-              <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                <div *ngIf="f.firstName.errors.required">First Name is required</div>
-              </div>
+              <input type="text" formControlName="firstName" class="form-control boxHeight" id="firstName"
+                     >
+              <!--                [ngClass]="{'is-invalid':submitted && f.firstName.errors}" >-->
+              <!--              <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">-->
+              <!--                <div *ngIf="f.firstName.errors.required">First Name is required</div>-->
+              <!--              </div>-->
             </div>
 
             <div class="col-4 form-group" style="padding-right: 0px;">
               <label for="lastName">Last Name</label>
-              <input formControlName="lastName" type="text" class="form-control boxHeight" id="lastName" [value]="employeeDetails.lastName"
-                     [ngClass]="{'is-invalid':submitted && f.lastName.errors}">
-              <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-              </div>
+              <input formControlName="lastName" type="text" class="form-control boxHeight" id="lastName"
+                     >
+              <!--                     [ngClass]="{'is-invalid':submitted && f.lastName.errors}">-->
+              <!--              <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">-->
+              <!--                <div *ngIf="f.lastName.errors.required">Last Name is required</div>-->
+              <!--              </div>-->
             </div>
             <div class="col-4 form-group">
-              <label for="created_at">Registered Date</label>
-              <input formControlName="created_at" type="date" class="form-control boxHeight" id="created_at" [value]="employeeDetails.created_at | date: 'dd MMM, yyyy'">
+              <label for="registered_date">Registered Date</label>
+              <input formControlName="registered_date" type="date" class="form-control boxHeight" id="registered_date"
+                    >
             </div>
           </div>
           <div class="row" style="padding-bottom: 10px; padding-right: 0px">
             <div class="col-4 form-group" style="padding-right: 0px">
               <label for="phoneNumber">Phone Number</label>
-              <input formControlName="phoneNumber" type="tel" class="form-control boxHeight" id="phoneNumber" [value]="employeeDetails.phoneNumber">
+              <input formControlName="phoneNumber" type="tel" class="form-control boxHeight" id="phoneNumber"
+                     >
             </div>
             <div class="col-4 form-group" style="padding-right: 0px">
               <label for="email">Email(Optional)</label>
-              <input formControlName="email" type="email" class="form-control boxHeight" id="email" [value]="employeeDetails.email">
+              <input formControlName="email" type="email" class="form-control boxHeight" id="email"
+                     >
             </div>
             <div class="col-4 form-group">
               <label for="last_check_up">Last Check-Up</label>
-              <input formControlName="last_check_up" type="date " class="form-control boxHeight" id="last_check_up" [value]="employeeDetails.updated_at | date: 'dd MMM, yyyy'">
+              <input formControlName="last_check_up" type="date" class="form-control boxHeight" id="last_check_up">
             </div>
           </div>
           <div class="row " style="padding-bottom: 10px">
             <div class="col-3 padZero form-group">
-              <label for="date_of_birth">Date of Birth</label>
-              <input formControlName="date_of_birth" type="date" class="form-control boxHeight " id="date_of_birth" [value]="employeeDetails.birthday">
+              <label for="birthday">Date of Birth</label>
+              <input formControlName="birthday" type="date" class="form-control boxHeight " id="birthday"
+                     >
             </div>
             <div class="col-3 padZero form-group" style="padding-left: 10px">
               <label for="companyEmployeeId">Employee ID</label>
-              <input formControlName="companyEmployeeId" type="number" class="form-control boxHeight " id="companyEmployeeId" [value]="employeeDetails.companyEmployeeId">
+              <input formControlName="companyEmployeeId" type="number" class="form-control boxHeight"
+                     id="companyEmployeeId" >
             </div>
             <div class="col-2 padZero form-group" style="padding-left: 10px">
               <label for="department">Dept</label>
@@ -96,10 +103,10 @@
             </div>
             <div class="col-2 form-group" style="padding-left: 10px">
               <label for="companyJobTitle">Job Title</label>
-              <input type="text" class="form-control boxHeight " id="companyJobTitle" formControlName="companyJobTitle" [value]="employeeDetails.companyJobTitle">
+              <input type="text" class="form-control boxHeight " id="companyJobTitle" formControlName="companyJobTitle"
+                     >
             </div>
           </div>
-
 
 
         </div>
@@ -111,42 +118,50 @@
       <div class="row" style="margin-left: 29px; height: 108px">
         <div class="col-3" style="padding: 0px; max-width: 22%">
 
-          <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
-          <button type="button" style="width: 113px;" class="btn btn-primary" (click)="fileInput.click()"> <img style="padding-right: 2px" src="../../../../assets/image_resources/upload.svg" alt="" >Upload</button>
-          <button style="margin-left: 5px" type="button" class="btn btn-primary">Remove</button>
+          <!--          <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>-->
+          <!--          <button type="button" style="width: 113px;" class="btn btn-primary" (click)="fileInput.click()"> <img style="padding-right: 2px" src="../../../../assets/image_resources/upload.svg" alt="" >Upload</button>-->
+          <!--          <button style="margin-left: 5px" type="button" class="btn btn-primary">Remove</button>-->
 
         </div>
         <div class="col-3" style="margin-top: 23px">
 
-          <div class="form-group" style="background-color: #ECEFF4; border-radius: 6px;  padding-top: 6px; height: 38px;">
+          <div class="form-group"
+               style="background-color: #ECEFF4; border-radius: 6px;  padding-top: 6px; height: 38px;">
 
-              <label style="font-size: 16px; color: #1AA4E3; padding-right:20px; margin-top:2px; margin-left:8px; margin-right: 42px" > Gender</label>
+            <label
+              style="font-size: 16px; color: #1AA4E3; padding-right:20px; margin-top:2px; margin-left:8px; margin-right: 42px">
+              Gender</label>
+            <div class="form-check-inline" style="margin: 0px">
+              <label style="padding-right: 5px" class="radio-inline"> <img style="height: 22px;padding-right:4px"
+                                                                           src="../../../../assets/image_resources/ic_male.png">
+              </label>
+              <input type="radio" class="form-check-input" name="gender" formControlName="gender" [value]="'m'" >
+            </div>
 
-                <div class="form-check-inline" style="margin: 0px">
-                  <label style="padding-right: 5px" class="radio-inline" > <img style="height: 22px;padding-right:4px" src="../../../../assets/image_resources/ic_male.png"> </label>
-                  <input type="radio" class="form-check-input" name="gender" formControlName="gender" [value]="employeeDetails.gender">
-                </div>
+            <div class="form-check-inline" style="margin: 0px">
+              <label class="radio-inline"><img style="height: 22px; padding-right: 4px"
+                                               src="../../../../assets/image_resources/ic_female.png"></label>
+              <input type="radio" class="form-check-input" name="gender" formControlName="gender" [value]="'f'">
+            </div>
 
-                <div class="form-check-inline" style="margin: 0px">
-                    <label  class="radio-inline"  ><img style="height: 22px; padding-right: 4px" src="../../../../assets/image_resources/ic_female.png"></label>
-                    <input type="radio" class="form-check-input" name="gender" formControlName="gender" [value]="employeeDetails.gender">
-                </div>
-
-                <div class="form-check-inline" style="margin: 0px">
-                    <label class="radio-inline" ><img style="height: 22px" src="../../../../assets/image_resources/others.svg"></label>
-                    <input type="radio" class="form-check-input" name="gender" formControlName="gender" [value]="employeeDetails.gender">
-                </div>
+            <div class="form-check-inline" style="margin: 0px">
+              <label class="radio-inline"><img style="height: 22px" src="../../../../assets/image_resources/others.svg"></label>
+              <input type="radio" class="form-check-input" name="gender" formControlName="gender" [value]="'u'">
+            </div>
 
           </div>
 
 
         </div>
 
-        <div class="col-2 form-group form-control-inline"  style="margin-top: 23px; padding-left: 0px;padding-right: 0px" >
+        <div class="col-2 form-group form-control-inline"
+             style="margin-top: 23px; padding-left: 0px;padding-right: 0px">
 
-          <select name="bloodGroup" formControlName="bloodGroup" style="color:#1AA4E3 ; width: -webkit-fill-available; height: 35px;border-radius: 6px;background-color: #ECEFF4">
+          <select name="bloodGroup" formControlName="bloodGroup"
+                  style="color:#1AA4E3 ; width: -webkit-fill-available; height: 35px;border-radius: 6px;background-color: #ECEFF4">
             <option>Blood group</option>
-            <option *ngFor="let blood of bloodGroup" [value]="employeeDetails.bloodGroup" [selected]="employeeDetails.bloodGroup===blood.value" >
+            <option *ngFor="let blood of bloodGroup"
+                    >
 
               {{blood.label}}
 
@@ -157,54 +172,59 @@
 
         <div class="col-4" formGroupName="address">
           <div class="form-group">
-            <label >Address</label>
-            <textarea class="form-control textStyle" formControlName="address" rows="3" style="width: 366px" [value]="employeeDetails.address" ></textarea>
+            <label>Address</label>
+            <textarea class="form-control textStyle" formControlName="address" rows="3" style="width: 366px"
+                      ></textarea>
           </div>
         </div>
-
 
 
       </div>
 
       <div class="row " style="margin-left: 29px">
-          <div class="col-8 form-group" style="padding-right: 0px;max-width: 64%">
-            <div class="row">
-              <div class="col-4" style="margin-right: 31px">
-                <label > Is Diabetic?</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input formControlName="selfDiabetes" type="radio" class="custom-control-input" id="customRadio1" name="selfDiabetes"  >
-                <label class="custom-control-label" for="customRadio1">No</label>
-              </div>
-
-              <div class="custom-control custom-radio custom-control-inline">
-                <input formControlName="selfDiabetes" type="radio" class="custom-control-input" id="customRadio2" name="selfDiabetes">
-                <label class="custom-control-label" for="customRadio2">Yes</label>
-              </div>
+        <div class="col-8 form-group" style="padding-right: 0px;max-width: 64%">
+          <div class="row">
+            <div class="col-4" style="margin-right: 31px">
+              <label> Is Diabetic?</label>
             </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input formControlName="selfDiabetes" type="radio" class="custom-control-input" id="customRadio1"
+                     name="selfDiabetes" [value]="false">
+              <label class="custom-control-label" for="customRadio1">No</label>
+            </div>
+
+            <div class="custom-control custom-radio custom-control-inline">
+              <input formControlName="selfDiabetes" type="radio" class="custom-control-input" id="customRadio2"
+                     name="selfDiabetes" [value]="true">
+              <label class="custom-control-label" for="customRadio2">Yes</label>
+            </div>
+          </div>
         </div>
         <!-- Address Form group start--->
         <div class="col-3 form-group" formGroupName="address">
 
-          <div class="custom-control-inline" style="width: 353px; margin-left: -13px;"  >
+          <div class="custom-control-inline" style="width: 353px; margin-left: -13px;">
 
-            <div class=" col-4 form-group"  style="padding-left: 10px;" >
-              <select formControlName="region" style="height: 28px;width: 122px;background-color: #ECEFF4;" [(ngModel)]="employeeDetails.address.region">
+            <div class=" col-4 form-group" style="padding-left: 10px;">
+              <select formControlName="region" style="height: 28px;width: 122px;background-color: #ECEFF4;"
+                      >
                 <option>Division</option>
-                <option *ngFor="let divi of division" [value]="employeeDetails.address.region" [selected]="divi.value===employeeDetails.address.region" > {{divi.label}} </option>
+                <option *ngFor="let divi of division" > {{divi.label}} </option>
               </select>
             </div>
 
             <div class=" col-4 form-group" style="padding-left: 14px;padding-right:10px">
-              <select formControlName="districtStr" style="height: 28px;width: 123px;background-color: #ECEFF4;" [(ngModel)]="employeeDetails.address.districtStr">
+              <select formControlName="districtStr" style="height: 28px;width: 123px;background-color: #ECEFF4;"
+                      >
                 <option>District</option>
-                <option *ngFor="let dist of district" [value]="employeeDetails.address.districtStr" [selected]="dist.value===employeeDetails.address.districtStr"> {{dist.label}} </option>
+                <option *ngFor="let dist of district" > {{dist.label}} </option>
               </select>
             </div>
             <div class=" col-4 form-group" style="padding-left: 19px">
-              <select formControlName="city" style="height: 28px;width: 122px;background-color: #ECEFF4;" >
+              <select formControlName="city" style="height: 28px;width: 122px;background-color: #ECEFF4;"
+                      >
                 <option>Thana</option>
-                <option *ngFor="let pos of policeStation" [value]="employeeDetails.address.city" [selected]="pos.value===employeeDetails.address.city"> {{pos.label}} </option>
+                <option *ngFor="let pos of policeStation" > {{pos.label}} </option>
               </select>
             </div>
           </div>
@@ -217,15 +237,17 @@
 
       <div class="row form-group" style="margin-left: 29px">
         <div class="col-3">
-          <label > Is Hypertensive?</label>
+          <label> Is Hypertensive?</label>
         </div>
         <div class="custom-control custom-radio custom-control-inline">
-          <input formControlName="selfHyperTension" type="radio" class="custom-control-input" id="customRadio3" name="selfHyperTension">
+          <input formControlName="selfHyperTension" type="radio" class="custom-control-input" id="customRadio3"
+                 name="selfHyperTension" [value]="false">
           <label class="custom-control-label" for="customRadio3">No</label>
         </div>
 
         <div class="custom-control custom-radio custom-control-inline">
-          <input formControlName="selfHyperTension" type="radio" class="custom-control-input" id="customRadio4" name="selfHyperTension">
+          <input formControlName="selfHyperTension" type="radio" class="custom-control-input" id="customRadio4"
+                 name="selfHyperTension" [value]="true">
           <label class="custom-control-label" for="customRadio4">Yes</label>
         </div>
 
@@ -234,25 +256,32 @@
       <div class="row" style="margin-top: 20px;padding-bottom: 20px; padding-top: 20px;">
 
         <div class="col-6" style="padding-left: 40px;">
-          <button class="btn btn-primary" style="width: 24%" routerLink="/employees"> <img src="../../../../assets/image_resources/back.svg" alt="" class="logo-img"> Go Back</button>
+          <button class="btn btn-primary" style="width: 24%"  type="button" (click)="goBack()">
+            <img
+              src="../../../../assets/image_resources/back.svg" alt="" class="logo-img"> Go Back
+          </button>
         </div>
 
-        <div class="col-6" >
-          <button class="btn btn-primary" type="submit" style="width: 150px;background-color: #16B4FC;color:white"><img style="padding-right: 8px" src="../../../../assets/image_resources/edit.svg" alt=""> Update</button>
-        </div>
-<!--        <div class="col-6" *ngIf="employeeDetails.id; else secondId">-->
-<!--          <button class="btn btn-primary" type="submit" style="width: 150px;background-color: #16B4FC;color:white"><img style="padding-right: 8px" src="../../../../assets/image_resources/edit.svg" alt=""> Update</button>-->
-<!--        </div>-->
+        <!--        <div class="col-6">-->
+        <!--          <button class="btn btn-primary" type="submit" style="width: 150px;background-color: #16B4FC;color:white" (click)=""><img-->
+        <!--            style="padding-right: 8px" src="../../../../assets/image_resources/edit.svg" alt=""> Update-->
+        <!--          </button>-->
+        <!--        </div>-->
+        <!--                <div class="col-6" *ngIf="employeeDetails.id">-->
+        <!--                  <button class="btn btn-primary" type="submit" style="width: 150px;background-color: #16B4FC;color:white"><img style="padding-right: 8px" src="../../../../assets/image_resources/edit.svg" alt=""> Update</button>-->
+        <!--                </div>-->
 
-<!--        <ng-template #secondId>-->
-<!--            <button class="btn btn-success" type="submit"  style="width: 80px;background-color: #16B4FC;color:white">Add</button>-->
-<!--            <button class="btn btn-danger" routerLink="/employees" style="width: 80px" >Cancel</button>-->
-<!--        </ng-template>-->
+        <div class="col-6">
+          <button class="btn btn-success" type="submit" style="width: 80px;margin-right: 10px;background-color: #16B4FC;color:white">
+            <span *ngIf="!isUpdate()">Add</span>
+            <span *ngIf="isUpdate()">Update</span>
+          </button>
+          <button *ngIf="!isUpdate()" class="btn btn-danger" routerLink="/employees" style="width: 80px">Cancel</button>
+        </div>
 
       </div>
 
     </form>
-
 
 
   </div>

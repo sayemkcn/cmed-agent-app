@@ -18,7 +18,7 @@ export class BottomLeftChartComponent extends BaseComponent implements OnInit {
 
   private convertedData;
 
-  private fromDate = "2018-08-01"
+  private fromDate = "2018-08-01";
   private tooDate = "2019-02-20";
   private measurementType = "BP";
 

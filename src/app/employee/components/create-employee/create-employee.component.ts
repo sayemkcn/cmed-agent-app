@@ -1,71 +1,137 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SingleEmployeeService} from "../../services/single-employee.service.service";
 import {AuthService} from "../../../auth/shared/auth.service";
 import {BaseComponent} from "../../../shared/base/base.component";
 import {IEmployeeTable} from "../../models/employee-table.model";
 import {Toastr} from "../../../shared/services/toastr.service";
+import {Observable} from "rxjs";
+import DevExpress from "devextreme/bundles/dx.all";
+import add = DevExpress.viz.map.projection.add;
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-create-employee',
   templateUrl: './create-employee.component.html',
-  styleUrls: ['./create-employee.component.scss']
+  styleUrls: ['./create-employee.component.scss'],
+  providers:[DatePipe]
 })
 export class CreateEmployeeComponent extends BaseComponent implements OnInit {
 
-  private title: string="Register Employee";
+  private title: string = "Register Employee";
   selectedFile;
   private bloodGroup: Array<any>;
+  private district: Array<any>;
+  private policeStation: Array<any>;
   private division: Array<any>;
   private employeeDetails;
-  private submitted= false;
+  private paramId;
+  private submitted = false;
+  updateEmployeeInformationForm: FormGroup;
 
-  constructor(private router: Router,private route: ActivatedRoute,private employeeDetailsService:SingleEmployeeService,
-              private auth: AuthService,private toastr: Toastr) {
+  constructor(private router: Router, private route: ActivatedRoute, private employeeDetailsService: SingleEmployeeService,
+              private auth: AuthService, private toastr: Toastr, private fb: FormBuilder) {
     super(auth);
 
   }
 
-  updateEmployeeInformationForm = new FormGroup({
-      id : new FormControl(''),
-      firstName : new FormControl('', Validators.required),
-      lastName : new FormControl('', Validators.required),
-      created_at : new FormControl('', Validators.required),
-      phoneNumber : new FormControl('', Validators.required),
-      email : new FormControl(''),
-      last_check_up : new FormControl(''),
-      date_of_birth : new FormControl(''),
-      companyEmployeeId : new FormControl(''),
-      department : new FormControl(''),
-      unit : new FormControl(''),
-      companyJobTitle : new FormControl(''),
-      gender : new FormControl(''),
-      bloodGroup : new FormControl(''),
-      address : new FormGroup({
-        id: new FormControl(''),
-        street: new FormControl(''),
-        region: new FormControl(''),
-        city: new FormControl(''),
-        postCode: new FormControl(''),
-        districtStr: new FormControl(''),
-        countryCode: new FormControl(''),
-        created_at: new FormControl(''),
-        updated_at: new FormControl('')
-      }),
-
-
-      // division : new FormControl(),
-      // district : new FormControl(),
-      // thana : new FormControl(),
-      selfDiabetes : new FormControl(''),
-      selfHyperTension : new FormControl(''),
-  });
-
+  // initControls(): void {
+  //   this.updateEmployeeInformationForm = new FormGroup({
+  //     id: new FormControl(''),
+  //     firstName: new FormControl(''),
+  //     lastName: new FormControl(''),
+  //     created_at: new FormControl(''),
+  //     phoneNumber: new FormControl(''),
+  //     email: new FormControl(''),
+  //     updated_at: new FormControl(''),
+  //     birthday: new FormControl(''),
+  //     companyEmployeeId: new FormControl(''),
+  //     department: new FormControl(''),
+  //     unit: new FormControl(''),
+  //     companyJobTitle: new FormControl(''),
+  //     gender: new FormControl(''),
+  //     bloodGroup: new FormControl(''),
+  //
+  //     address: new FormGroup({
+  //       id: new FormControl(''),
+  //       street: new FormControl(''),
+  //       region: new FormControl(''),
+  //       city: new FormControl(''),
+  //       postCode: new FormControl(''),
+  //       districtStr: new FormControl(''),
+  //       countryCode: new FormControl('')
+  //     }),
+  //
+  //     last_check_up: new FormControl(''),
+  //     selfDiabetes: new FormControl(''),
+  //     selfHyperTension: new FormControl(''),
+  //   });
+  // }
 
   ngOnInit() {
+
+      const id= new FormControl('');
+      const firstName= new FormControl('');
+      const lastName= new FormControl('');
+      const registered_date= new FormControl('');
+      const phoneNumber= new FormControl('');
+      const email= new FormControl('');
+      const birthday= new FormControl('');
+      const companyEmployeeId= new FormControl('');
+      const department= new FormControl('');
+      const unit= new FormControl('');
+      const companyJobTitle= new FormControl('');
+      const gender= new FormControl('');
+      const bloodGroup= new FormControl('');
+      const street= new FormControl('');
+      const region= new FormControl('');
+      const city= new FormControl('');
+      const postCode= new FormControl('');
+      const districtStr= new FormControl('');
+      const countryCode= new FormControl('');
+      const address = this.fb.group({
+          id,
+          street,
+          region,
+          city,
+          postCode,
+          districtStr,
+          countryCode
+        });
+
+      const last_check_up= new FormControl('');
+      const selfDiabetes= new FormControl('');
+      const selfHyperTension= new FormControl('');
+
+      this.updateEmployeeInformationForm =this.fb.group({
+        id,
+        firstName,
+        lastName,
+        registered_date,
+        phoneNumber,
+        email,
+        birthday,
+        companyEmployeeId,
+        department,
+        unit,
+        companyJobTitle,
+        gender,
+        bloodGroup,
+        address,
+        last_check_up,
+        selfDiabetes,
+        selfHyperTension
+
+      });
+
+
+
+    this.title ="Register Employee";
+    // this.initControls();
     this.bloodGroup = [{value: 'A+', label: 'A+'}, {value: 'B+', label: 'B+'}, {value: 'O+', label: 'O+'}, {
-      value: 'AB+', label: 'AB+'}, {value: 'A-', label: 'A-'}, {value: 'B-', label: 'B-'}, {value: 'O-', label: 'O-'},
+      value: 'AB+', label: 'AB+'
+    }, {value: 'A-', label: 'A-'}, {value: 'B-', label: 'B-'}, {value: 'O-', label: 'O-'},
       {value: 'AB-', label: 'AB-'}];
 
     this.division = [
@@ -82,70 +148,83 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
 
 
 
-    // this.updateEmployeeInformationForm = new FormGroup({
-    //   id: id,
-    //   firstName: firstName,
-    //   lastName: lastName,
-    //   created_at: registeredDate,
-    //   phoneNumber: phoneNumber,
-    //   email: email,
-    //   last_check_up: lastCheckUp,
-    //   date_of_birth: dateOfBirth,
-    //   companyEmployeeId: employeeId,
-    //   department: department,
-    //   unit: unit,
-    //   companyJobTitle: jobTitle,
-    //   gender: gender,
-    //   bloodGroup: bloodGroup,
-    //   address: address,
-    //   division: division,
-    //   district: district,
-    //   thana: thana,
-    //   selfDiabetes: selfDiabetes,
-    //   selfHyperTension: selfHyperTension
-    //
-    // });
-    const paramId = this.route.snapshot.paramMap.get('id');
-    if(paramId){
-      this.title="Employee Information";
+    this.paramId = this.route.snapshot.paramMap.get('id');
+    if (this.paramId) {
+      this.title = "Employee Information";
 
     }
 
-    if(paramId){
-      console.log(paramId);
-      this.employeeDetailsService.getEmployeeDetails(parseInt(paramId,0)).subscribe(
-        employeeInfo=>{ this.employeeDetails=employeeInfo;
-        }, err=> this.handleError(err));
-    }
-    else{
+    // new DatePipe('en-US').transform(Date.now(), 'yyyy-MM-dd');
+    if (this.paramId) {
+      const prevData: Observable<IEmployeeTable> = this.employeeDetailsService.getEmployeeDetails(parseInt(this.paramId,0));
+      prevData.subscribe(pd=>{
+        id.setValue(pd.id);
+        // console.log(parseInt(this.paramId,0) + 'dd');
+        firstName.setValue(pd.firstName);
+        lastName.setValue(pd.lastName);
+        phoneNumber.setValue(pd.phoneNumber);
+        email.setValue(pd.email);
+        registered_date.setValue(pd.dateOfConception);
+        birthday.setValue(pd.birthday);
+        companyEmployeeId.setValue(pd.companyEmployeeId);
+        companyJobTitle.setValue(pd.companyJobTitle);
+        gender.setValue(pd.gender);
+        bloodGroup.setValue(pd.bloodGroup);
 
+        address.controls['id'].setValue(pd.address.id);
+        address.controls['street'].setValue(pd.address.street);
+        address.controls['region'].setValue(pd.address.region);
+        address.controls['city'].setValue(pd.address.city);
+        address.controls['postCode'].setValue(pd.address.postCode);
+        address.controls['districtStr'].setValue(pd.address.districtStr);
+        address.controls['countryCode'].setValue(pd.address.countryCode);
+
+        last_check_up.setValue(pd.healthCardIssueDate);
+        selfDiabetes.setValue(pd.selfDiabetes);
+        selfHyperTension.setValue(pd.selfHyperTension);
+
+      })
+
+
+
+      // this.employeeDetailsService.getEmployeeDetails(parseInt(this.paramId, 0)).subscribe(
+      //   employeeInfo => {
+      //     this.employeeDetails = employeeInfo;
+      //   }, err => this.handleError(err));
     }
 
   }
 
-  get f() {return this.updateEmployeeInformationForm.controls;}
+  get f() {
+    return this.updateEmployeeInformationForm.controls;
+  }
 
-  createEmployee(value:any){
-    this.submitted =true;
-    if(this.updateEmployeeInformationForm.invalid){
-      return;
-    }
+  createEmployee(value: any) {
 
-    this.title="Register Employee";
-    const employeeInfo= value as IEmployeeTable;
+    console.log(value.id);
+    console.log(JSON.stringify(value));
 
-    console.log(employeeInfo);
+    this.title = "Register Employee";
+    const employeeInfo = value as IEmployeeTable;
 
-    this.employeeDetailsService.createEmployee(employeeInfo,employeeInfo.id,"user").subscribe(at=>{
-      this.toastr.success("Success", at.firstName+" was Registered successfully");
+
+    this.employeeDetailsService.createEmployee(employeeInfo, employeeInfo.phoneNumber, "user", employeeInfo.phoneNumber).subscribe(at => {
+      this.toastr.success("Success", at.firstName + " was Registered successfully");
       this.router.navigate(['/employees']);
     })
 
-
   }
+
 
   onFileChanged(event) {
     this.selectedFile = event.target.files[0]
   }
 
+  goBack() {
+    this.router.navigate(['/employees']);
+  }
+
+  isUpdate(): boolean {
+    return this.paramId !== undefined && this.paramId != null;
+  }
 }

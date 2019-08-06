@@ -15,8 +15,9 @@ import {MatDatepickerInputEvent} from "@angular/material";
 export class TopOverviewComponent extends BaseComponent implements OnInit {
 
 
-  private fromDate = new DatePipe('en-US').transform(Date.now(), 'yyyy-MM-dd');
-  private tooDate = "2019-08-23";
+  // private fromDate = new DatePipe('en-US').transform(Date.now(), 'yyyy-MM-dd');
+  private fromDate = "2019-04-03";
+  private tooDate = "2019-07-20";
 
 
   private percentageServed = 70;
