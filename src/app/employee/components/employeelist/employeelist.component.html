@@ -1,11 +1,12 @@
-<div style="zoom: normal">
+<div >
   <!--- Top bar starts here--->
   <div class="card"
        style="
               height: available;
               margin-right: 50px;
               margin-left: 50px;
-              margin-top: 20px;border-radius: 0px; box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 10px 0 rgba(0, 0, 0, 0.19);">
+              margin-top: 20px;border-radius: 0px;
+              ">
     <div class="container-fluid">
       <div class="row" >
         <div class="col-1" style="padding: 10px">
@@ -58,12 +59,13 @@
               margin-left: 50px;
               margin-top: 20px;
               margin-bottom: 50px;
-              border-radius: 0px; box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 10px 0 rgba(0, 0, 0, 0.19);">
+              border-radius: 0px;
+              ">
 
     <div class="card-title" style="height: 15px; ">
       <div class="row" style="margin: 10px; margin-top: 15px;">
         <div class="col"> <h5 style="color: #333333; font-family: Montserrat; font-size: 20px">Showing all the employee list below</h5> </div>
-        <div class="col text-right"> <h5 style="color: #333333; font-family: Montserrat; font-size: 20px; margin-right: 50px">Total Employee {{employeePage.totalElements}}</h5> </div>
+        <div class="col text-right"> <h5 style="color: #333333; font-family: Montserrat; font-size: 20px; margin-right: 50px">Total Employee {{employeePage?.totalElements}}</h5> </div>
       </div>
     </div>
 
@@ -87,7 +89,7 @@
           </thead>
 
           <tbody   >
-          <tr *ngFor="let employee of employeePage.content">
+          <tr *ngFor="let employee of employeePage?.content">
             <td scope="row" style="text-align: center;">
               <div *ngIf="employee.gender === 'm'; else templateName">
                 <img src="../../../../assets/image_resources/ic_male.png" style="" alt="Responsive image">
@@ -112,9 +114,9 @@
         </table>
       </div>
 
-      <mat-paginator [length]="employeePage.totalPages"
-                     [pageSize]="employeePage.size"
-                     [pageIndex]="employeePage.number"
+      <mat-paginator [length]="employeePage?.totalPages"
+                     [pageSize]="employeePage?.size"
+                     [pageIndex]="employeePage?.number"
                      (page)="onPaginateChange($event)">
 
       </mat-paginator>

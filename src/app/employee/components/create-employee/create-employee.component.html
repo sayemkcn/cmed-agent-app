@@ -61,9 +61,8 @@
               <!--              </div>-->
             </div>
             <div class="col-4 form-group">
-              <label for="registered_date">Registered Date</label>
-              <input formControlName="registered_date" type="date" class="form-control boxHeight" id="registered_date"
-                    >
+              <label for="dateOfConception">Registered Date</label>
+              <input formControlName="dateOfConception" type="date" class="form-control boxHeight" id="dateOfConception">
             </div>
           </div>
           <div class="row" style="padding-bottom: 10px; padding-right: 0px">
@@ -78,8 +77,8 @@
                      >
             </div>
             <div class="col-4 form-group">
-              <label for="last_check_up">Last Check-Up</label>
-              <input formControlName="last_check_up" type="date" class="form-control boxHeight" id="last_check_up">
+              <label for="healthCardIssueDate">Last Check-Up</label>
+              <input formControlName="healthCardIssueDate" type="date" class="form-control boxHeight" id="healthCardIssueDate">
             </div>
           </div>
           <div class="row " style="padding-bottom: 10px">
@@ -172,8 +171,7 @@
         <div class="col-4" formGroupName="address">
           <div class="form-group">
             <label>Address</label>
-            <textarea class="form-control textStyle" formControlName="address" rows="3" style="width: 366px"
-                      ></textarea>
+            <textarea class="form-control textStyle" formControlName="countryCode" rows="3" style="width: 366px"></textarea>
           </div>
         </div>
 
@@ -187,14 +185,14 @@
               <label> Is Diabetic?</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-              <input formControlName="selfDiabetes" type="radio" class="custom-control-input" id="customRadio1"
-                     name="selfDiabetes" [value]="false">
+              <input formControlName="diabetic" type="radio" class="custom-control-input" id="customRadio1"
+                     name="diabetic" [value]="false">
               <label class="custom-control-label" for="customRadio1">No</label>
             </div>
 
             <div class="custom-control custom-radio custom-control-inline">
-              <input formControlName="selfDiabetes" type="radio" class="custom-control-input" id="customRadio2"
-                     name="selfDiabetes" [value]="true">
+              <input formControlName="diabetic" type="radio" class="custom-control-input" id="customRadio2"
+                     name="diabetic" [value]="true">
               <label class="custom-control-label" for="customRadio2">Yes</label>
             </div>
           </div>

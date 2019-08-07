@@ -19,20 +19,12 @@ export class BottomRightChartMemberComponent extends BaseComponent implements On
   public barChartLegend: any;
   public barChartData: any;
 
-  public bloodGroupChartOptions: any;
-  public bloodGroupChartLabels: any;
-  public bloodGroupChartType: any;
-  public bloodGroupChartLegend: any;
-  public bloodGroupChartData: any;
-
-
   constructor(private memberService: MemberScreenedService, private auth: AuthService) {
     super(auth);
   }
 
   ngOnInit() {
     this.memberService.getScreened().subscribe((scrn: IScreened[]) => {
-      // this.screenedStats=scrn;
       this.loadScreenMeasuredChart(scrn);
 
     }, err => this.handleError(err))
@@ -41,7 +33,6 @@ export class BottomRightChartMemberComponent extends BaseComponent implements On
   }
 
   loadScreenMeasuredChart(scrn: IScreened[]) {
-    // console.log(scrn);
     this.barChartOptions = {
       scaleShowVerticalLines: false,
       responsive: true,
@@ -76,11 +67,6 @@ export class BottomRightChartMemberComponent extends BaseComponent implements On
     this.barChartLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     this.barChartType = 'bar';
     this.barChartLegend = true;
-
-    // for(let i of scrn){
-    //   console.log(scrn.month);
-    // }
-
 
     this.barChartData = this.convertData(scrn)
   }

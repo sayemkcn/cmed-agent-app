@@ -35,20 +35,17 @@ export class TopOverviewComponent extends BaseComponent implements OnInit {
   ngOnInit() {
     this.statService.getStatistics(this.auth.getCompanyCode(), this.fromDate, this.tooDate).subscribe(stats => {
       this.measurementStatistics = stats;
-      // console.log(stats);
     }, err => this.handleError(err))
 
   }
 
   addEventFrom(event: MatDatepickerInputEvent<Date>) {
     this.fromDate = this.datePipe.transform(event.value, 'yyyy-MM-dd').toString();
-    // console.log(this.fromDate);
-    // this.getStats()
+
   }
 
   addEventToo(event: MatDatepickerInputEvent<Date>) {
     this.tooDate = this.datePipe.transform(event.value, 'yyyy-MM-dd').toString();
-    // console.log(this.tooDate);
     this.getStats()
   }
 

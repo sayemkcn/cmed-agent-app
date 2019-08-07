@@ -31,7 +31,7 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
   updateEmployeeInformationForm: FormGroup;
 
   constructor(private router: Router, private route: ActivatedRoute, private employeeDetailsService: SingleEmployeeService,
-              private auth: AuthService, private toastr: Toastr, private fb: FormBuilder) {
+              private auth: AuthService, private toastr: Toastr, private fb: FormBuilder,private datePipe: DatePipe) {
     super(auth);
 
   }
@@ -41,7 +41,9 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
       const id= new FormControl('');
       const firstName= new FormControl('');
       const lastName= new FormControl('');
-      const registered_date= new FormControl('');
+
+      const dateOfConception= new FormControl('');
+
       const phoneNumber= new FormControl('');
       const email= new FormControl('');
       const birthday= new FormControl('');
@@ -68,15 +70,15 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
           countryCode
         });
 
-      const last_check_up= new FormControl('');
-      const selfDiabetes= new FormControl('');
+      const healthCardIssueDate= new FormControl('');
+      const diabetic= new FormControl('');
       const selfHyperTension= new FormControl('');
 
       this.updateEmployeeInformationForm =this.fb.group({
         id,
         firstName,
         lastName,
-        registered_date,
+        dateOfConception,
         phoneNumber,
         email,
         birthday,
@@ -87,8 +89,8 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
         gender,
         bloodGroup,
         address,
-        last_check_up,
-        selfDiabetes,
+        healthCardIssueDate,
+        diabetic,
         selfHyperTension
 
       });
@@ -121,15 +123,16 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
       this.title="Employee Information";
       const prevData: Observable<IEmployeeTable> = this.employeeDetailsService.getEmployeeDetails(parseInt(this.paramId,0));
       prevData.subscribe(pd=>{
+
         id.setValue(pd.id);
-
-
         firstName.setValue(pd.firstName);
         lastName.setValue(pd.lastName);
         phoneNumber.setValue(pd.phoneNumber);
         email.setValue(pd.email);
-        registered_date.setValue(pd.dateOfConception);
-        birthday.setValue(pd.birthday);
+
+        dateOfConception.setValue(this.datePipe.transform(pd.dateOfConception,'yyyy-MM-dd'));
+        birthday.setValue(this.datePipe.transform(pd.birthday,'yyyy-MM-dd'));
+
         companyEmployeeId.setValue(pd.companyEmployeeId);
         companyJobTitle.setValue(pd.companyJobTitle);
         gender.setValue(pd.gender);
@@ -143,13 +146,14 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
         address.controls['districtStr'].setValue(pd.address.districtStr);
         address.controls['countryCode'].setValue(pd.address.countryCode);
 
-        last_check_up.setValue(pd.healthCardIssueDate);
-        selfDiabetes.setValue(pd.selfDiabetes);
+        healthCardIssueDate.setValue(this.datePipe.transform(pd.healthCardIssueDate,'yyyy-MM-dd'));
+
+        diabetic.setValue(pd.diabetic);
         selfHyperTension.setValue(pd.selfHyperTension);
 
       })
-
     }
+
     else{
       this.title="Register Employee";
     }
@@ -164,6 +168,10 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
 
     value.id = this.paramId;
 
+    value.birthday = this.datePipe.transform(value.birthday,'yyyy-MM-dd');
+    value.healthCardIssueDate = this.datePipe.transform(value.healthCardIssueDate,'yyyy-MM-dd');
+    value.dateOfConception = this.datePipe.transform(value.dateOfConception,'yyyy-MM-dd');
+
     const employeeInfo = value as IEmployeeTable;
 
     this.employeeDetailsService.createEmployee(employeeInfo, employeeInfo.phoneNumber, "user", employeeInfo.phoneNumber).subscribe(at => {
@@ -176,10 +184,6 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
 
   onFileChanged(event) {
     this.selectedFile = event.target.files[0]
-  }
-
-  goBack() {
-    this.router.navigate(['/employees']);
   }
 
   isUpdate(): boolean {
