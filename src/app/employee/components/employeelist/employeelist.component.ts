@@ -38,8 +38,15 @@ export class EmployeelistComponent extends BaseComponent implements OnInit {
         this.employeePage = searchVar;
       }, err => this.handleError(err))
     }
-    // this.search='';
-    // this.gender='';
+
+  }
+  onPaginateChange(data){
+    if(data.hasNextPage()){
+        data.nextPage();
+    }
+    if(data.hasPreviousPage()){
+      data.previousPage();
+    }
   }
 
 

@@ -160,8 +160,7 @@
           <select name="bloodGroup" formControlName="bloodGroup"
                   style="color:#1AA4E3 ; width: -webkit-fill-available; height: 35px;border-radius: 6px;background-color: #ECEFF4">
             <option>Blood group</option>
-            <option *ngFor="let blood of bloodGroup"
-                    >
+            <option *ngFor="let blood of bloodGroup" [value]="blood.value" >
 
               {{blood.label}}
 
@@ -209,7 +208,7 @@
               <select formControlName="region" style="height: 28px;width: 122px;background-color: #ECEFF4;"
                       >
                 <option>Division</option>
-                <option *ngFor="let divi of division" > {{divi.label}} </option>
+                <option *ngFor="let divi of division" [value]="divi.value" > {{divi.label}} </option>
               </select>
             </div>
 
@@ -217,14 +216,14 @@
               <select formControlName="districtStr" style="height: 28px;width: 123px;background-color: #ECEFF4;"
                       >
                 <option>District</option>
-                <option *ngFor="let dist of district" > {{dist.label}} </option>
+                <option *ngFor="let dist of district" [value]="dist.value" > {{dist.label}} </option>
               </select>
             </div>
             <div class=" col-4 form-group" style="padding-left: 19px">
               <select formControlName="city" style="height: 28px;width: 122px;background-color: #ECEFF4;"
                       >
                 <option>Thana</option>
-                <option *ngFor="let pos of policeStation" > {{pos.label}} </option>
+                <option *ngFor="let pos of policeStation" [value]="pos.value" > {{pos.label}} </option>
               </select>
             </div>
           </div>
@@ -256,20 +255,11 @@
       <div class="row" style="margin-top: 20px;padding-bottom: 20px; padding-top: 20px;">
 
         <div class="col-6" style="padding-left: 40px;">
-          <button class="btn btn-primary" style="width: 24%"  type="button" (click)="goBack()">
+          <button class="btn btn-primary" style="width: 24%"  type="button" routerLink="/employees">
             <img
               src="../../../../assets/image_resources/back.svg" alt="" class="logo-img"> Go Back
           </button>
         </div>
-
-        <!--        <div class="col-6">-->
-        <!--          <button class="btn btn-primary" type="submit" style="width: 150px;background-color: #16B4FC;color:white" (click)=""><img-->
-        <!--            style="padding-right: 8px" src="../../../../assets/image_resources/edit.svg" alt=""> Update-->
-        <!--          </button>-->
-        <!--        </div>-->
-        <!--                <div class="col-6" *ngIf="employeeDetails.id">-->
-        <!--                  <button class="btn btn-primary" type="submit" style="width: 150px;background-color: #16B4FC;color:white"><img style="padding-right: 8px" src="../../../../assets/image_resources/edit.svg" alt=""> Update</button>-->
-        <!--                </div>-->
 
         <div class="col-6">
           <button class="btn btn-success" type="submit" style="width: 80px;margin-right: 10px;background-color: #16B4FC;color:white">

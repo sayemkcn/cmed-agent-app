@@ -36,39 +36,6 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
 
   }
 
-  // initControls(): void {
-  //   this.updateEmployeeInformationForm = new FormGroup({
-  //     id: new FormControl(''),
-  //     firstName: new FormControl(''),
-  //     lastName: new FormControl(''),
-  //     created_at: new FormControl(''),
-  //     phoneNumber: new FormControl(''),
-  //     email: new FormControl(''),
-  //     updated_at: new FormControl(''),
-  //     birthday: new FormControl(''),
-  //     companyEmployeeId: new FormControl(''),
-  //     department: new FormControl(''),
-  //     unit: new FormControl(''),
-  //     companyJobTitle: new FormControl(''),
-  //     gender: new FormControl(''),
-  //     bloodGroup: new FormControl(''),
-  //
-  //     address: new FormGroup({
-  //       id: new FormControl(''),
-  //       street: new FormControl(''),
-  //       region: new FormControl(''),
-  //       city: new FormControl(''),
-  //       postCode: new FormControl(''),
-  //       districtStr: new FormControl(''),
-  //       countryCode: new FormControl('')
-  //     }),
-  //
-  //     last_check_up: new FormControl(''),
-  //     selfDiabetes: new FormControl(''),
-  //     selfHyperTension: new FormControl(''),
-  //   });
-  // }
-
   ngOnInit() {
 
       const id= new FormControl('');
@@ -129,39 +96,33 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
 
 
     this.title ="Register Employee";
-    // this.initControls();
+
     this.bloodGroup = [{value: 'A+', label: 'A+'}, {value: 'B+', label: 'B+'}, {value: 'O+', label: 'O+'}, {
       value: 'AB+', label: 'AB+'
     }, {value: 'A-', label: 'A-'}, {value: 'B-', label: 'B-'}, {value: 'O-', label: 'O-'},
       {value: 'AB-', label: 'AB-'}];
 
     this.division = [
-      {value: '1', label: 'Dhaka'},
-      {value: '2', label: 'Chattagram'},
-      {value: '3', label: 'Khulna'},
-      {value: '4', label: 'Barisal'},
-      {value: '5', label: 'Mymensingh'},
-      {value: '6', label: 'Rajshahi'},
-      {value: '7', label: 'Rangpur'},
-      {value: '8', label: 'Sylhet'}
+      {value: 'Dhaka', label: 'Dhaka'},
+      {value: 'Chattagram', label: 'Chattagram'},
+      {value: 'Khulna', label: 'Khulna'},
+      {value: 'Barisal', label: 'Barisal'},
+      {value: 'Mymensingh', label: 'Mymensingh'},
+      {value: 'Rajshahi', label: 'Rajshahi'},
+      {value: 'Rangpur', label: 'Rangpur'},
+      {value: 'Sylhet', label: 'Sylhet'}
     ];
 
 
 
 
     this.paramId = this.route.snapshot.paramMap.get('id');
-    // if (this.paramId) {
-    //   this.title = "Employee Information";
-    //
-    // }
-
     if (this.paramId) {
       this.title="Employee Information";
       const prevData: Observable<IEmployeeTable> = this.employeeDetailsService.getEmployeeDetails(parseInt(this.paramId,0));
       prevData.subscribe(pd=>{
         id.setValue(pd.id);
 
-        console.log((this.paramId) + 'dd');
 
         firstName.setValue(pd.firstName);
         lastName.setValue(pd.lastName);
@@ -188,29 +149,22 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
 
       })
 
-
-
-      // this.employeeDetailsService.getEmployeeDetails(parseInt(this.paramId, 0)).subscribe(
-      //   employeeInfo => {
-      //     this.employeeDetails = employeeInfo;
-      //   }, err => this.handleError(err));
+    }
+    else{
+      this.title="Register Employee";
     }
 
   }
 
-  get f() {
-    return this.updateEmployeeInformationForm.controls;
-  }
+  // get f() {
+  //   return this.updateEmployeeInformationForm.controls;
+  // }
 
   createEmployee(value: any) {
 
-    // console.log(value.id);
     value.id = this.paramId;
-    // console.log(JSON.stringify(value));
 
-    this.title = "Register Employee";
     const employeeInfo = value as IEmployeeTable;
-
 
     this.employeeDetailsService.createEmployee(employeeInfo, employeeInfo.phoneNumber, "user", employeeInfo.phoneNumber).subscribe(at => {
       this.toastr.success("Success", at.firstName + " was Registered successfully");

@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { PrescriptionComponent } from './components/prescription/prescription.component';
 import {HttpModule} from '@angular/http';
+import {MatPaginatorModule} from "@angular/material";
 
 @NgModule({
   declarations: [EmployeelistComponent, CreateEmployeeComponent, PrescriptionComponent],
@@ -16,7 +17,8 @@ import {HttpModule} from '@angular/http';
     ReactiveFormsModule,
     MatButtonToggleModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    MatPaginatorModule
   ]
 })
 export class EmployeeModule { }

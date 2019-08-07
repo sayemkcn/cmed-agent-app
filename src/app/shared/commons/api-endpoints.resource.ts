@@ -91,5 +91,10 @@ export class ApiEndpoints {
     }
   };
 
+  MEMBER = {
+    FETCH(companyCode: string): string {
+      return environment.base_url+ ApiEndpoints.API_VERSION + '/corporate/'+ companyCode + '/stats/screened';
+    }
+  }
 
 }

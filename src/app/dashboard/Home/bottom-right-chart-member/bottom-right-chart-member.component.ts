@@ -1,11 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MemberScreenedService} from "../../service/member-screened.service.service";
+import {IScreened} from "../../models/screened.model";
+import {BaseComponent} from "../../../shared/base/base.component";
+import {AuthService} from "../../../auth/shared/auth.service";
 
 @Component({
   selector: 'app-bottom-right-chart-member',
   templateUrl: './bottom-right-chart-member.component.html',
   styleUrls: ['./bottom-right-chart-member.component.scss']
 })
-export class BottomRightChartMemberComponent implements OnInit {
+export class BottomRightChartMemberComponent extends BaseComponent implements OnInit {
+
+  // screenedStats : IScreened[];
 
   public barChartOptions: any;
   public barChartLabels: any;
@@ -20,15 +26,22 @@ export class BottomRightChartMemberComponent implements OnInit {
   public bloodGroupChartData: any;
 
 
-  constructor() {
-    this.loadScreenMeasuredChart();
-    this.loadBloodGroupChart();
+  constructor(private memberService: MemberScreenedService, private auth: AuthService) {
+    super(auth);
   }
 
   ngOnInit() {
+    this.memberService.getScreened().subscribe((scrn: IScreened[]) => {
+      // this.screenedStats=scrn;
+      this.loadScreenMeasuredChart(scrn);
+
+    }, err => this.handleError(err))
+
+
   }
 
-  loadScreenMeasuredChart() {
+  loadScreenMeasuredChart(scrn: IScreened[]) {
+    // console.log(scrn);
     this.barChartOptions = {
       scaleShowVerticalLines: false,
       responsive: true,
@@ -60,77 +73,35 @@ export class BottomRightChartMemberComponent implements OnInit {
       hover: {mode: null},
       maintainAspectRatio: false,
     };
-    this. barChartLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    this. barChartType = 'bar';
-    this. barChartLegend = true;
-    this. barChartData = [
-      {
-        data: [775, 759, 780, 781, 756, 755, 765, 579, 780, 871, 576, 755],
-        label: 'Series A',
-        fill: true,
-        backgroundColor: '#107EB1',
+    this.barChartLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    this.barChartType = 'bar';
+    this.barChartLegend = true;
 
-      },
-      {
-        data: [728, 748, 740, 719, 786, 727, 728, 478, 740, 719, 786, 727],
-        label: 'Series B',
-        fill : true,
-        backgroundColor : '#12DED0',
-      }
-    ];
+    // for(let i of scrn){
+    //   console.log(scrn.month);
+    // }
+
+
+    this.barChartData = this.convertData(scrn)
   }
 
-
-  loadBloodGroupChart() {
-    this.bloodGroupChartOptions = {
-      scaleShowVerticalLines: false,
-      responsive: true,
-      scales: {
-        xAxes: [{
-          gridLines: {
-            color: 'rgba(0, 0, 0, 0)',
-          },
-          ticks: {
-            fontFamily: 'Montserrat'
-          },
-          categoryPercentage: 0.6
-        }],
-        yAxes: [{
-          gridLines: {
-            color: 'rgba(0, 0, 0, 0)',
-          },
-          ticks: {
-            display: false
-          }
-        }]
-      },
-      legend: {
-        display: false
-      },
-      tooltips: {
-        enabled: false
-      },
-      hover: {mode: null},
-      maintainAspectRatio: false,
-    };
-    this. bloodGroupChartLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    this. bloodGroupChartType = 'bar';
-    this. bloodGroupChartLegend = true;
-    this. bloodGroupChartData = [
+  convertData(stats: IScreened[]) {
+    var barChartData = [
       {
-        data: [65, 59, 80, 81, 56, 55, 65, 59, 80, 81, 56, 55],
-        label: 'Series A',
-        fill: true,
+        data: [],
         backgroundColor: '#107EB1',
 
       },
       {
-        data: [28, 48, 40, 19, 86, 27, 28, 48, 40, 19, 86, 27],
-        label: 'Series B',
-        fill : true,
-        backgroundColor : '#12DED0',
+        data: [],
+        backgroundColor: '#12DED0',
       }
     ];
+    stats.forEach(s=>{
+      barChartData[0].data.push(s.total);
+      barChartData[1].data.push(s.screened);
+    });
+    return barChartData;
   }
 
 

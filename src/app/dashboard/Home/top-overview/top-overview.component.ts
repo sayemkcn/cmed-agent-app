@@ -60,6 +60,9 @@ export class TopOverviewComponent extends BaseComponent implements OnInit {
     }
 
   }
+  getPercent():number{
+    return Math.ceil((this.measurementStatistics.totalServed*100)/this.measurementStatistics.totalEmployees);
+  }
 
 
 }

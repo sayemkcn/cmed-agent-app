@@ -63,12 +63,13 @@
     <div class="card-title" style="height: 15px; ">
       <div class="row" style="margin: 10px; margin-top: 15px;">
         <div class="col"> <h5 style="color: #333333; font-family: Montserrat; font-size: 20px">Showing all the employee list below</h5> </div>
-        <div class="col text-right"> <h5 style="color: #333333; font-family: Montserrat; font-size: 20px; margin-right: 50px">Total Employee {{employeePage.size}}</h5> </div>
+        <div class="col text-right"> <h5 style="color: #333333; font-family: Montserrat; font-size: 20px; margin-right: 50px">Total Employee {{employeePage.totalElements}}</h5> </div>
       </div>
     </div>
 
     <!-- Card content -->
     <div class="card-body">
+
       <div class="container-fluid">
         <table class="table" style=" table-layout: fixed;word-wrap: break-word; font-family: Montserrat; font-size: 15pt">
           <thead style="background-color: #ECEFF4; ">
@@ -84,6 +85,7 @@
             <th scope="col" style="text-align: center;"></th>
           </tr>
           </thead>
+
           <tbody   >
           <tr *ngFor="let employee of employeePage.content">
             <td scope="row" style="text-align: center;">
@@ -106,10 +108,16 @@
             </td>
           </tr>
           </tbody>
+
         </table>
-
-
       </div>
+
+      <mat-paginator [length]="employeePage.totalPages"
+                     [pageSize]="employeePage.size"
+                     [pageIndex]="employeePage.number"
+                     (page)="onPaginateChange($event)">
+
+      </mat-paginator>
 
     </div>
 

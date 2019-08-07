@@ -1,25 +1,25 @@
 <div class="div embed-responsive" style="background-color: #F9F9F9;font-family: Montserrat;">
   <div class="row">
     <div class="col-md-6">
-      <div class="oneLine" style="font-size: 20px; font-family: Montserrat">
+      <div class="oneLine" style="font-size: 1.3vmax; font-family: Montserrat">
         Measurements of all the employees
 
 
       </div>
     </div>
-    <div class="col-md-3" style="max-width: 100%">
+    <div class="col-md-3" style="width: 50%">
       <div>
-        <mat-form-field>
-          <input matInput [matDatepicker]="picker1" placeholder="From" (dateChange)="addEventFrom($event)">
+        <mat-form-field style="max-width: 100%">
+          <input matInput [matDatepicker]="picker1" placeholder="From" (dateChange)="addEventFrom($event)" [value]="fromDate">
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
       </div>
     </div>
-    <div class="col-md-3" style="max-width: 100%">
+    <div class="col-md-3" style="width: 50%">
       <div>
-        <mat-form-field>
-          <input matInput [matDatepicker]="picker2" placeholder="To" (dateChange)="addEventToo($event)">
+        <mat-form-field style="max-width: 100%">
+          <input matInput [matDatepicker]="picker2" placeholder="To" (dateChange)="addEventToo($event)" [value]="tooDate">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
@@ -232,10 +232,3 @@
   </div>
 
 </div>
-
-
-<!--<span *ngIf="isValid(blood.bloodGroup)" [ngStyle]="{ height:getHeight(blood.count)-10 }" style="color: black;background-color: blue"  title="{{blood.bloodGroup}}">{{blood.count}}</span>-->
-<!--<span *ngIf="isValid(blood.bloodGroup)" [ngStyle]="{ height:getHeight(blood.count)-10 }" style="color: black;background-color: green"  title="{{blood.bloodGroup}}">{{blood.count}}</span>-->
-<!--<span *ngIf="isValid(blood.bloodGroup)" [ngStyle]="{ height:getHeight(blood.count)-10 }" style="color: black;background-color: brown "  title="{{blood.bloodGroup}}">{{blood.count}}</span>-->
-<!--<span *ngIf="isValid(blood.bloodGroup)" [ngStyle]="{ height:getHeight(blood.count)-10 }" style="color: black;background-color: blue"  title="{{blood.bloodGroup}}">{{blood.count}}</span>-->
-<!--<span *ngIf="isValid(blood.bloodGroup)" [ngStyle]="{height:getHeight(blood.count) }" style="color: black;background-color: #f4ff42" title="{{blood.bloodGroup}}">{{blood.count}}</span>-->

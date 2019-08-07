@@ -19,7 +19,7 @@ export class BottomLeftChartComponent extends BaseComponent implements OnInit {
   private convertedData;
 
   private fromDate = "2018-08-01";
-  private tooDate = "2019-02-20";
+  private tooDate = "2019-02-01";
   private measurementType = "BP";
 
   constructor(private auth: AuthService, private datePipe: DatePipe, private measurementsService: PatientInfoService) {
@@ -37,29 +37,44 @@ export class BottomLeftChartComponent extends BaseComponent implements OnInit {
 
   addEventFrom(event: MatDatepickerInputEvent<Date>) {
     this.fromDate = this.datePipe.transform(event.value, 'yyyy-MM-dd').toString();
+
+    let dt = new Date(this.fromDate);
+    dt.setMonth(dt.getMonth()+6);
+    this.tooDate = this.datePipe.transform(dt,'yyyy-MM-dd').toString();
+
     this.getMeasures();
   }
 
   addEventToo(event: MatDatepickerInputEvent<Date>) {
     this.tooDate = this.datePipe.transform(event.value, 'yyyy-MM-dd').toString();
+    let dt = new Date(this.tooDate);
+    dt.setMonth(dt.getMonth()-6);
+    this.fromDate = this.datePipe.transform(dt,'yyyy-MM-dd').toString();
     this.getMeasures();
   }
 
   onTabChange(event: MatTabChangeEvent) {
-    console.log(event.tab.textLabel);
-    // if (this.measurementType != '' && this.measurementType == "Blood Pressure") {this.measurementType = "BP";}
-    // if (this.measurementType != '' && this.measurementType == "Pulse") {this.measurementType = "Pulse";}
-    // if (this.measurementType != '' && this.measurementType == "Glucose") {this.measurementType = "BP";}
-    // if (this.measurementType != '' && this.measurementType == "B.M.I") {this.measurementType = "BMI";}
-    // if (this.measurementType != '' && this.measurementType == "Temp") {this.measurementType = "Temp";}
+    if (event.tab.textLabel == "Blood Pressure") {this.measurementType = "BP";}
+    if (event.tab.textLabel == "Pulse") {this.measurementType = "PULSE_RATE";}
+    if (event.tab.textLabel == "Glucose") {this.measurementType = "BLOOD_SUGAR";}
+    if (event.tab.textLabel == "B.M.I") {this.measurementType = "BMI";}
+    if (event.tab.textLabel == "Temp") {this.measurementType = "EAR_TEMP";}
+    this.getMeasures();
 
   }
 
+
   getMeasures() {
-
-
     if (this.fromDate != '' && this.tooDate != '') {
-      this.measurementsService.getMeasurements(this.measurementType, this.fromDate, this.tooDate).subscribe(measurement => {
+      let fdt = new Date(this.fromDate);
+      let tdt = new Date(this.tooDate);
+      fdt.setDate(1);
+      tdt.setDate(1);
+      let fm = this.datePipe.transform(fdt,'yyyy-MM-dd').toString();
+      let to = this.datePipe.transform(tdt,'yyyy-MM-dd').toString();
+
+
+      this.measurementsService.getMeasurements(this.measurementType, fm, to).subscribe(measurement => {
         this.patientInfo = measurement;
 
         this.convertedData = this.convertData(this.patientInfo);
@@ -93,19 +108,12 @@ export class BottomLeftChartComponent extends BaseComponent implements OnInit {
         chartItem[statusCount.status] = statusCount.count;
         temp+=statusCount.count;
 
-
-
       });
-      console.log(temp);
-
-
-      // this.totalStats = temp;
 
       chartData.push(chartItem);
       chartItem = [];
 
     });
-    // console.log(this.totalStats);
     return chartData;
 
   }
@@ -113,7 +121,6 @@ export class BottomLeftChartComponent extends BaseComponent implements OnInit {
 
 
   getHeight(height: number) {
-    console.log()
     return ((height * 100) / 1906) + 10 + "%";
   }
 
