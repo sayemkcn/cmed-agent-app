@@ -83,6 +83,7 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
       const unit= new FormControl('');
       const companyJobTitle= new FormControl('');
       const gender= new FormControl('');
+
       const bloodGroup= new FormControl('');
       const street= new FormControl('');
       const region= new FormControl('');
@@ -149,17 +150,19 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
 
 
     this.paramId = this.route.snapshot.paramMap.get('id');
-    if (this.paramId) {
-      this.title = "Employee Information";
+    // if (this.paramId) {
+    //   this.title = "Employee Information";
+    //
+    // }
 
-    }
-
-    // new DatePipe('en-US').transform(Date.now(), 'yyyy-MM-dd');
     if (this.paramId) {
+      this.title="Employee Information";
       const prevData: Observable<IEmployeeTable> = this.employeeDetailsService.getEmployeeDetails(parseInt(this.paramId,0));
       prevData.subscribe(pd=>{
         id.setValue(pd.id);
-        // console.log(parseInt(this.paramId,0) + 'dd');
+
+        console.log((this.paramId) + 'dd');
+
         firstName.setValue(pd.firstName);
         lastName.setValue(pd.lastName);
         phoneNumber.setValue(pd.phoneNumber);
@@ -201,8 +204,9 @@ export class CreateEmployeeComponent extends BaseComponent implements OnInit {
 
   createEmployee(value: any) {
 
-    console.log(value.id);
-    console.log(JSON.stringify(value));
+    // console.log(value.id);
+    value.id = this.paramId;
+    // console.log(JSON.stringify(value));
 
     this.title = "Register Employee";
     const employeeInfo = value as IEmployeeTable;
