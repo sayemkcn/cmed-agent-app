@@ -14,13 +14,13 @@ import {DatePipe} from "@angular/common";
 })
 export class EmployeelistComponent extends BaseComponent implements OnInit {
 
-  private employeePage: IEmployeePage;
-  private gender='m';
-  // private queryCode;
-  private page=0;
-  private search='Arif';
+   employeePage: IEmployeePage;
+   gender='m';
+  //  queryCode;
+   page=0;
+   search='Arif';
 
-  private genderArra=['m','f','u'];
+   genderArra=['m','f','u'];
 
   constructor(private employeeService: EmployeeService, private auth: AuthService) {
     super(auth);
