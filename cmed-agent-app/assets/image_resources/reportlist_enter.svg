@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <style>
+      .cls-1, .cls-4 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: #16b4fc;
+        stroke-width: 2px;
+      }
+
+      .cls-2 {
+        fill: #16b4fc;
+        font-size: 14px;
+        font-family: FontAwesome5ProSolid, "Font Awesome 5 Pro";
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="Group_630" data-name="Group 630" transform="translate(-1518 -150)">
+    <g id="Rectangle_925" data-name="Rectangle 925" class="cls-1" transform="translate(1518 150)">
+      <rect class="cls-3" width="32" height="32" rx="16"/>
+      <rect class="cls-4" x="1" y="1" width="30" height="30" rx="15"/>
+    </g>
+    <text id="arrow-right" class="cls-2" transform="translate(1528 172)"><tspan x="0" y="0">arrow-right</tspan></text>
+  </g>
+</svg>

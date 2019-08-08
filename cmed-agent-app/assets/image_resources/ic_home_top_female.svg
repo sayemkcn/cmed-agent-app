@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fb43ab;
+        font-size: 22px;
+        font-family: FontAwesome5ProSolid, "Font Awesome 5 Pro";
+      }
+    </style>
+  </defs>
+  <text id="Female" class="cls-1" transform="translate(0 1)"><tspan x="6.5" y="19">Female</tspan></text>
+</svg>
