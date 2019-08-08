@@ -20,6 +20,7 @@ export class LocalStorage {
   }
 
   static retrive(key: string) {
+    console.log(sessionStorage.getItem(key));
     return sessionStorage.getItem(key);
   }
 
