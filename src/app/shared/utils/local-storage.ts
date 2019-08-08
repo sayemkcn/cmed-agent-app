@@ -25,6 +25,7 @@ export class LocalStorage {
   }
 
   static putAuth(userAuth: IUserAuth) {
+    console.log(sessionStorage.getItem(this.KEYS.accessToken));
     sessionStorage.setItem(this.KEYS.username, userAuth.cmedId);
     sessionStorage.setItem(this.KEYS.accessToken, userAuth.access_token);
     sessionStorage.setItem(this.KEYS.refreshToken, userAuth.refresh_token);
