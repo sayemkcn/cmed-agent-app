@@ -16,26 +16,27 @@ export class LocalStorage {
   }
 
   static put(key: string, value: string) {
-    localStorage.setItem(key, value);
+    sessionStorage.setItem(key, value);
   }
 
   static retrive(key: string) {
-    return localStorage.getItem(key);
+    return sessionStorage.getItem(key);
   }
 
   static putAuth(userAuth: IUserAuth) {
-    localStorage.setItem(this.KEYS.username, userAuth.cmedId);
-    localStorage.setItem(this.KEYS.accessToken, userAuth.access_token);
-    localStorage.setItem(this.KEYS.refreshToken, userAuth.refresh_token);
-    localStorage.setItem(this.KEYS.companyCode, userAuth.company_code);
-    localStorage.setItem(this.KEYS.authorities, JSON.stringify(userAuth.authorities));
+    sessionStorage.setItem(this.KEYS.username, userAuth.cmedId);
+    sessionStorage.setItem(this.KEYS.accessToken, userAuth.access_token);
+    sessionStorage.setItem(this.KEYS.refreshToken, userAuth.refresh_token);
+    sessionStorage.setItem(this.KEYS.companyCode, userAuth.company_code);
+    sessionStorage.setItem(this.KEYS.authorities, JSON.stringify(userAuth.authorities));
   }
 
   static clear(): void {
-    localStorage.removeItem(this.KEYS.username);
-    localStorage.removeItem(this.KEYS.accessToken);
-    localStorage.removeItem(this.KEYS.refreshToken);
-    localStorage.removeItem(this.KEYS.companyCode);
-    localStorage.removeItem(this.KEYS.authorities);
+    sessionStorage.clear();
+    // sessionStorage.removeItem(this.KEYS.username);
+    // sessionStorage.removeItem(this.KEYS.accessToken);
+    // sessionStorage.removeItem(this.KEYS.refreshToken);
+    // sessionStorage.removeItem(this.KEYS.companyCode);
+    // sessionStorage.removeItem(this.KEYS.authorities);
   }
 }
